@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tere Salas — Artista Multidisciplinaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f5efe4;
+      --parchment: #e8dcc8;
+      --terracotta: #b5533c;
+      --ochre: #c8862a;
+      --umber: #4a2f1a;
+      --ink: #1e120a;
+      --dusty-rose: #c4876a;
+      --sage: #7a8c6e;
+      --shadow: rgba(30, 18, 10, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* GRAIN OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(245, 239, 228, 0.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(74, 47, 26, 0.12);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--umber);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      color: var(--umber);
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0.75;
+      transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 8rem 3rem 4rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -5%;
+      top: 10%;
+      width: 55%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, var(--parchment) 0%, transparent 70%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-ornament {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      font-weight: 400;
+      line-height: 1.0;
+      color: var(--umber);
+      margin-bottom: 0.3rem;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.5s;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--umber);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.8s;
+      margin-top: 1.2rem;
+      max-width: 480px;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: var(--terracotta);
+      margin: 2rem 0;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1s;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--umber);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.2s;
+      max-width: 400px;
+      font-style: italic;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 6rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--umber);
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.6s;
+    }
+
+    .hero-scroll::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+
+    /* DECORATIVE VERTICAL TEXT */
+    .vertical-text {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--umber);
+      opacity: 0.25;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 3rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      height: 1px;
+      width: 40px;
+      background: var(--terracotta);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--umber);
+      line-height: 1.2;
+    }
+
+    /* BIOGRAPHY */
+    .bio-section {
+      background: var(--parchment);
+      padding: 7rem 3rem;
+    }
+
+    .bio-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .bio-left { position: sticky; top: 8rem; }
+
+    .bio-quote {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--umber);
+      line-height: 1.5;
+      margin-top: 2rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--terracotta);
+    }
+
+    .bio-text {
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.9;
+    }
+
+    .bio-text p + p { margin-top: 1.5rem; }
+
+    .bio-origin {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(74, 47, 26, 0.2);
+      background: rgba(245, 239, 228, 0.5);
+    }
+
+    .bio-origin-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .bio-origin p {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--umber);
+    }
+
+    /* DISCIPLINES */
+    .disciplines-section {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .disciplines-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      border: 1px solid rgba(74, 47, 26, 0.15);
+    }
+
+    .discipline-card {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid rgba(74, 47, 26, 0.15);
+      position: relative;
+      transition: background 0.4s;
+      cursor: default;
+    }
+
+    .discipline-card:last-child { border-right: none; }
+
+    .discipline-card:hover { background: var(--parchment); }
+
+    .discipline-number {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      color: var(--terracotta);
+      opacity: 0.18;
+      line-height: 1;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .discipline-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--umber);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .discipline-desc {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    .discipline-works {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(74, 47, 26, 0.12);
+    }
+
+    .discipline-works-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .discipline-works ul {
+      list-style: none;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--umber);
+      opacity: 0.8;
+    }
+
+    .discipline-works li { margin-bottom: 0.3rem; }
+    .discipline-works li::before { content: '— '; opacity: 0.5; }
+
+    /* LOGROS */
+    .logros-section {
+      background: var(--umber);
+      color: var(--cream);
+      padding: 7rem 3rem;
+    }
+
+    .logros-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logros-section .section-label { color: var(--ochre); }
+    .logros-section .section-label::after { background: var(--ochre); }
+    .logros-section .section-title { color: var(--cream); }
+
+    .logros-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+      background: rgba(245, 239, 228, 0.08);
+    }
+
+    .logro-item {
+      padding: 2.5rem 3rem;
+      background: var(--umber);
+      border: 1px solid rgba(245, 239, 228, 0.08);
+      transition: background 0.3s;
+    }
+
+    .logro-item:hover { background: rgba(181, 83, 60, 0.2); }
+
+    .logro-year {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--ochre);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .logro-title {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .logro-desc {
+      font-size: 0.9rem;
+      color: var(--cream);
+      opacity: 0.65;
+      line-height: 1.7;
+    }
+
+    /* GALERÍA PLACEHOLDER */
+    .galeria-section {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .galeria-note {
+      margin-top: 1.5rem;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--umber);
+      opacity: 0.6;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .galeria-item {
+      aspect-ratio: 3/4;
+      background: var(--parchment);
+      border: 1px solid rgba(74, 47, 26, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s;
+    }
+
+    .galeria-item:hover { transform: translateY(-4px); }
+
+    .galeria-item-icon {
+      font-size: 2.5rem;
+      opacity: 0.25;
+    }
+
+    .galeria-item-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--umber);
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    .galeria-item-sublabel {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--umber);
+      opacity: 0.4;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    /* CONTACT */
+    .contacto-section {
+      background: var(--parchment);
+      padding: 7rem 3rem;
+      text-align: center;
+    }
+
+    .contacto-inner { max-width: 600px; margin: 0 auto; }
+
+    .contacto-section .section-label {
+      justify-content: center;
+    }
+
+    .contacto-section .section-label::after { display: none; }
+
+    .contacto-tagline {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--umber);
+      margin: 1.5rem 0 3rem;
+      line-height: 1.6;
+    }
+
+    .contacto-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .contacto-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--umber);
+      transition: color 0.3s;
+    }
+
+    .contacto-link:hover { color: var(--terracotta); }
+
+    .contacto-link-icon {
+      font-size: 1.5rem;
+    }
+
+    .contacto-link-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      opacity: 0.4;
+      font-style: italic;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .hero-scroll { left: 1.5rem; }
+      .vertical-text { display: none; }
+      .bio-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .bio-left { position: static; }
+      .disciplines-grid { grid-template-columns: 1fr; }
+      .discipline-card { border-right: none; border-bottom: 1px solid rgba(74,47,26,0.15); }
+      .logros-grid { grid-template-columns: 1fr; }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#inicio" class="nav-logo">Tere Salas</a>
+    <ul class="nav-links">
+      <li><a href="#biografia">Biografía</a></li>
+      <li><a href="#obra">Obra</a></li>
+      <li><a href="#logros">Reconocimientos</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <p class="hero-ornament">Artista Multidisciplinaria</p>
+    <h1>Tere<span>Salas</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">Escultura · Pintura · Cine · Teatro</p>
+    <p class="hero-tagline">Una práctica que explora la memoria, el dolor y la resiliencia humana.</p>
+    <p class="hero-scroll">Desplazar para explorar</p>
+    <span class="vertical-text">Villa de Santiago, Nuevo León · México</span>
+  </section>
+
+  <!-- BIOGRAPHY -->
+  <section id="biografia" class="bio-section">
+    <div class="bio-inner">
+      <div class="bio-left reveal">
+        <div class="section-label">Sobre la Artista</div>
+        <h2 class="section-title">Una vida<br/>en el arte</h2>
+        <blockquote class="bio-quote">
+          "Una narrativa visual que da voz a la memoria y la resiliencia."
+        </blockquote>
+        <div class="bio-origin">
+          <div class="bio-origin-label">Raíces</div>
+          <p>Nacida en Villa de Santiago, Nuevo León — un pueblo que vive en cada una de sus obras.</p>
+        </div>
+      </div>
+      <div class="bio-text reveal">
+        <p>Tere Salas es una artista multidisciplinaria cuya práctica integra el cine, la televisión, la pintura y la escultura, destacándose por una profunda sensibilidad social y una narrativa visual que explora la memoria, el dolor y la resiliencia humana.</p>
+        <p>Su obra se caracteriza por dar voz a temáticas urgentes, logrando un reconocimiento que trasciende las fronteras nacionales. Con más de cinco décadas de trayectoria en las artes escénicas y visuales, Tere ha construido un universo estético propio: enraizado en la tierra roja de Nuevo León, expansivo en su alcance internacional.</p>
+        <p>En el ámbito de las Artes Plásticas, ha consolidado una trayectoria notable en la escultura en barro y materiales epóxicos. Su compromiso con las causas sociales es evidente en piezas como la trilogía <em>Madres Buscadoras</em>, obra que le otorgó una Mención Honorífica en la VI Bienal de las Plásticas de Nuevo León (2024).</p>
+        <p>Como pintora, domina técnicas como el óleo y la acuarela, con obras que han sido presentadas en espacios académicos y culturales clave a lo largo de México y el mundo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINES -->
+  <section id="obra">
+    <div class="disciplines-section">
+      <div class="reveal">
+        <div class="section-label">Disciplinas</div>
+        <h2 class="section-title">Su obra</h2>
+      </div>
+      <div class="disciplines-grid reveal">
+
+        <div class="discipline-card">
+          <div class="discipline-number">01</div>
+          <h3 class="discipline-title">Escultura</h3>
+          <p class="discipline-desc">Trabaja en barro y materiales epóxicos con un lenguaje profundamente humano. Sus esculturas convierten el silencio en forma, dando cuerpo a lo que las palabras no alcanzan.</p>
+          <div class="discipline-works">
+            <div class="discipline-works-label">Obras destacadas</div>
+            <ul>
+              <li>Trilogía Madres Buscadoras</li>
+              <li>Colecciones en barro y epóxico</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="discipline-card">
+          <div class="discipline-number">02</div>
+          <h3 class="discipline-title">Pintura</h3>
+          <p class="discipline-desc">Domina el óleo y la acuarela con una sensibilidad que navega entre lo íntimo y lo universal. Sus pinturas hablan de ancestros, heridas y la delicadeza de lo que persiste.</p>
+          <div class="discipline-works">
+            <div class="discipline-works-label">Obras destacadas</div>
+            <ul>
+              <li>Nostalgia</li>
+              <li>Ancestros Remendando mi Corazón</li>
+              <li>Ni con el Pétalo de una Rosa</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="discipline-card">
+          <div class="discipline-number">03</div>
+          <h3 class="discipline-title">Cine & Teatro</h3>
+          <p class="discipline-desc">Más de cincuenta años en las artes escénicas — en escena y detrás de ella. Caracterización, maquillaje, attrezzo. Una comprensión total del cuerpo como lenguaje narrativo.</p>
+          <div class="discipline-works">
+            <div class="discipline-works-label">Producciones</div>
+            <ul>
+              <li>El más triste adiós (2023)</li>
+              <li>Colaboraciones en Multimedios TV</li>
+              <li>Teatro en escena y backstage</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGROS -->
+  <section id="logros" class="logros-section">
+    <div class="logros-inner">
+      <div class="reveal">
+        <div class="section-label">Trayectoria</div>
+        <h2 class="section-title">Reconocimientos<br/>y Exhibiciones</h2>
+      </div>
+      <div class="logros-grid reveal">
+
+        <div class="logro-item">
+          <div class="logro-year">2024</div>
+          <div class="logro-title">Mención Honorífica — VI Bienal de las Plásticas de Nuevo León</div>
+          <div class="logro-desc">Por la trilogía <em>Madres Buscadoras</em>. Exhibida en la Biblioteca Universitaria Raúl Rangel Frías y el Museo de Ciudad Guadalupe.</div>
+        </div>
+
+        <div class="logro-item">
+          <div class="logro-year">2026</div>
+          <div class="logro-title">Centro de Arte Contemporáneo ART COMMUNE — Moscú, Rusia</div>
+          <div class="logro-desc">Participación internacional que extiende su obra más allá de las fronteras latinoamericanas.</div>
+        </div>
+
+        <div class="logro-item">
+          <div class="logro-year">2025</div>
+          <div class="logro-title">Día Mundial del Arte — Exhibición Virtual Internacional</div>
+          <div class="logro-desc">Integración a la era digital con participación en exhibiciones virtuales de alcance global.</div>
+        </div>
+
+        <div class="logro-item">
+          <div class="logro-year">En curso</div>
+          <div class="logro-title">Fundación Carol Rolland — Querétaro</div>
+          <div class="logro-desc">Participación en uno de los espacios de arte contemporáneo más relevantes del centro de México.</div>
+        </div>
+
+        <div class="logro-item">
+          <div class="logro-year">Exposiciones</div>
+          <div class="logro-title">Cholula, Puebla & Museos de Nuevo León</div>
+          <div class="logro-desc">Exposiciones colectivas que exploran el imaginario cultural mexicano. Unidad Cultural de Arquitectura UANL, Museo Bernabé de las Casas.</div>
+        </div>
+
+        <div class="logro-item">
+          <div class="logro-year">2023</div>
+          <div class="logro-title">Largometraje: El más triste adiós</div>
+          <div class="logro-desc">Participación en el largometraje dirigido por Juan Pablo Cantú, estrenado en 2023.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <div class="galeria-section">
+      <div class="reveal">
+        <div class="section-label">Obras</div>
+        <h2 class="section-title">Galería</h2>
+        <p class="galeria-note">Las imágenes de la obra se agregarán próximamente. Este espacio está reservado para esculturas, pinturas y registros de exhibiciones.</p>
+      </div>
+      <div class="galeria-grid reveal">
+        <div class="galeria-item">
+          <div class="galeria-item-icon">🏺</div>
+          <div class="galeria-item-label">Escultura</div>
+          <div class="galeria-item-sublabel">Madres Buscadoras — Trilogía</div>
+        </div>
+        <div class="galeria-item">
+          <div class="galeria-item-icon">🎨</div>
+          <div class="galeria-item-label">Pintura</div>
+          <div class="galeria-item-sublabel">Nostalgia · Óleo</div>
+        </div>
+        <div class="galeria-item">
+          <div class="galeria-item-icon">🖌️</div>
+          <div class="galeria-item-label">Pintura</div>
+          <div class="galeria-item-sublabel">Ancestros Remendando mi Corazón</div>
+        </div>
+        <div class="galeria-item">
+          <div class="galeria-item-icon">🏺</div>
+          <div class="galeria-item-label">Escultura</div>
+          <div class="galeria-item-sublabel">Barro & Epóxico</div>
+        </div>
+        <div class="galeria-item">
+          <div class="galeria-item-icon">🎬</div>
+          <div class="galeria-item-label">Cine</div>
+          <div class="galeria-item-sublabel">El más triste adiós, 2023</div>
+        </div>
+        <div class="galeria-item">
+          <div class="galeria-item-icon">🖼️</div>
+          <div class="galeria-item-label">Pintura</div>
+          <div class="galeria-item-sublabel">Ni con el Pétalo de una Rosa</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto-section">
+    <div class="contacto-inner reveal">
+      <div class="section-label">Contacto</div>
+      <h2 class="section-title">Conectar</h2>
+      <p class="contacto-tagline">Para consultas sobre obra, exhibiciones o colaboraciones.</p>
+      <div class="contacto-links">
+        <a href="https://instagram.com" target="_blank" class="contacto-link">
+          <span class="contacto-link-icon">📷</span>
+          <span class="contacto-link-label">Instagram</span>
+        </a>
+        <a href="https://facebook.com" target="_blank" class="contacto-link">
+          <span class="contacto-link-icon">📘</span>
+          <span class="contacto-link-label">Facebook</span>
+        </a>
+        <a href="mailto:contacto@teresalas.art" class="contacto-link">
+          <span class="contacto-link-icon">✉️</span>
+          <span class="contacto-link-label">Correo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Tere Salas — Artista Multidisciplinaria</span>
+    <span class="footer-copy">Villa de Santiago, Nuevo León · México</span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
