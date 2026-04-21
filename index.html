@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tere Salas — Artista Multidisciplinaria</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <title>Tere Salas — Artista</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     :root {
       --cream: #f5efe4;
@@ -13,25 +13,22 @@
       --ochre: #c8862a;
       --umber: #4a2f1a;
       --ink: #1e120a;
-      --dusty-rose: #c4876a;
-      --sage: #7a8c6e;
       --shadow: rgba(30, 18, 10, 0.15);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--cream);
       color: var(--ink);
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.8;
       overflow-x: hidden;
     }
 
-    /* GRAIN OVERLAY */
     body::before {
       content: '';
       position: fixed;
@@ -51,7 +48,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 3rem;
-      background: rgba(245, 239, 228, 0.88);
+      background: rgba(245, 239, 228, 0.95);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(74, 47, 26, 0.12);
     }
@@ -63,6 +60,7 @@
       color: var(--umber);
       text-decoration: none;
       text-transform: uppercase;
+      font-weight: 600;
     }
 
     .nav-links {
@@ -73,16 +71,67 @@
 
     .nav-links a {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-weight: 600;
       letter-spacing: 0.12em;
       color: var(--umber);
       text-decoration: none;
       text-transform: uppercase;
-      opacity: 0.75;
-      transition: opacity 0.3s;
+      transition: color 0.3s;
     }
 
-    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover { color: var(--terracotta); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--umber);
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(245, 239, 228, 0.98);
+      z-index: 99;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-drawer.open { display: flex; }
+
+    .nav-drawer a {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--umber);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-drawer a:hover { color: var(--terracotta); }
 
     /* HERO */
     .hero {
@@ -99,10 +148,8 @@
     .hero::after {
       content: '';
       position: absolute;
-      right: -5%;
-      top: 10%;
-      width: 55%;
-      height: 80%;
+      right: -5%; top: 10%;
+      width: 55%; height: 80%;
       background: radial-gradient(ellipse at center, var(--parchment) 0%, transparent 70%);
       opacity: 0.7;
       pointer-events: none;
@@ -131,11 +178,7 @@
       animation: fadeUp 1s ease forwards 0.5s;
     }
 
-    .hero h1 span {
-      display: block;
-      color: var(--terracotta);
-      font-weight: 600;
-    }
+    .hero h1 span { display: block; color: var(--terracotta); font-weight: 600; }
 
     .hero-subtitle {
       font-family: 'Cormorant Garamond', serif;
@@ -149,8 +192,7 @@
     }
 
     .hero-divider {
-      width: 80px;
-      height: 1px;
+      width: 80px; height: 1px;
       background: var(--terracotta);
       margin: 2rem 0;
       opacity: 0;
@@ -169,8 +211,7 @@
 
     .hero-scroll {
       position: absolute;
-      bottom: 3rem;
-      left: 6rem;
+      bottom: 3rem; left: 6rem;
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -184,16 +225,13 @@
 
     .hero-scroll::before {
       content: '';
-      width: 40px;
-      height: 1px;
+      width: 40px; height: 1px;
       background: var(--terracotta);
     }
 
-    /* DECORATIVE VERTICAL TEXT */
     .vertical-text {
       position: absolute;
-      right: 3rem;
-      top: 50%;
+      right: 3rem; top: 50%;
       transform: translateY(-50%) rotate(90deg);
       font-family: 'Cinzel', serif;
       font-size: 0.65rem;
@@ -205,10 +243,7 @@
     }
 
     /* SECTIONS */
-    section {
-      padding: 6rem 3rem;
-      position: relative;
-    }
+    section { padding: 6rem 3rem; position: relative; }
 
     .section-label {
       font-family: 'Cinzel', serif;
@@ -224,8 +259,7 @@
 
     .section-label::after {
       content: '';
-      height: 1px;
-      width: 40px;
+      height: 1px; width: 40px;
       background: var(--terracotta);
       opacity: 0.5;
     }
@@ -239,10 +273,7 @@
     }
 
     /* BIOGRAPHY */
-    .bio-section {
-      background: var(--parchment);
-      padding: 7rem 3rem;
-    }
+    .bio-section { background: var(--parchment); padding: 7rem 3rem; }
 
     .bio-inner {
       max-width: 1100px;
@@ -266,12 +297,7 @@
       border-left: 2px solid var(--terracotta);
     }
 
-    .bio-text {
-      font-size: 1.05rem;
-      color: var(--ink);
-      line-height: 1.9;
-    }
-
+    .bio-text { font-size: 1.1rem; font-weight: 500; color: var(--ink); line-height: 1.9; }
     .bio-text p + p { margin-top: 1.5rem; }
 
     .bio-origin {
@@ -290,22 +316,14 @@
       margin-bottom: 0.5rem;
     }
 
-    .bio-origin p {
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--umber);
-    }
+    .bio-origin p { font-style: italic; font-size: 0.95rem; color: var(--umber); }
 
     /* DISCIPLINES */
-    .disciplines-section {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    .disciplines-section { max-width: 1100px; margin: 0 auto; }
 
     .disciplines-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
       margin-top: 4rem;
       border: 1px solid rgba(74, 47, 26, 0.15);
     }
@@ -313,13 +331,10 @@
     .discipline-card {
       padding: 3rem 2.5rem;
       border-right: 1px solid rgba(74, 47, 26, 0.15);
-      position: relative;
       transition: background 0.4s;
-      cursor: default;
     }
 
     .discipline-card:last-child { border-right: none; }
-
     .discipline-card:hover { background: var(--parchment); }
 
     .discipline-number {
@@ -340,12 +355,7 @@
       letter-spacing: 0.05em;
     }
 
-    .discipline-desc {
-      font-size: 0.95rem;
-      color: var(--ink);
-      line-height: 1.8;
-      opacity: 0.85;
-    }
+    .discipline-desc { font-size: 1rem; font-weight: 500; color: var(--ink); line-height: 1.8; }
 
     .discipline-works {
       margin-top: 1.5rem;
@@ -362,29 +372,13 @@
       margin-bottom: 0.8rem;
     }
 
-    .discipline-works ul {
-      list-style: none;
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--umber);
-      opacity: 0.8;
-    }
-
+    .discipline-works ul { list-style: none; font-style: italic; font-size: 0.95rem; color: var(--umber); }
     .discipline-works li { margin-bottom: 0.3rem; }
     .discipline-works li::before { content: '— '; opacity: 0.5; }
 
     /* LOGROS */
-    .logros-section {
-      background: var(--umber);
-      color: var(--cream);
-      padding: 7rem 3rem;
-    }
-
-    .logros-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
+    .logros-section { background: var(--umber); color: var(--cream); padding: 7rem 3rem; }
+    .logros-inner { max-width: 1100px; margin: 0 auto; }
     .logros-section .section-label { color: var(--ochre); }
     .logros-section .section-label::after { background: var(--ochre); }
     .logros-section .section-title { color: var(--cream); }
@@ -394,7 +388,6 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 2px;
       margin-top: 4rem;
-      background: rgba(245, 239, 228, 0.08);
     }
 
     .logro-item {
@@ -424,18 +417,10 @@
       line-height: 1.4;
     }
 
-    .logro-desc {
-      font-size: 0.9rem;
-      color: var(--cream);
-      opacity: 0.65;
-      line-height: 1.7;
-    }
+    .logro-desc { font-size: 1rem; color: var(--cream); opacity: 0.85; line-height: 1.7; }
 
-    /* GALERÍA PLACEHOLDER */
-    .galeria-section {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    /* GALERÍA */
+    .galeria-section { max-width: 1100px; margin: 0 auto; }
 
     .galeria-note {
       margin-top: 1.5rem;
@@ -461,17 +446,12 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      position: relative;
       overflow: hidden;
       transition: transform 0.4s;
     }
 
     .galeria-item:hover { transform: translateY(-4px); }
-
-    .galeria-item-icon {
-      font-size: 2.5rem;
-      opacity: 0.25;
-    }
+    .galeria-item-icon { font-size: 2.5rem; opacity: 0.25; }
 
     .galeria-item-label {
       font-family: 'Cinzel', serif;
@@ -491,19 +471,10 @@
       padding: 0 1.5rem;
     }
 
-    /* CONTACT */
-    .contacto-section {
-      background: var(--parchment);
-      padding: 7rem 3rem;
-      text-align: center;
-    }
-
+    /* CONTACTO */
+    .contacto-section { background: var(--parchment); padding: 7rem 3rem; text-align: center; }
     .contacto-inner { max-width: 600px; margin: 0 auto; }
-
-    .contacto-section .section-label {
-      justify-content: center;
-    }
-
+    .contacto-section .section-label { justify-content: center; }
     .contacto-section .section-label::after { display: none; }
 
     .contacto-tagline {
@@ -515,12 +486,7 @@
       line-height: 1.6;
     }
 
-    .contacto-links {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
+    .contacto-links { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
 
     .contacto-link {
       display: flex;
@@ -533,10 +499,7 @@
     }
 
     .contacto-link:hover { color: var(--terracotta); }
-
-    .contacto-link-icon {
-      font-size: 1.5rem;
-    }
+    .contacto-link-icon { font-size: 1.5rem; }
 
     .contacto-link-label {
       font-family: 'Cinzel', serif;
@@ -555,19 +518,8 @@
       align-items: center;
     }
 
-    .footer-name {
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      opacity: 0.4;
-      font-style: italic;
-    }
+    .footer-name { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+    .footer-copy { font-size: 0.8rem; opacity: 0.4; font-style: italic; }
 
     /* ANIMATIONS */
     @keyframes fadeUp {
@@ -575,21 +527,14 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
       .hero { padding: 7rem 1.5rem 4rem; }
       .hero-scroll { left: 1.5rem; }
       .vertical-text { display: none; }
@@ -605,7 +550,15 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#inicio" onclick="closeDrawer()">Inicio</a>
+    <a href="#biografia" onclick="closeDrawer()">Biografía</a>
+    <a href="#obra" onclick="closeDrawer()">Obra</a>
+    <a href="#logros" onclick="closeDrawer()">Reconocimientos</a>
+    <a href="#galeria" onclick="closeDrawer()">Galería</a>
+    <a href="#contacto" onclick="closeDrawer()">Contacto</a>
+  </div>
+
   <nav>
     <a href="#inicio" class="nav-logo">Tere Salas</a>
     <ul class="nav-links">
@@ -615,11 +568,13 @@
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- HERO -->
   <section id="inicio" class="hero">
-    <p class="hero-ornament">Artista Multidisciplinaria</p>
+    <p class="hero-ornament">Artista</p>
     <h1>Tere<span>Salas</span></h1>
     <div class="hero-divider"></div>
     <p class="hero-subtitle">Escultura · Pintura · Cine · Teatro</p>
@@ -628,7 +583,6 @@
     <span class="vertical-text">Villa de Santiago, Nuevo León · México</span>
   </section>
 
-  <!-- BIOGRAPHY -->
   <section id="biografia" class="bio-section">
     <div class="bio-inner">
       <div class="bio-left reveal">
@@ -643,7 +597,7 @@
         </div>
       </div>
       <div class="bio-text reveal">
-        <p>Tere Salas es una artista multidisciplinaria cuya práctica integra el cine, la televisión, la pintura y la escultura, destacándose por una profunda sensibilidad social y una narrativa visual que explora la memoria, el dolor y la resiliencia humana.</p>
+        <p>Tere Salas es una artista cuya práctica integra el cine, la televisión, la pintura y la escultura, destacándose por una profunda sensibilidad social y una narrativa visual que explora la memoria, el dolor y la resiliencia humana.</p>
         <p>Su obra se caracteriza por dar voz a temáticas urgentes, logrando un reconocimiento que trasciende las fronteras nacionales. Con más de cinco décadas de trayectoria en las artes escénicas y visuales, Tere ha construido un universo estético propio: enraizado en la tierra roja de Nuevo León, expansivo en su alcance internacional.</p>
         <p>En el ámbito de las Artes Plásticas, ha consolidado una trayectoria notable en la escultura en barro y materiales epóxicos. Su compromiso con las causas sociales es evidente en piezas como la trilogía <em>Madres Buscadoras</em>, obra que le otorgó una Mención Honorífica en la VI Bienal de las Plásticas de Nuevo León (2024).</p>
         <p>Como pintora, domina técnicas como el óleo y la acuarela, con obras que han sido presentadas en espacios académicos y culturales clave a lo largo de México y el mundo.</p>
@@ -651,7 +605,6 @@
     </div>
   </section>
 
-  <!-- DISCIPLINES -->
   <section id="obra">
     <div class="disciplines-section">
       <div class="reveal">
@@ -659,7 +612,6 @@
         <h2 class="section-title">Su obra</h2>
       </div>
       <div class="disciplines-grid reveal">
-
         <div class="discipline-card">
           <div class="discipline-number">01</div>
           <h3 class="discipline-title">Escultura</h3>
@@ -672,7 +624,6 @@
             </ul>
           </div>
         </div>
-
         <div class="discipline-card">
           <div class="discipline-number">02</div>
           <h3 class="discipline-title">Pintura</h3>
@@ -686,7 +637,6 @@
             </ul>
           </div>
         </div>
-
         <div class="discipline-card">
           <div class="discipline-number">03</div>
           <h3 class="discipline-title">Cine & Teatro</h3>
@@ -700,12 +650,10 @@
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- LOGROS -->
   <section id="logros" class="logros-section">
     <div class="logros-inner">
       <div class="reveal">
@@ -713,48 +661,40 @@
         <h2 class="section-title">Reconocimientos<br/>y Exhibiciones</h2>
       </div>
       <div class="logros-grid reveal">
-
         <div class="logro-item">
           <div class="logro-year">2024</div>
           <div class="logro-title">Mención Honorífica — VI Bienal de las Plásticas de Nuevo León</div>
           <div class="logro-desc">Por la trilogía <em>Madres Buscadoras</em>. Exhibida en la Biblioteca Universitaria Raúl Rangel Frías y el Museo de Ciudad Guadalupe.</div>
         </div>
-
         <div class="logro-item">
           <div class="logro-year">2026</div>
           <div class="logro-title">Centro de Arte Contemporáneo ART COMMUNE — Moscú, Rusia</div>
           <div class="logro-desc">Participación internacional que extiende su obra más allá de las fronteras latinoamericanas.</div>
         </div>
-
         <div class="logro-item">
           <div class="logro-year">2025</div>
           <div class="logro-title">Día Mundial del Arte — Exhibición Virtual Internacional</div>
           <div class="logro-desc">Integración a la era digital con participación en exhibiciones virtuales de alcance global.</div>
         </div>
-
         <div class="logro-item">
           <div class="logro-year">En curso</div>
           <div class="logro-title">Fundación Carol Rolland — Querétaro</div>
           <div class="logro-desc">Participación en uno de los espacios de arte contemporáneo más relevantes del centro de México.</div>
         </div>
-
         <div class="logro-item">
           <div class="logro-year">Exposiciones</div>
           <div class="logro-title">Cholula, Puebla & Museos de Nuevo León</div>
           <div class="logro-desc">Exposiciones colectivas que exploran el imaginario cultural mexicano. Unidad Cultural de Arquitectura UANL, Museo Bernabé de las Casas.</div>
         </div>
-
         <div class="logro-item">
           <div class="logro-year">2023</div>
           <div class="logro-title">Largometraje: El más triste adiós</div>
           <div class="logro-desc">Participación en el largometraje dirigido por Juan Pablo Cantú, estrenado en 2023.</div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- GALERÍA -->
   <section id="galeria">
     <div class="galeria-section">
       <div class="reveal">
@@ -797,22 +737,21 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
   <section id="contacto" class="contacto-section">
     <div class="contacto-inner reveal">
       <div class="section-label">Contacto</div>
       <h2 class="section-title">Conectar</h2>
       <p class="contacto-tagline">Para consultas sobre obra, exhibiciones o colaboraciones.</p>
       <div class="contacto-links">
-        <a href="https://instagram.com" target="_blank" class="contacto-link">
+        <a href="https://www.instagram.com/teresasalasalanis" target="_blank" class="contacto-link">
           <span class="contacto-link-icon">📷</span>
           <span class="contacto-link-label">Instagram</span>
         </a>
-        <a href="https://facebook.com" target="_blank" class="contacto-link">
+        <a href="https://www.facebook.com/share/18dutyq4M4/" target="_blank" class="contacto-link">
           <span class="contacto-link-icon">📘</span>
           <span class="contacto-link-label">Facebook</span>
         </a>
-        <a href="mailto:contacto@teresalas.art" class="contacto-link">
+        <a href="mailto:salas.tere@hotmail.com" class="contacto-link">
           <span class="contacto-link-icon">✉️</span>
           <span class="contacto-link-label">Correo</span>
         </a>
@@ -820,24 +759,34 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <span class="footer-name">Tere Salas — Artista Multidisciplinaria</span>
+    <span class="footer-name">Tere Salas — Artista</span>
     <span class="footer-copy">Villa de Santiago, Nuevo León · México</span>
   </footer>
 
   <script>
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.12 });
-
     reveals.forEach(el => observer.observe(el));
+
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      drawer.classList.toggle('open');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeDrawer() {
+      toggle.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   </script>
 
 </body>
