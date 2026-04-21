@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tere Salas — Artista</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <title>Tere Salas — Artista Multidisciplinaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     :root {
       --cream: #f5efe4;
@@ -26,9 +26,8 @@
       background-color: var(--cream);
       color: var(--ink);
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.8;
+      font-size: 18px;
+      line-height: 1.7;
       overflow-x: hidden;
     }
 
@@ -52,7 +51,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 3rem;
-      background: rgba(245, 239, 228, 0.95);
+      background: rgba(245, 239, 228, 0.88);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(74, 47, 26, 0.12);
     }
@@ -64,7 +63,6 @@
       color: var(--umber);
       text-decoration: none;
       text-transform: uppercase;
-      font-weight: 600;
     }
 
     .nav-links {
@@ -75,69 +73,16 @@
 
     .nav-links a {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.9rem;
       letter-spacing: 0.12em;
       color: var(--umber);
       text-decoration: none;
       text-transform: uppercase;
-      transition: color 0.3s;
+      opacity: 0.75;
+      transition: opacity 0.3s;
     }
 
-    .nav-links a:hover { color: var(--terracotta); }
-
-    /* HAMBURGER */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-      z-index: 200;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--umber);
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* MOBILE NAV DRAWER */
-    .nav-drawer {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(245, 239, 228, 0.98);
-      z-index: 99;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .nav-drawer.open { display: flex; }
-
-    .nav-drawer a {
-      font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--umber);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .nav-drawer a:hover { color: var(--terracotta); }
+    .nav-links a:hover { opacity: 1; }
 
     /* HERO */
     .hero {
@@ -322,8 +267,7 @@
     }
 
     .bio-text {
-      font-size: 1.1rem;
-      font-weight: 500;
+      font-size: 1.05rem;
       color: var(--ink);
       line-height: 1.9;
     }
@@ -397,10 +341,10 @@
     }
 
     .discipline-desc {
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: 0.95rem;
       color: var(--ink);
       line-height: 1.8;
+      opacity: 0.85;
     }
 
     .discipline-works {
@@ -481,9 +425,9 @@
     }
 
     .logro-desc {
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: var(--cream);
-      opacity: 0.85;
+      opacity: 0.65;
       line-height: 1.7;
     }
 
@@ -645,8 +589,7 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .nav-toggle { display: flex; }
+      .nav-links { gap: 1.5rem; }
       .hero { padding: 7rem 1.5rem 4rem; }
       .hero-scroll { left: 1.5rem; }
       .vertical-text { display: none; }
@@ -662,16 +605,6 @@
 </head>
 <body>
 
-  <!-- MOBILE NAV DRAWER -->
-  <div class="nav-drawer" id="navDrawer">
-    <a href="#inicio" onclick="closeDrawer()">Inicio</a>
-    <a href="#biografia" onclick="closeDrawer()">Biografía</a>
-    <a href="#obra" onclick="closeDrawer()">Obra</a>
-    <a href="#logros" onclick="closeDrawer()">Reconocimientos</a>
-    <a href="#galeria" onclick="closeDrawer()">Galería</a>
-    <a href="#contacto" onclick="closeDrawer()">Contacto</a>
-  </div>
-
   <!-- NAV -->
   <nav>
     <a href="#inicio" class="nav-logo">Tere Salas</a>
@@ -682,14 +615,11 @@
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
   <!-- HERO -->
   <section id="inicio" class="hero">
-    <p class="hero-ornament">Artista</p>
+    <p class="hero-ornament">Artista Multidisciplinaria</p>
     <h1>Tere<span>Salas</span></h1>
     <div class="hero-divider"></div>
     <p class="hero-subtitle">Escultura · Pintura · Cine · Teatro</p>
@@ -892,7 +822,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-name">Tere Salas — Artista</span>
+    <span class="footer-name">Tere Salas — Artista Multidisciplinaria</span>
     <span class="footer-copy">Villa de Santiago, Nuevo León · México</span>
   </footer>
 
@@ -901,26 +831,13 @@
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
     }, { threshold: 0.12 });
+
     reveals.forEach(el => observer.observe(el));
-
-    // Hamburger menu
-    const toggle = document.getElementById('navToggle');
-    const drawer = document.getElementById('navDrawer');
-
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('open');
-      drawer.classList.toggle('open');
-      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
-    });
-
-    function closeDrawer() {
-      toggle.classList.remove('open');
-      drawer.classList.remove('open');
-      document.body.style.overflow = '';
-    }
   </script>
 
 </body>
