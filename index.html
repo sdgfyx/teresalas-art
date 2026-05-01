@@ -160,7 +160,7 @@
     ],
 
     // --- GALLERY ---
-    // featured: true  → always appears in the top-5 highlights (pinned)
+    // featured: true  → always appears in the top-10 highlights (pinned)
     // date: "YYYYMM"  → used to auto-sort by most recent
     // page: path to the individual work page (leave "" if page not built yet)
     // coverImage: path relative to repo root
@@ -810,7 +810,10 @@
   `).join('');
 
   // Reconocimientos
-  document.getElementById('logros-grid').innerHTML = SITE_CONFIG.reconocimientos.map(r => `
+  document.getElementById('logros-grid').innerHTML = [...SITE_CONFIG.reconocimientos]
+    .sort((a, b) => parseInt(b.year) - parseInt(a.year))
+    .slice(0, 10)
+    .map(r => `
     <div class="logro-item">
       <div class="logro-year">${r.year}</div>
       <div class="logro-title">${r.title}</div>
@@ -818,12 +821,12 @@
     </div>
   `).join('');
 
-  // ── Gallery: top 5 logic ─────────────────────────────────────
+  // ── Gallery: top 10 logic ────────────────────────────────────
   // 1. Always include featured items
   // 2. Fill remaining slots with most recent by date (descending)
-  // 3. Total shown: 5
+  // 3. Total shown: 10
 
-  const GALLERY_LIMIT = 5;
+  const GALLERY_LIMIT = 10;
   const types = { pieza: 'Pieza', expo: 'Exposición', premio: 'Premio' };
 
   const featured = SITE_CONFIG.gallery.filter(g => g.featured);
