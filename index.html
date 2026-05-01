@@ -36,19 +36,37 @@
         number: "01",
         title: "Escultura",
         description: "Trabaja en barro y materiales epóxicos con un lenguaje profundamente humano. Sus esculturas convierten el silencio en forma, dando cuerpo a lo que las palabras no alcanzan.",
-        works: ["Trilogía Madres Buscadoras", "Nada es lo que parece", "Virgen Esperanza", "La Patita y su Familia"]
+        // works: use { title, page } to link, or just "string" for no link
+        works: [
+          { title: "Trilogía Madres Buscadoras", page: "obras/escultura-madres-buscadoras.html" },
+          { title: "Nada es lo que parece", page: "" },
+          { title: "Virgen Esperanza", page: "" },
+          { title: "La Patita y su Familia", page: "" }
+        ]
       },
       {
         number: "02",
         title: "Pintura",
         description: "Domina el óleo y la acuarela con una sensibilidad que navega entre lo íntimo y lo universal. Sus pinturas hablan de ancestros, heridas y la delicadeza de lo que persiste.",
-        works: ["Nostalgia", "Ni con el Pétalo de una Rosa", "Ancestros Remendando mi Corazón", "Puerta con Vitral", "Y Seguimos Jugando", "Hasta los Ángeles Lloran", "Llanto, Gritos y Silencio"]
+        works: [
+          { title: "Nostalgia", page: "" },
+          { title: "Ni con el Pétalo de una Rosa", page: "" },
+          { title: "Ancestros Remendando mi Corazón", page: "" },
+          { title: "Puerta con Vitral", page: "" },
+          { title: "Y Seguimos Jugando", page: "" },
+          { title: "Hasta los Ángeles Lloran", page: "" },
+          { title: "Llanto, Gritos y Silencio", page: "" }
+        ]
       },
       {
         number: "03",
         title: "Cine & Teatro",
         description: "Más de cincuenta años en las artes escénicas — en escena y detrás de ella. Caracterización, maquillaje, attrezzo. Una comprensión total del cuerpo como lenguaje narrativo.",
-        works: ["El más triste adiós (2023)", "Colaboraciones en Multimedios TV", "Teatro en escena y backstage"]
+        works: [
+          { title: "El más triste adiós (2023)", page: "" },
+          { title: "Colaboraciones en Multimedios TV", page: "" },
+          { title: "Teatro en escena y backstage", page: "" }
+        ]
       }
     ],
 
@@ -780,7 +798,13 @@
       <p class="discipline-desc">${d.description}</p>
       <div class="discipline-works">
         <div class="discipline-works-label">Obras destacadas</div>
-        <ul>${d.works.map(w => `<li>${w}</li>`).join('')}</ul>
+        <ul>${d.works.map(w => {
+          const title = typeof w === 'string' ? w : w.title;
+          const page = typeof w === 'string' ? '' : w.page;
+          return page
+            ? `<li><a href="${page}" style="color:var(--terracotta);text-decoration:none;border-bottom:1px solid rgba(181,83,60,0.3);transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--terracotta)'" onmouseout="this.style.borderColor='rgba(181,83,60,0.3)'">${title}</a></li>`
+            : `<li>${title}</li>`;
+        }).join('')}</ul>
       </div>
     </div>
   `).join('');

@@ -18,6 +18,12 @@
     tipo: "Trilogía",
     anno: "2023",
 
+    // --- COMPOSITION PHOTO ---
+    // A single photo showing all pieces together as a composition
+    // Leave as "" if you don't have one yet
+    compositionImage: "",
+    compositionCaption: "Vista general de la Trilogía Madres Buscadoras",
+
     // --- EXPOSICION DE MOTIVOS ---
     motivosTitle: "Exposición de Motivos",
     motivos: `La muerte de un ser querido ya sea accidental, por enfermedad o por causas naturales, es terrible. Pero si la pérdida es de un hijo, esto se vuelve insufrible. Cuánto dolor de la Virgen María cuando le entregan el cuerpo de su hijo bajado de la cruz, representado magistralmente por Miguel Ángel en su obra La Piedad. Pero cuando no hay un cuerpo que venerar, cuando solo sabemos que nuestro hijo ya no está, el dolor se magnifica. Desaparecer a un ser humano, se transforma en un acto tan perverso que elimina la identidad, la dignidad y la humanidad de la persona.
@@ -444,8 +450,8 @@ Como un acto de empatía, nace desde lo más profundo de mi ser, la idea de repr
 
   <nav>
     <a href="../index.html" class="nav-logo">Tere Salas</a>
-    <a href="../index.html#galeria" class="nav-back">
-      <span class="nav-back-arrow">←</span> Galería
+    <a href="../index.html#obra" class="nav-back">
+      <span class="nav-back-arrow">←</span> Obra
     </a>
   </nav>
 
@@ -464,6 +470,9 @@ Como un acto de empatía, nace desde lo más profundo de mi ser, la idea de repr
       <div class="motivos-text" id="motivos-text"></div>
       <p class="motivos-cierre" id="motivos-cierre"></p>
     </div>
+
+    <!-- COMPOSITION PHOTO -->
+    <div id="composition-section" style="display:none;"></div>
 
     <!-- PIEZAS -->
     <div class="piezas-section reveal">
@@ -512,6 +521,22 @@ Como un acto de empatía, nace desde lo más profundo de mi ser, la idea de repr
     .split('\n\n').map(p => `<p>${p}</p>`).join('');
   document.getElementById('motivos-cierre').textContent = OBRA.motivosCierre;
 
+  // ── Composition photo ─────────────────────────────────────────
+  const compSection = document.getElementById('composition-section');
+  if (OBRA.compositionImage && OBRA.compositionImage !== '') {
+    compSection.style.display = 'block';
+    compSection.innerHTML = `
+      <figure style="margin:0 0 5rem;text-align:center;">
+        <img src="${OBRA.compositionImage}" alt="${OBRA.compositionCaption}"
+          style="max-width:100%;max-height:70vh;object-fit:contain;border:1px solid rgba(74,47,26,0.12);cursor:pointer;"
+          onclick="openLightbox('composition', 0, 0)"
+          onerror="this.style.display='none'" />
+        <figcaption style="margin-top:1rem;font-style:italic;font-size:0.9rem;color:var(--umber);opacity:0.7;">
+          ${OBRA.compositionCaption}
+        </figcaption>
+      </figure>`;
+  }
+
   // ── Render piezas ─────────────────────────────────────────────
   document.getElementById('piezas-container').innerHTML = OBRA.piezas.map((pieza, i) => `
     <div class="pieza-block">
@@ -546,8 +571,9 @@ Como un acto de empatía, nace desde lo más profundo de mi ser, la idea de repr
     </div>
   `).join('');
 
-  // ── Render historial ──────────────────────────────────────────
-  document.getElementById('historial-grid').innerHTML = OBRA.historial.map((h, i) => {
+  // ── Render historial (sorted most recent first) ───────────────
+  const sortedHistorial = [...OBRA.historial].sort((a, b) => parseInt(b.anno) - parseInt(a.anno));
+  document.getElementById('historial-grid').innerHTML = sortedHistorial.map((h, i) => {
     const count = h.images.length;
     const gridClass = count === 1 ? 'count-1' : count === 2 ? 'count-2' : count === 3 ? 'count-3' : 'count-many';
     const imgs = count > 4 ? h.images.slice(0, 4) : h.images;
@@ -594,9 +620,9 @@ Como un acto de empatía, nace desde lo más profundo de mi ser, la idea de repr
   }
 
   function getImages() {
-    return lbContext === 'pieza'
-      ? OBRA.piezas[lbItemIdx].images
-      : OBRA.historial[lbItemIdx].images;
+    if (lbContext === 'pieza') return OBRA.piezas[lbItemIdx].images;
+    if (lbContext === 'composition') return [OBRA.compositionImage];
+    return sortedHistorial[lbItemIdx].images;
   }
 
   function updateLightbox() {
