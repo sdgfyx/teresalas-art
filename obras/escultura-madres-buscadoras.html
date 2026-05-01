@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madres Buscadoras — Tere Salas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+
+  <script>
+  // ============================================================
+  //  OBRA_CONFIG — Edit all content for this work here
+  // ============================================================
+  const OBRA = {
+
+    // --- IDENTIFICATION ---
+    titulo: "Trilogía Madres Buscadoras",
+    disciplina: "Escultura",
+    tipo: "Trilogía",
+    anno: "2023",
+
+    // --- EXPOSICION DE MOTIVOS ---
+    motivosTitle: "Exposición de Motivos",
+    motivos: `La muerte de un ser querido ya sea accidental, por enfermedad o por causas naturales, es terrible. Pero si la pérdida es de un hijo, esto se vuelve insufrible. Cuánto dolor de la Virgen María cuando le entregan el cuerpo de su hijo bajado de la cruz, representado magistralmente por Miguel Ángel en su obra La Piedad. Pero cuando no hay un cuerpo que venerar, cuando solo sabemos que nuestro hijo ya no está, el dolor se magnifica. Desaparecer a un ser humano, se transforma en un acto tan perverso que elimina la identidad, la dignidad y la humanidad de la persona.
+
+Como un acto de empatía, nace desde lo más profundo de mi ser, la idea de representar LA PIEDAD DE LAS MADRES BUSCADORAS, tratando de plasmar el dolor devastador de no tener un cuerpo que honrar. Que mi trabajo sirva como un recordatorio de que estas madres siguen ahí, a pesar de su dolor, angustia, miedo, sufrimiento. Adiós a los almuerzos, a las reuniones, a los amigos. Adiós a las noches enteras de sueño. Ahora serán otros sus compañeros, que se le unirán por caminos, fosas, pantanos, barrancas. Esa vida "normal" ha dejado de existir. Los vestidos y tacones se han cambiado por pantalón y botas, ya que serán otros senderos los que ahora van a recorrer sus pies; esas amas de casa se han transformado en gigantes, dejando sus utensilios de cocina por palas y picos, buscando rastros, huellas, cualquier cosa que las lleve a encontrar su tesoro más preciado, SU DESAPARECIDO.`,
+    motivosCierre: "VOY A BUSCARTE, HASTA ENCONTRARTE",
+
+    // --- PIEZAS DE LA TRILOGIA ---
+    // Each piece in the trilogy gets its own entry
+    piezas: [
+      {
+        titulo: "La Piedad",
+        descripcion: "La representación clásica de esta escultura presenta a María sosteniendo entre sus manos a Jesús, su hijo fallecido. Mi versión presenta la Piedad de una Madre Buscadora, una madre que no puede sostener a su hijo porque sufrió una desaparición forzada, una madre que ha desnudado su cuerpo, su alma; que ha perdido todo y que se aferra al vidente, como si fuera una varita mágica, que le permita recuperar a su hijo.",
+        ficha: {
+          autor: "Tere Salas",
+          asociacion: "Plástica de Monterrey",
+          anno: "2023",
+          tecnica: "Modelado a mano en barro",
+          acabado: "Pintura acrílica y laca",
+          dimensiones: "25 × 25 cm"
+        },
+        images: [
+          "../images/escultura/piezas/001-202407-madres-buscadoras.jpg"
+        ]
+      },
+      {
+        titulo: "Voy a Buscarte",
+        descripcion: "Después de la desaparición forzada de mi hijo, exigí, grité, pedí, supliqué, pero nadie me escuchó. Una maldita pesadilla de la cual todavía no he podido despertarme. Hijo, en silencio, voy a buscarte.",
+        ficha: {
+          autor: "Tere Salas",
+          asociacion: "Plástica de Monterrey",
+          anno: "2023",
+          tecnica: "Modelado a mano en barro",
+          acabado: "Pintura acrílica y laca",
+          dimensiones: "25 × 21 cm"
+        },
+        images: [
+          "../images/escultura/piezas/001-202407-madres-buscadoras.jpg"
+        ]
+      },
+      {
+        titulo: "Hasta Encontrarte",
+        descripcion: "Cuando les desaparecen un hijo, las madres buscadoras pierden totalmente el miedo a todo: al descrédito, a las amenazas, al encierro. El hambre, la enfermedad, ya no importan; buscar, escarbar, desenterrar, se vuelve el objetivo de su vida, hasta su último aliento. Cada noche solo sueño escuchar «Amá… ¡¡ya llegué!!»",
+        ficha: {
+          autor: "Tere Salas",
+          asociacion: "Plástica de Monterrey",
+          anno: "2023",
+          tecnica: "Modelado a mano en barro",
+          acabado: "Pintura acrílica y laca",
+          dimensiones: "37.5 × 25 cm"
+        },
+        images: [
+          "../images/escultura/piezas/001-202407-madres-buscadoras.jpg"
+        ]
+      }
+    ],
+
+    // --- EXPOSICIONES Y PREMIOS ---
+    historial: [
+      {
+        anno: "2024",
+        tipo: "Premio",
+        evento: "Mención Honorífica — VI Bienal de las Plásticas de Nuevo León",
+        lugar: "Biblioteca Universitaria Raúl Rangel Frías y Museo de Ciudad Guadalupe, Nuevo León, México",
+        images: [
+          "../images/escultura/premios/001-202411-mx-nuevoleon-bienal.jpg"
+        ]
+      },
+      {
+        anno: "2026",
+        tipo: "Exposición",
+        evento: "Imagen de la Mujer — Centro de Arte Contemporáneo ART COMMUNE",
+        lugar: "Moscú, Rusia",
+        images: [
+          "../images/escultura/premios/001-20260302-ru-moskow-imagen-de-la-mujer.jpg"
+        ]
+      },
+      {
+        anno: "2024",
+        tipo: "Exposición",
+        evento: "De Barro, Somos",
+        lugar: "Nuevo León, México",
+        images: [
+          "../images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-1.jpg",
+          "../images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-2.jpg",
+          "../images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-3.jpg",
+          "../images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-4.jpg",
+          "../images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-5.jpg"
+        ]
+      },
+      {
+        anno: "2024",
+        tipo: "Exposición",
+        evento: "VI Bienal de las Plásticas de Nuevo León",
+        lugar: "Nuevo León, México",
+        images: [
+          "../images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-1.jpg",
+          "../images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-2.jpg",
+          "../images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-3.jpg",
+          "../images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-4.jpg"
+        ]
+      },
+      {
+        anno: "2025",
+        tipo: "Exposición",
+        evento: "Expo Guadalupe",
+        lugar: "Nuevo León, México",
+        images: [
+          "../images/escultura/expos/004-20250304-mx-nuevoleon-expo-guadalupe.jpg"
+        ]
+      },
+      {
+        anno: "2026",
+        tipo: "Exposición",
+        evento: "8 de Marzo — Fundación Carol Rolland",
+        lugar: "Querétaro, México",
+        images: [
+          "../images/escultura/expos/001-20260305-mx-queretaro-8marzo.jpg"
+        ]
+      }
+    ]
+  };
+  // ============================================================
+  //  END OF CONFIG
+  // ============================================================
+  </script>
+
+  <style>
+    :root {
+      --cream: #f5efe4;
+      --parchment: #e8dcc8;
+      --terracotta: #b5533c;
+      --ochre: #c8862a;
+      --umber: #4a2f1a;
+      --ink: #1e120a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(245, 239, 228, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(74, 47, 26, 0.12);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.2em;
+      color: var(--umber); text-decoration: none; text-transform: uppercase; font-weight: 600;
+    }
+
+    .nav-back {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em;
+      color: var(--umber); text-decoration: none; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-back:hover { color: var(--terracotta); }
+    .nav-back-arrow { font-size: 1rem; }
+
+    /* HERO */
+    .obra-hero {
+      min-height: 50vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 10rem 6rem 4rem;
+      position: relative; overflow: hidden;
+      background: var(--parchment);
+    }
+
+    .obra-hero::after {
+      content: '';
+      position: absolute; right: -5%; top: 0;
+      width: 50%; height: 100%;
+      background: radial-gradient(ellipse at center, var(--cream) 0%, transparent 70%);
+      opacity: 0.6; pointer-events: none;
+    }
+
+    .obra-disciplina {
+      font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.35em;
+      color: var(--terracotta); text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .obra-disciplina::after { content: ''; height: 1px; width: 40px; background: var(--terracotta); opacity: 0.5; }
+
+    .obra-titulo {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 400; line-height: 1.1; color: var(--umber);
+      opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .obra-titulo em {
+      display: block; color: var(--terracotta);
+      font-style: normal; font-weight: 600;
+    }
+
+    .obra-anno {
+      font-family: 'IM Fell English', serif; font-style: italic;
+      font-size: 1.1rem; color: var(--umber); opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s; margin-top: 1rem;
+    }
+
+    /* LAYOUT */
+    .obra-body { max-width: 1100px; margin: 0 auto; padding: 5rem 3rem; }
+
+    /* MOTIVOS */
+    .motivos-section { margin-bottom: 6rem; }
+
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.35em;
+      color: var(--terracotta); text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::after { content: ''; height: 1px; width: 40px; background: var(--terracotta); opacity: 0.5; }
+
+    .section-title {
+      font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 400; color: var(--umber); line-height: 1.2; margin-bottom: 2.5rem;
+    }
+
+    .motivos-text {
+      font-size: 1.05rem; font-weight: 500; color: var(--ink);
+      line-height: 1.95; max-width: 780px;
+    }
+
+    .motivos-text p + p { margin-top: 1.5rem; }
+
+    .motivos-cierre {
+      font-family: 'Cinzel', serif; font-size: 1rem;
+      letter-spacing: 0.15em; color: var(--terracotta);
+      margin-top: 2.5rem; text-transform: uppercase;
+    }
+
+    /* PIEZAS */
+    .piezas-section { margin-bottom: 6rem; }
+
+    .pieza-block {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 4rem; align-items: start;
+      padding: 4rem 0; border-top: 1px solid rgba(74,47,26,0.12);
+    }
+
+    .pieza-block:first-of-type { border-top: none; }
+
+    .pieza-gallery { position: relative; }
+
+    .pieza-main-img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; display: block;
+      border: 1px solid rgba(74,47,26,0.1);
+      cursor: pointer; transition: transform 0.4s;
+    }
+
+    .pieza-main-img:hover { transform: scale(1.01); }
+
+    .pieza-thumbnails {
+      display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap;
+    }
+
+    .pieza-thumb {
+      width: 60px; height: 60px; object-fit: cover;
+      border: 1px solid rgba(74,47,26,0.15); cursor: pointer;
+      opacity: 0.7; transition: opacity 0.3s;
+    }
+
+    .pieza-thumb:hover, .pieza-thumb.active { opacity: 1; border-color: var(--terracotta); }
+
+    .pieza-info { padding-top: 0.5rem; }
+
+    .pieza-numero {
+      font-family: 'Cinzel', serif; font-size: 3rem;
+      color: var(--terracotta); opacity: 0.15; line-height: 1;
+      font-weight: 600; margin-bottom: 0.5rem;
+    }
+
+    .pieza-titulo {
+      font-family: 'Cinzel', serif; font-size: 1.5rem;
+      color: var(--umber); margin-bottom: 1.5rem; font-weight: 400;
+    }
+
+    .pieza-desc {
+      font-size: 1rem; font-weight: 500; color: var(--ink);
+      line-height: 1.9; margin-bottom: 2rem;
+    }
+
+    /* FICHA TÉCNICA */
+    .ficha-label {
+      font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em;
+      color: var(--terracotta); text-transform: uppercase; margin-bottom: 1rem;
+    }
+
+    .ficha-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .ficha-table tr { border-bottom: 1px solid rgba(74,47,26,0.1); }
+    .ficha-table tr:last-child { border-bottom: none; }
+
+    .ficha-table td {
+      padding: 0.6rem 0.8rem; vertical-align: top;
+    }
+
+    .ficha-table td:first-child {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.15em; color: var(--terracotta);
+      text-transform: uppercase; white-space: nowrap;
+      width: 35%;
+    }
+
+    .ficha-table td:last-child { color: var(--ink); font-weight: 500; }
+
+    /* HISTORIAL */
+    .historial-section { margin-bottom: 4rem; }
+
+    .historial-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2rem; margin-top: 3rem;
+    }
+
+    .historial-item {
+      background: var(--parchment);
+      border: 1px solid rgba(74,47,26,0.12);
+      overflow: hidden; transition: transform 0.3s;
+    }
+
+    .historial-item:hover { transform: translateY(-3px); }
+
+    .historial-img-wrap { position: relative; overflow: hidden; }
+
+    .historial-img-grid {
+      display: grid; gap: 2px;
+    }
+
+    .historial-img-grid.count-1 { grid-template-columns: 1fr; }
+    .historial-img-grid.count-2 { grid-template-columns: 1fr 1fr; }
+    .historial-img-grid.count-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .historial-img-grid.count-many { grid-template-columns: 1fr 1fr; }
+
+    .historial-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; display: block; cursor: pointer;
+      transition: transform 0.4s;
+    }
+
+    .historial-img:hover { transform: scale(1.03); }
+
+    .historial-info { padding: 1.5rem; }
+
+    .historial-tipo {
+      font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em;
+      color: var(--ochre); text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+
+    .historial-evento {
+      font-family: 'IM Fell English', serif; font-style: italic;
+      font-size: 1.1rem; color: var(--umber); line-height: 1.3; margin-bottom: 0.4rem;
+    }
+
+    .historial-lugar { font-size: 0.85rem; color: var(--ink); opacity: 0.65; }
+    .historial-anno { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--terracotta); margin-top: 0.5rem; }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(10,5,2,0.95); z-index: 500; justify-content: center; align-items: center; padding: 2rem; }
+    .lightbox.open { display: flex; }
+    .lightbox-inner { position: relative; max-width: 900px; width: 100%; }
+    .lightbox img { width: 100%; max-height: 80vh; object-fit: contain; display: block; }
+    .lightbox-caption { color: var(--cream); font-style: italic; text-align: center; margin-top: 1rem; font-size: 0.95rem; opacity: 0.8; }
+    .lightbox-close { position: absolute; top: -2.5rem; right: 0; background: none; border: none; color: var(--cream); font-size: 1.8rem; cursor: pointer; opacity: 0.7; }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(245,239,228,0.15); border: none; color: var(--cream); font-size: 1.5rem; padding: 0.8rem 1.1rem; cursor: pointer; transition: background 0.3s; }
+    .lightbox-prev { left: -3.5rem; }
+    .lightbox-next { right: -3.5rem; }
+    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(245,239,228,0.3); }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: var(--cream); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; margin-top: 4rem; }
+    .footer-name { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+    .footer-copy { font-size: 0.8rem; opacity: 0.4; font-style: italic; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .obra-hero { padding: 8rem 1.5rem 3rem; }
+      .obra-body { padding: 3rem 1.5rem; }
+      .pieza-block { grid-template-columns: 1fr; gap: 2rem; }
+      .historial-grid { grid-template-columns: 1fr; }
+      .lightbox-prev { left: 0; }
+      .lightbox-next { right: 0; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Tere Salas</a>
+    <a href="../index.html#galeria" class="nav-back">
+      <span class="nav-back-arrow">←</span> Galería
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="obra-hero">
+    <p class="obra-disciplina" id="obra-disciplina"></p>
+    <h1 class="obra-titulo" id="obra-titulo"></h1>
+    <p class="obra-anno" id="obra-anno"></p>
+  </div>
+
+  <div class="obra-body">
+
+    <!-- EXPOSICION DE MOTIVOS -->
+    <div class="motivos-section reveal">
+      <div class="section-label" id="motivos-label"></div>
+      <div class="motivos-text" id="motivos-text"></div>
+      <p class="motivos-cierre" id="motivos-cierre"></p>
+    </div>
+
+    <!-- PIEZAS -->
+    <div class="piezas-section reveal">
+      <div class="section-label">La Trilogía</div>
+      <h2 class="section-title">Las tres piezas</h2>
+      <div id="piezas-container"></div>
+    </div>
+
+    <!-- HISTORIAL -->
+    <div class="historial-section reveal">
+      <div class="section-label">Trayectoria</div>
+      <h2 class="section-title">Exposiciones y Reconocimientos</h2>
+      <div class="historial-grid" id="historial-grid"></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Tere Salas — Artista</span>
+    <span class="footer-copy">Villa de Santiago, Nuevo León · México</span>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <button class="lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+      <img id="lightbox-img" src="" alt="" />
+      <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script>
+  // ── Render hero ───────────────────────────────────────────────
+  document.getElementById('obra-disciplina').textContent = `${OBRA.disciplina} · ${OBRA.tipo}`;
+  document.getElementById('obra-titulo').innerHTML = OBRA.titulo.includes('Trilogía')
+    ? `<em>${OBRA.titulo.replace('Trilogía ', '')}</em>Trilogía`
+    : OBRA.titulo;
+  document.getElementById('obra-anno').textContent = OBRA.anno;
+  document.title = `${OBRA.titulo} — Tere Salas`;
+
+  // ── Render motivos ────────────────────────────────────────────
+  document.getElementById('motivos-label').textContent = OBRA.motivosTitle;
+  document.getElementById('motivos-text').innerHTML = OBRA.motivos
+    .split('\n\n').map(p => `<p>${p}</p>`).join('');
+  document.getElementById('motivos-cierre').textContent = OBRA.motivosCierre;
+
+  // ── Render piezas ─────────────────────────────────────────────
+  document.getElementById('piezas-container').innerHTML = OBRA.piezas.map((pieza, i) => `
+    <div class="pieza-block">
+      <div class="pieza-gallery">
+        <img class="pieza-main-img" id="pieza-main-${i}"
+          src="${pieza.images[0]}" alt="${pieza.titulo}"
+          onclick="openLightbox('pieza', ${i}, 0)"
+          onerror="this.style.opacity='0.3'" />
+        ${pieza.images.length > 1 ? `
+        <div class="pieza-thumbnails">
+          ${pieza.images.map((img, j) => `
+            <img class="pieza-thumb ${j===0?'active':''}" src="${img}"
+              onclick="switchPiezaImg(${i}, ${j}, '${img}')" alt="${pieza.titulo} ${j+1}"
+              onerror="this.style.display='none'" />
+          `).join('')}
+        </div>` : ''}
+      </div>
+      <div class="pieza-info">
+        <div class="pieza-numero">0${i+1}</div>
+        <h3 class="pieza-titulo">${pieza.titulo}</h3>
+        <p class="pieza-desc">${pieza.descripcion}</p>
+        <div class="ficha-label">Ficha Técnica</div>
+        <table class="ficha-table">
+          <tr><td>Autor</td><td>${pieza.ficha.autor}</td></tr>
+          <tr><td>Asociación</td><td>${pieza.ficha.asociacion}</td></tr>
+          <tr><td>Año</td><td>${pieza.ficha.anno}</td></tr>
+          <tr><td>Técnica</td><td>${pieza.ficha.tecnica}</td></tr>
+          <tr><td>Acabado</td><td>${pieza.ficha.acabado}</td></tr>
+          <tr><td>Dimensiones</td><td>${pieza.ficha.dimensiones}</td></tr>
+        </table>
+      </div>
+    </div>
+  `).join('');
+
+  // ── Render historial ──────────────────────────────────────────
+  document.getElementById('historial-grid').innerHTML = OBRA.historial.map((h, i) => {
+    const count = h.images.length;
+    const gridClass = count === 1 ? 'count-1' : count === 2 ? 'count-2' : count === 3 ? 'count-3' : 'count-many';
+    const imgs = count > 4 ? h.images.slice(0, 4) : h.images;
+    return `
+    <div class="historial-item">
+      <div class="historial-img-wrap">
+        <div class="historial-img-grid ${gridClass}">
+          ${imgs.map((img, j) => `
+            <img class="historial-img" src="${img}" alt="${h.evento}"
+              onclick="openLightbox('historial', ${i}, ${j})"
+              onerror="this.style.display='none'" />
+          `).join('')}
+        </div>
+      </div>
+      <div class="historial-info">
+        <div class="historial-tipo">${h.tipo}</div>
+        <div class="historial-evento">${h.evento}</div>
+        <div class="historial-lugar">${h.lugar}</div>
+        <div class="historial-anno">${h.anno}</div>
+      </div>
+    </div>
+  `}).join('');
+
+  // ── Image switching ───────────────────────────────────────────
+  function switchPiezaImg(piezaIdx, imgIdx, src) {
+    document.getElementById(`pieza-main-${piezaIdx}`).src = src;
+    document.querySelectorAll(`.pieza-block:nth-child(${piezaIdx+1}) .pieza-thumb`)
+      .forEach((t, i) => t.classList.toggle('active', i === imgIdx));
+  }
+
+  // ── Lightbox ──────────────────────────────────────────────────
+  let lbContext = null, lbItemIdx = 0, lbImgIdx = 0;
+
+  function openLightbox(context, itemIdx, imgIdx) {
+    lbContext = context; lbItemIdx = itemIdx; lbImgIdx = imgIdx;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function getImages() {
+    return lbContext === 'pieza'
+      ? OBRA.piezas[lbItemIdx].images
+      : OBRA.historial[lbItemIdx].images;
+  }
+
+  function updateLightbox() {
+    const imgs = getImages();
+    const label = lbContext === 'pieza'
+      ? OBRA.piezas[lbItemIdx].titulo
+      : `${OBRA.historial[lbItemIdx].evento} — ${OBRA.historial[lbItemIdx].lugar}`;
+    document.getElementById('lightbox-img').src = imgs[lbImgIdx];
+    document.getElementById('lightbox-caption').textContent = `${label} (${lbImgIdx+1}/${imgs.length})`;
+  }
+
+  function lightboxNav(dir) {
+    const imgs = getImages();
+    lbImgIdx = (lbImgIdx + dir + imgs.length) % imgs.length;
+    updateLightbox();
+  }
+
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+  });
+
+  // ── Scroll reveal ─────────────────────────────────────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

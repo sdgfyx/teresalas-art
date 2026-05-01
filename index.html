@@ -53,7 +53,6 @@
     ],
 
     // --- RECONOCIMIENTOS ---
-    // To add a new one, copy a block and paste it at the top
     reconocimientos: [
       {
         year: "2026",
@@ -136,19 +135,18 @@
         description: "Múltiples presentaciones de pintura en Nuevo León."
       },
       {
-        year: "De barro, somos — Nuevo León",
-        title: "Exhibición de Escultura",
-        description: "Exposición colectiva."
+        year: "2024",
+        title: "De Barro, Somos — Nuevo León",
+        description: "Exposición colectiva de escultura."
       }
     ],
 
     // --- GALLERY ---
-    // discipline: label shown in gallery (e.g. "Escultura", "Pintura")
-    // type: "pieza", "expo", "premio"
-    // title: display name
-    // description: optional caption
-    // images: array of filenames (must match exactly what's in your GitHub repo)
-    // coverImage: which filename to use as the main cover (usually the first)
+    // featured: true  → always appears in the top-5 highlights (pinned)
+    // date: "YYYYMM"  → used to auto-sort by most recent
+    // page: path to the individual work page (leave "" if page not built yet)
+    // coverImage: path relative to repo root
+    // discipline, type, title, description: as before
 
     gallery: [
 
@@ -156,288 +154,270 @@
       {
         discipline: "Escultura",
         type: "pieza",
+        date: "202407",
+        featured: true,
         title: "Madres Buscadoras",
         description: "Trilogía escultórica. Mención Honorífica, VI Bienal de las Plásticas de Nuevo León, 2024.",
         coverImage: "images/escultura/piezas/001-202407-madres-buscadoras.jpg",
-        images: [
-          "images/escultura/piezas/001-202407-madres-buscadoras.jpg"
-        ]
+        page: "obras/escultura-madres-buscadoras.html"
       },
       {
         discipline: "Escultura",
         type: "pieza",
+        date: "202510",
+        featured: false,
         title: "Nada es lo que Parece",
         description: "Escultura en barro y materiales epóxicos.",
         coverImage: "images/escultura/piezas/002-202510-nada-es-lo-que-parece.jpeg",
-        images: [
-          "images/escultura/piezas/002-202510-nada-es-lo-que-parece.jpeg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "pieza",
+        date: "202602",
+        featured: false,
         title: "Virgen Esperanza",
         description: "Escultura.",
         coverImage: "images/escultura/piezas/002-202602-virgen-esperanza.jpg",
-        images: [
-          "images/escultura/piezas/002-202602-virgen-esperanza.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "pieza",
+        date: "202503",
+        featured: false,
         title: "La Patita y su Familia",
         description: "Escultura.",
         coverImage: "images/escultura/piezas/004-202503-la-patita-y-su-familia.jpg",
-        images: [
-          "images/escultura/piezas/004-202503-la-patita-y-su-familia.jpg"
-        ]
+        page: ""
       },
 
       // ── ESCULTURAS / EXPOS ───────────────────────────────
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20240716",
+        featured: false,
         title: "De Barro, Somos — Nuevo León",
         description: "Exposición colectiva, Nuevo León, julio 2024.",
         coverImage: "images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-1.jpg",
-        images: [
-          "images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-1.jpg",
-          "images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-2.jpg",
-          "images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-3.jpg",
-          "images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-4.jpg",
-          "images/escultura/expos/001-20240716-mx-nuevoleon-de-barro-somos-5.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20241127",
+        featured: false,
         title: "VI Bienal de las Plásticas — Nuevo León",
         description: "Noviembre 2024. Mención Honorífica por Madres Buscadoras.",
         coverImage: "images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-1.jpg",
-        images: [
-          "images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-1.jpg",
-          "images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-2.jpg",
-          "images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-3.jpg",
-          "images/escultura/expos/001-20241127-mx-nuevoleon-bienal-VI-4.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20260302",
+        featured: false,
         title: "Imagen de la Mujer — Moscú, Rusia",
         description: "Centro de Arte Contemporáneo ART COMMUNE, marzo 2026.",
         coverImage: "images/escultura/expos/001-20260302-ru-moskow-imagen-de-la-mujer.jpg",
-        images: [
-          "images/escultura/expos/001-20260302-ru-moskow-imagen-de-la-mujer.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20260305",
+        featured: false,
         title: "8 de Marzo — Querétaro",
         description: "Fundación Carol Rolland, marzo 2026.",
         coverImage: "images/escultura/expos/001-20260305-mx-queretaro-8marzo.jpg",
-        images: [
-          "images/escultura/expos/001-20260305-mx-queretaro-8marzo.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20260211",
+        featured: false,
         title: "Paisajes sin Límites — Nuevo León",
         description: "Febrero 2026.",
         coverImage: "images/escultura/expos/002-20260211-mx-nuevoleon-paisajes-sin-limites.jpg",
-        images: [
-          "images/escultura/expos/002-20260211-mx-nuevoleon-paisajes-sin-limites.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20260312",
+        featured: false,
         title: "Unidas por el Arte — Nuevo León",
         description: "Marzo 2026.",
         coverImage: "images/escultura/expos/002-20260312-mx-nuevoleon-unidas-por-el-arte.jpg",
-        images: [
-          "images/escultura/expos/002-20260312-mx-nuevoleon-unidas-por-el-arte.jpg",
-          "images/escultura/expos/002-20260312-mx-nuevoleon-unidas-por-el-arte-2.jpg",
-          "images/escultura/expos/002-20260312-mx-nuevoleon-unidas-por-el-arte-3.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20250304",
+        featured: false,
         title: "Expo Guadalupe — Nuevo León",
         description: "Marzo 2025.",
         coverImage: "images/escultura/expos/004-20250304-mx-nuevoleon-expo-guadalupe.jpg",
-        images: [
-          "images/escultura/expos/004-20250304-mx-nuevoleon-expo-guadalupe.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20250530",
+        featured: false,
         title: "Expo Santiago — Nuevo León",
         description: "Mayo 2025.",
         coverImage: "images/escultura/expos/004-20250530-mx-nuevoleon-expo-santiago.jpg",
-        images: [
-          "images/escultura/expos/004-20250530-mx-nuevoleon-expo-santiago.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Escultura",
         type: "expo",
+        date: "20250719",
+        featured: false,
         title: "Expo Monterrey — Nuevo León",
         description: "Julio 2025.",
         coverImage: "images/escultura/expos/004-20250719-mx-nuevoleon-expo-monterrey-1.jpg",
-        images: [
-          "images/escultura/expos/004-20250719-mx-nuevoleon-expo-monterrey-1.jpg",
-          "images/escultura/expos/004-20250719-mx-nuevoleon-expo-monterrey-2.jpg"
-        ]
+        page: ""
       },
 
       // ── ESCULTURAS / PREMIOS ─────────────────────────────
       {
         discipline: "Escultura",
         type: "premio",
+        date: "202411",
+        featured: false,
         title: "Premio Bienal — Nuevo León",
         description: "Mención Honorífica, VI Bienal de las Plásticas de Nuevo León, noviembre 2024.",
         coverImage: "images/escultura/premios/001-202411-mx-nuevoleon-bienal.jpg",
-        images: [
-          "images/escultura/premios/001-202411-mx-nuevoleon-bienal.jpg",
-          "images/escultura/premios/001-20260302-ru-moskow-imagen-de-la-mujer.jpg"
-        ]
+        page: ""
       },
 
       // ── PINTURAS / PIEZAS ────────────────────────────────
       {
         discipline: "Pintura",
         type: "pieza",
+        date: "202511",
+        featured: false,
         title: "Nostalgia",
         description: "Óleo.",
         coverImage: "images/pintura/piezas/001-202511-nostalgia.jpg",
-        images: [
-          "images/pintura/piezas/001-202511-nostalgia.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "pieza",
+        date: "202503",
+        featured: false,
         title: "Ni con el Pétalo de una Rosa",
         description: "Pintura.",
         coverImage: "images/pintura/piezas/002-202503-ni-con-el-petalo-de-una-rosa.jpg",
-        images: [
-          "images/pintura/piezas/002-202503-ni-con-el-petalo-de-una-rosa.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "pieza",
+        date: "202501",
+        featured: false,
         title: "Ancestros Remendando mi Corazón",
         description: "Pintura.",
         coverImage: "images/pintura/piezas/003-202501-ancestros-remendando-mi-corazon.jpeg",
-        images: [
-          "images/pintura/piezas/003-202501-ancestros-remendando-mi-corazon.jpeg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "pieza",
+        date: "202407",
+        featured: false,
         title: "Puerta con Vitral",
         description: "Pintura.",
         coverImage: "images/pintura/piezas/004-202407-puerta-con-vitral.jpg",
-        images: [
-          "images/pintura/piezas/004-202407-puerta-con-vitral.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "pieza",
+        date: "202305",
+        featured: false,
         title: "Y Seguimos Jugando",
         description: "Pintura.",
         coverImage: "images/pintura/piezas/005-202305-y-seguimos-jugando.jpg",
-        images: [
-          "images/pintura/piezas/005-202305-y-seguimos-jugando.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "pieza",
+        date: "201812",
+        featured: false,
         title: "Hasta los Ángeles Lloran",
         description: "Pintura, 2018.",
         coverImage: "images/pintura/piezas/006-201812-hasta-los-angeles-lloran.jpg",
-        images: [
-          "images/pintura/piezas/006-201812-hasta-los-angeles-lloran.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "pieza",
+        date: "201812",
+        featured: false,
         title: "Llanto, Gritos y Silencio",
         description: "Pintura, 2018.",
         coverImage: "images/pintura/piezas/007-201812-llanto-gritos-y-silencio.jpg",
-        images: [
-          "images/pintura/piezas/007-201812-llanto-gritos-y-silencio.jpg"
-        ]
+        page: ""
       },
 
       // ── PINTURAS / EXPOS ─────────────────────────────────
       {
         discipline: "Pintura",
         type: "expo",
+        date: "20251110",
+        featured: false,
         title: "EduCart — Nuevo León",
         description: "Noviembre 2025.",
         coverImage: "images/pintura/expos/001-20251110-mx-nuevoleon-educart-1.jpg",
-        images: [
-          "images/pintura/expos/001-20251110-mx-nuevoleon-educart-1.jpg",
-          "images/pintura/expos/001-20251110-mx-nuevoleon-educart-2.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "expo",
+        date: "20250308",
+        featured: false,
         title: "Mujer es — Nuevo León",
         description: "Marzo 2025.",
         coverImage: "images/pintura/expos/002-20250308-mx-nuevoleon-mujer-es-1.jpg",
-        images: [
-          "images/pintura/expos/002-20250308-mx-nuevoleon-mujer-es-1.jpg",
-          "images/pintura/expos/002-20250308-mx-nuevoleon-mujer-es-2.jpg",
-          "images/pintura/expos/002-20250308-mx-nuevoleon-mujer-es-3.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "expo",
+        date: "20250130",
+        featured: false,
         title: "1era Reseña de Arte Contemporáneo — Nuevo León",
         description: "Enero 2025.",
         coverImage: "images/pintura/expos/003-20250130-mx-nuevoleon-1era-resena-arte-contemporaneo.jpg",
-        images: [
-          "images/pintura/expos/003-20250130-mx-nuevoleon-1era-resena-arte-contemporaneo.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "expo",
+        date: "20240702",
+        featured: false,
         title: "Abriendo al Pasado — Nuevo León",
         description: "Julio 2024.",
         coverImage: "images/pintura/expos/004-20240702-abriendo-al-pasado-1.jpg",
-        images: [
-          "images/pintura/expos/004-20240702-abriendo-al-pasado-1.jpg",
-          "images/pintura/expos/004-20240702-abriendo-al-pasado-2.jpg",
-          "images/pintura/expos/004-20240702-abriendo-al-pasado-3.jpg"
-        ]
+        page: ""
       },
       {
         discipline: "Pintura",
         type: "expo",
+        date: "20230530",
+        featured: false,
         title: "Exposición Colectiva — Nuevo León",
         description: "Mayo 2023.",
         coverImage: "images/pintura/expos/005-20230530-mx-nuevoleon-exposicion-colectiva-1.jpg",
-        images: [
-          "images/pintura/expos/005-20230530-mx-nuevoleon-exposicion-colectiva-1.jpg",
-          "images/pintura/expos/005-20230530-mx-nuevoleon-exposicion-colectiva-2.jpg",
-          "images/pintura/expos/005-20230530-mx-nuevoleon-exposicion-colectiva-3.jpg"
-        ]
+        page: ""
       }
     ],
 
@@ -568,32 +548,70 @@
 
     /* GALERÍA */
     .galeria-outer { max-width: 1100px; margin: 0 auto; }
-    .galeria-filters { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; margin-bottom: 3rem; }
-    .filter-btn { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.5rem 1.2rem; border: 1px solid rgba(74,47,26,0.25); background: transparent; color: var(--umber); cursor: pointer; transition: all 0.3s; }
-    .filter-btn:hover, .filter-btn.active { background: var(--terracotta); color: var(--cream); border-color: var(--terracotta); }
-    .galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .galeria-item { aspect-ratio: 3/4; background: var(--parchment); border: 1px solid rgba(74, 47, 26, 0.15); overflow: hidden; position: relative; cursor: pointer; transition: transform 0.4s; }
-    .galeria-item:hover { transform: translateY(-4px); }
-    .galeria-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
-    .galeria-item:hover img { transform: scale(1.04); }
-    .galeria-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,18,10,0.85) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
-    .galeria-item:hover .galeria-item-overlay { opacity: 1; }
-    .galeria-item-tag { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--ochre); text-transform: uppercase; margin-bottom: 0.4rem; }
-    .galeria-item-title { font-family: 'IM Fell English', serif; font-style: italic; font-size: 1.1rem; color: var(--cream); line-height: 1.3; }
-    .galeria-item-desc { font-size: 0.8rem; color: var(--cream); opacity: 0.7; margin-top: 0.3rem; }
 
-    /* LIGHTBOX */
-    .lightbox { display: none; position: fixed; inset: 0; background: rgba(10,5,2,0.95); z-index: 500; justify-content: center; align-items: center; padding: 2rem; }
-    .lightbox.open { display: flex; }
-    .lightbox-inner { position: relative; max-width: 900px; width: 100%; }
-    .lightbox img { width: 100%; max-height: 80vh; object-fit: contain; display: block; }
-    .lightbox-caption { color: var(--cream); font-style: italic; text-align: center; margin-top: 1rem; font-size: 0.95rem; opacity: 0.8; }
-    .lightbox-close { position: absolute; top: -2.5rem; right: 0; background: none; border: none; color: var(--cream); font-size: 1.8rem; cursor: pointer; opacity: 0.7; }
-    .lightbox-close:hover { opacity: 1; }
-    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(245,239,228,0.15); border: none; color: var(--cream); font-size: 1.5rem; padding: 0.8rem 1.1rem; cursor: pointer; transition: background 0.3s; }
-    .lightbox-prev { left: -3.5rem; }
-    .lightbox-next { right: -3.5rem; }
-    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(245,239,228,0.3); }
+    .galeria-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
+    }
+
+    .galeria-note {
+      font-style: italic; font-size: 0.9rem;
+      color: var(--umber); opacity: 0.6;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    .galeria-item {
+      aspect-ratio: 3/4;
+      background: var(--parchment);
+      border: 1px solid rgba(74, 47, 26, 0.15);
+      overflow: hidden; position: relative;
+      transition: transform 0.4s;
+      display: block; text-decoration: none;
+    }
+
+    .galeria-item:hover { transform: translateY(-4px); }
+
+    .galeria-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform 0.5s;
+    }
+
+    .galeria-item:hover img { transform: scale(1.04); }
+
+    .galeria-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(30,18,10,0.88) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem;
+    }
+
+    .galeria-item:hover .galeria-item-overlay { opacity: 1; }
+
+    .galeria-item-tag { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--ochre); text-transform: uppercase; margin-bottom: 0.3rem; }
+    .galeria-item-title { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.95rem; color: var(--cream); line-height: 1.3; }
+    .galeria-item-cta { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.15em; color: var(--cream); opacity: 0.6; margin-top: 0.4rem; text-transform: uppercase; }
+
+    .galeria-item-pin {
+      position: absolute; top: 0.7rem; right: 0.7rem;
+      background: var(--terracotta); color: var(--cream);
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .galeria-item-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.5rem;
+    }
+
+    .galeria-item-placeholder-icon { font-size: 2rem; opacity: 0.2; }
+    .galeria-item-placeholder-text { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--umber); opacity: 0.4; text-transform: uppercase; text-align: center; padding: 0 0.5rem; }
 
     /* CONTACTO */
     .contacto-section { background: var(--parchment); padding: 7rem 3rem; text-align: center; }
@@ -630,14 +648,12 @@
       .disciplines-grid { grid-template-columns: 1fr; }
       .discipline-card { border-right: none; border-bottom: 1px solid rgba(74,47,26,0.15); }
       .logros-grid { grid-template-columns: 1fr; }
-      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
-      .lightbox-prev { left: 0; }
-      .lightbox-next { right: 0; }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
 
     @media (max-width: 480px) {
-      .galeria-grid { grid-template-columns: 1fr; }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -717,7 +733,9 @@
         <div class="section-label">Obras</div>
         <h2 class="section-title">Galería</h2>
       </div>
-      <div class="galeria-filters reveal" id="galeria-filters"></div>
+      <div class="galeria-header reveal">
+        <p class="galeria-note">Una selección de obras recientes. Visita cada pieza para conocer su historia completa.</p>
+      </div>
       <div class="galeria-grid reveal" id="galeria-grid"></div>
     </div>
   </section>
@@ -735,17 +753,6 @@
     <span class="footer-name" id="footer-name"></span>
     <span class="footer-copy" id="footer-origin"></span>
   </footer>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-inner">
-      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-      <button class="lightbox-prev" onclick="lightboxNav(-1)">‹</button>
-      <img id="lightbox-img" src="" alt="" />
-      <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
-      <p class="lightbox-caption" id="lightbox-caption"></p>
-    </div>
-  </div>
 
   <script>
   // ── Render from config ───────────────────────────────────────
@@ -787,76 +794,38 @@
     </div>
   `).join('');
 
-  // Gallery with filters
-  const disciplines = ['Todos', ...new Set(SITE_CONFIG.gallery.map(g => g.discipline))];
+  // ── Gallery: top 5 logic ─────────────────────────────────────
+  // 1. Always include featured items
+  // 2. Fill remaining slots with most recent by date (descending)
+  // 3. Total shown: 5
+
+  const GALLERY_LIMIT = 5;
   const types = { pieza: 'Pieza', expo: 'Exposición', premio: 'Premio' };
 
-  document.getElementById('galeria-filters').innerHTML = disciplines.map((d, i) =>
-    `<button class="filter-btn ${i === 0 ? 'active' : ''}" onclick="filterGallery('${d}', this)">${d}</button>`
-  ).join('');
+  const featured = SITE_CONFIG.gallery.filter(g => g.featured);
+  const nonFeatured = SITE_CONFIG.gallery
+    .filter(g => !g.featured)
+    .sort((a, b) => parseInt(b.date) - parseInt(a.date));
 
-  function renderGallery(filter) {
-    const items = filter === 'Todos' ? SITE_CONFIG.gallery : SITE_CONFIG.gallery.filter(g => g.discipline === filter);
-    document.getElementById('galeria-grid').innerHTML = items.map((item, idx) => `
-      <div class="galeria-item" onclick="openLightbox(${SITE_CONFIG.gallery.indexOf(item)}, 0)">
-        <img src="${item.coverImage}" alt="${item.title}" loading="lazy" onerror="this.style.display='none'" />
-        <div class="galeria-item-overlay">
-          <div class="galeria-item-tag">${item.discipline} · ${types[item.type] || item.type}</div>
-          <div class="galeria-item-title">${item.title}</div>
-          <div class="galeria-item-desc">${item.description}</div>
-        </div>
+  const remaining = GALLERY_LIMIT - featured.length;
+  const highlights = [...featured, ...nonFeatured.slice(0, remaining)];
+
+  document.getElementById('galeria-grid').innerHTML = highlights.map(item => {
+    const hasPage = item.page && item.page !== '';
+    const tag = `${item.discipline} · ${types[item.type] || item.type}`;
+    const inner = `
+      ${item.featured ? '<div class="galeria-item-pin">Destacada</div>' : ''}
+      <img src="${item.coverImage}" alt="${item.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=galeria-item-placeholder><div class=galeria-item-placeholder-icon>🖼️</div><div class=galeria-item-placeholder-text>${item.title}</div></div>'" />
+      <div class="galeria-item-overlay">
+        <div class="galeria-item-tag">${tag}</div>
+        <div class="galeria-item-title">${item.title}</div>
+        ${hasPage ? '<div class="galeria-item-cta">Ver obra →</div>' : ''}
       </div>
-    `).join('');
-  }
-
-  renderGallery('Todos');
-
-  function filterGallery(discipline, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderGallery(discipline);
-  }
-
-  // Lightbox
-  let currentItem = 0, currentImg = 0;
-
-  function openLightbox(itemIdx, imgIdx) {
-    currentItem = itemIdx;
-    currentImg = imgIdx;
-    updateLightbox();
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function updateLightbox() {
-    const item = SITE_CONFIG.gallery[currentItem];
-    document.getElementById('lightbox-img').src = item.images[currentImg];
-    document.getElementById('lightbox-img').alt = item.title;
-    document.getElementById('lightbox-caption').textContent = `${item.title} — ${item.description} (${currentImg + 1}/${item.images.length})`;
-  }
-
-  function lightboxNav(dir) {
-    const item = SITE_CONFIG.gallery[currentItem];
-    currentImg = (currentImg + dir + item.images.length) % item.images.length;
-    updateLightbox();
-  }
-
-  document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
-
-  document.addEventListener('keydown', e => {
-    if (document.getElementById('lightbox').classList.contains('open')) {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') lightboxNav(1);
-      if (e.key === 'ArrowLeft') lightboxNav(-1);
-    }
-  });
+    `;
+    return hasPage
+      ? `<a class="galeria-item" href="${item.page}">${inner}</a>`
+      : `<div class="galeria-item">${inner}</div>`;
+  }).join('');
 
   // Contact
   document.getElementById('contacto-tagline').textContent = SITE_CONFIG.contactTagline;
