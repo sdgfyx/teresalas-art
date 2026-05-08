@@ -566,11 +566,27 @@
           <label>Obra relacionada (número)</label>
           <input type="text" id="ex-obra-num" placeholder="Ej. 001" />
         </div>
+        <div class="field span-2">
+          <label>Página web o red social del evento</label>
+          <input type="text" id="ex-link" placeholder="Ej. https://www.facebook.com/events/... o https://bienal.uanl.mx" />
+          <span class="field-hint">Opcional — aparecerá como enlace en la página de la obra</span>
+        </div>
       </div>
     </div>
 
     <div class="form-section">
-      <div class="form-section-title">Imágenes del Evento</div>
+      <div class="form-section-title">Convocatoria / Flyer</div>
+      <p class="field-hint" style="margin-bottom:1rem">Imagen oficial del evento — se guarda separada de las fotos del evento.</p>
+      <div class="image-upload-area">
+        <input type="file" accept="image/*" onchange="handleSingleImage(this, 'expo-flyer-preview', 'expo-flyer')" />
+        <span class="image-upload-label">Haz clic o arrastra la convocatoria / flyer aquí</span>
+      </div>
+      <div id="expo-flyer-preview" class="image-previews"></div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Fotos del Evento</div>
+      <p class="field-hint" style="margin-bottom:1rem">Fotografías tomadas durante el evento.</p>
       <div class="image-upload-area">
         <input type="file" accept="image/*" multiple onchange="handleMultipleImages(this, 'expo-img-preview', 'expo')" />
         <span class="image-upload-label">Haz clic o arrastra las imágenes aquí (puedes seleccionar varias)</span>
@@ -676,7 +692,7 @@
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────
 // Change this password!
-const ADMIN_PASSWORD = "Winter1221.";
+const ADMIN_PASSWORD = "teresalas2024";
 
 // ── AUTH ────────────────────────────────────────────────────────
 function checkLogin() {
@@ -1204,6 +1220,9 @@ ARCHIVOS INCLUIDOS:${imageList}
     <div class="status-bar success">
       ✓ Paquete generado: tere-salas-${d.disciplina}-${d.obraSlug}.zip —
       ${d.piezas.reduce((s,p) => s + p.images.length, 0) + d.historial.reduce((s,h) => s + h.images.length, 0)} imágenes renombradas
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-success" onclick="resetObraForm()">+ Registrar otra obra</button>
     </div>`;
 }
 
@@ -1217,19 +1236,35 @@ async function generateExpoPackage() {
   const ciudad = slugify(document.getElementById('ex-ciudad').value.trim()) || 'ciudad';
   const desc = slugify(document.getElementById('ex-desc').value.trim()) || 'evento';
   const obraNum = document.getElementById('ex-obra-num').value.trim().padStart(3,'0');
+  const link = document.getElementById('ex-link').value.trim();
 
   if (!evento) { alert('Por favor agrega el nombre del evento.'); return; }
 
   const subfolder = tipo === 'Premio' || tipo === 'Mención' ? 'premios' : 'expos';
   const images = (imageStore['expo'] || []).filter(Boolean);
+  const flyerFile = imageStore['expo-flyer'];
 
   const zip = new JSZip();
+
+  // Rename and add flyer
+  let flyerRenamed = '';
+  if (flyerFile) {
+    const ext = flyerFile.file.name.split('.').pop().toLowerCase();
+    flyerRenamed = `${obraNum}-${anno}-${pais}-${ciudad}-${desc}-flyer.${ext}`;
+    zip.file(`${subfolder}/${flyerRenamed}`, flyerFile.file);
+  }
+
+  // Rename and add photos
   const renamedImages = images.map((img, j) => {
     const ext = img.file.name.split('.').pop().toLowerCase();
     const renamed = `${obraNum}-${anno}-${pais}-${ciudad}-${desc}-${String(j+1).padStart(2,'0')}.${ext}`;
     return { file: img.file, renamed };
   });
+  renamedImages.forEach(img => zip.file(`${subfolder}/${img.renamed}`, img.file));
 
+  const flyerSnippet = flyerRenamed
+    ? `\n        flyer: "../images/[DISCIPLINA]/[NUMERO]-[OBRA]/${subfolder}/${flyerRenamed}",` : '';
+  const linkSnippet = link ? `\n        link: "${link}",` : '';
   const snippetImages = renamedImages.map(i =>
     `          "../images/[DISCIPLINA]/[NUMERO]-[OBRA]/${subfolder}/${i.renamed}"`
   ).join(',\n');
@@ -1238,23 +1273,14 @@ async function generateExpoPackage() {
         anno: "${anno}",
         tipo: "${tipo}",
         evento: "${evento}",
-        lugar: "${lugar}",
+        lugar: "${lugar}",${flyerSnippet}${linkSnippet}
         images: [
-${snippetImages}
+${snippetImages || '          ""'}
         ]
       },`;
 
-  renamedImages.forEach(img => {
-    zip.file(`${subfolder}/${img.renamed}`, img.file);
-  });
-
   zip.file('snippet-para-html.txt',
-`AÑADIR AL HISTORIAL EN EL ARCHIVO HTML DE LA OBRA:
-
-${snippet}
-
-REEMPLAZA [DISCIPLINA], [NUMERO] y [OBRA] con los valores correctos.
-Ejemplo: images/escultura/001-madres-buscadoras/${subfolder}/...`);
+`AÑADIR AL HISTORIAL EN EL ARCHIVO HTML DE LA OBRA:\n\n${snippet}\n\nREEMPLAZA [DISCIPLINA], [NUMERO] y [OBRA] con los valores correctos.\nEjemplo: images/escultura/001-madres-buscadoras/${subfolder}/...\n${flyerRenamed ? '\nFLYER: ' + subfolder + '/' + flyerRenamed : ''}${link ? '\nENLACE: ' + link : ''}`);
 
   const blob = await zip.generateAsync({ type: 'blob' });
   const url = URL.createObjectURL(blob);
@@ -1265,7 +1291,12 @@ Ejemplo: images/escultura/001-madres-buscadoras/${subfolder}/...`);
   URL.revokeObjectURL(url);
 
   document.getElementById('expo-output').innerHTML = `
-    <div class="status-bar success">✓ Paquete generado con ${images.length} imágenes renombradas</div>`;
+    <div class="status-bar success">
+      ✓ Paquete generado — ${images.length} foto(s)${flyerFile ? ' + flyer' : ''}${link ? ' + enlace' : ''} incluidos
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-success" onclick="resetExpoForm()">+ Registrar otra expo / premio</button>
+    </div>`;
 }
 
 function generateExpoSnippet() {
@@ -1273,12 +1304,16 @@ function generateExpoSnippet() {
   const tipo = document.getElementById('ex-tipo').value;
   const evento = document.getElementById('ex-evento').value.trim();
   const lugar = document.getElementById('ex-lugar').value.trim();
+  const link = document.getElementById('ex-link').value.trim();
+
+  const linkLine = link ? `\n        link: "${link}",` : '';
 
   const snippet = `      {
         anno: "${anno}",
         tipo: "${tipo}",
         evento: "${evento}",
         lugar: "${lugar}",
+        flyer: "../images/[DISCIPLINA]/[NUMERO]-[OBRA]/expos/[NOMBRE]-flyer.jpg",${linkLine}
         images: [
           "../images/[DISCIPLINA]/[NUMERO]-[OBRA]/expos/[NOMBRE-IMAGEN].jpg"
         ]
@@ -1337,6 +1372,44 @@ function generateIndexSnippets() {
       <div class="snippet-box">${reconSnippet}</div>
       <button class="copy-btn" onclick="copySnippet(this, \`${reconSnippet.replace(/`/g,'\\`')}\`)">Copiar</button>
     </div>` : ''}`;
+}
+
+function resetExpoForm() {
+  document.querySelectorAll('#tab-nueva-expo input[type="text"], #tab-nueva-expo textarea').forEach(el => el.value = '');
+  document.getElementById('ex-tipo').value = 'Exposición';
+  delete imageStore['expo'];
+  delete imageStore['expo-flyer'];
+  document.getElementById('expo-img-preview').innerHTML = '';
+  document.getElementById('expo-flyer-preview').innerHTML = '';
+  document.getElementById('expo-output').innerHTML = '';
+  document.getElementById('tab-nueva-expo').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── RESET OBRA FORM ──────────────────────────────────────────────
+function resetObraForm() {
+  // Clear all text inputs and textareas in the obra tab
+  document.querySelectorAll('#tab-nueva-obra input[type="text"], #tab-nueva-obra textarea').forEach(el => el.value = '');
+  document.getElementById('ob-motivos-title').value = 'Exposición de Motivos';
+  document.getElementById('ob-disciplina').value = 'escultura';
+  document.getElementById('ob-slug').value = '';
+
+  // Clear image stores and previews
+  Object.keys(imageStore).forEach(k => delete imageStore[k]);
+  document.getElementById('comp-preview').innerHTML = '';
+
+  // Reset piezas and historial
+  document.getElementById('piezas-container').innerHTML = '';
+  document.getElementById('historial-container').innerHTML = '';
+  piezaCount = 0;
+  historialCount = 0;
+  addPieza();
+  addHistorial();
+
+  // Clear output
+  document.getElementById('obra-output').innerHTML = '';
+
+  // Scroll to top of tab
+  document.getElementById('tab-nueva-obra').scrollIntoView({ behavior: 'smooth' });
 }
 
 // ── COPY ─────────────────────────────────────────────────────────
