@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Tere Salas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>
+    :root {
+      --cream: #f5efe4;
+      --parchment: #e8dcc8;
+      --terracotta: #b5533c;
+      --ochre: #c8862a;
+      --umber: #4a2f1a;
+      --ink: #1e120a;
+      --green: #4a7c59;
+      --red: #b5533c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── LOGIN ─────────────────────────────────────────────── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      gap: 2rem; padding: 2rem;
+      background: var(--ink);
+    }
+
+    .login-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem; letter-spacing: 0.35em;
+      color: var(--ochre); text-transform: uppercase;
+      text-align: center;
+    }
+
+    .login-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream); font-weight: 400;
+      text-align: center; line-height: 1.1;
+    }
+
+    .login-name span { color: var(--terracotta); font-weight: 600; display: block; }
+
+    .login-box {
+      display: flex; flex-direction: column; gap: 1rem;
+      width: 100%; max-width: 320px;
+    }
+
+    .login-box input {
+      background: rgba(245,239,228,0.07);
+      border: 1px solid rgba(245,239,228,0.15);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; padding: 0.9rem 1.2rem;
+      width: 100%; outline: none;
+      transition: border-color 0.3s;
+      letter-spacing: 0.1em;
+    }
+
+    .login-box input:focus { border-color: var(--terracotta); }
+    .login-box input::placeholder { opacity: 0.4; letter-spacing: 0.1em; }
+
+    .login-error {
+      font-size: 0.85rem; color: var(--terracotta);
+      text-align: center; min-height: 1.2rem;
+      font-style: italic;
+    }
+
+    /* ── MAIN APP ──────────────────────────────────────────── */
+    #app { display: none; }
+
+    header {
+      background: rgba(245,239,228,0.05);
+      border-bottom: 1px solid rgba(245,239,228,0.1);
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .header-logo {
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.25em; color: var(--ochre);
+      text-transform: uppercase;
+    }
+
+    .header-actions { display: flex; gap: 1rem; align-items: center; }
+
+    .btn-logout {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); opacity: 0.4;
+      background: none; border: none; cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .btn-logout:hover { opacity: 1; }
+
+    /* ── TABS ──────────────────────────────────────────────── */
+    .tabs {
+      display: flex; gap: 0;
+      border-bottom: 1px solid rgba(245,239,228,0.1);
+      padding: 0 2rem;
+    }
+
+    .tab-btn {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); opacity: 0.4;
+      background: none; border: none; cursor: pointer;
+      padding: 1rem 1.5rem;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .tab-btn.active { opacity: 1; border-bottom-color: var(--terracotta); }
+    .tab-btn:hover { opacity: 0.8; }
+
+    .tab-panel { display: none; padding: 2rem; max-width: 900px; margin: 0 auto; }
+    .tab-panel.active { display: block; }
+
+    /* ── FORM ELEMENTS ─────────────────────────────────────── */
+    .form-section {
+      background: rgba(245,239,228,0.04);
+      border: 1px solid rgba(245,239,228,0.1);
+      padding: 2rem; margin-bottom: 1.5rem;
+    }
+
+    .form-section-title {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.3em; color: var(--ochre);
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+
+    .form-section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(245,239,228,0.1);
+    }
+
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .form-grid.cols-1 { grid-template-columns: 1fr; }
+
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field.span-2 { grid-column: span 2; }
+    .field.span-3 { grid-column: span 3; }
+
+    label {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.25em; color: var(--ochre);
+      text-transform: uppercase;
+    }
+
+    input[type="text"], input[type="password"], input[type="number"],
+    select, textarea {
+      background: rgba(245,239,228,0.07);
+      border: 1px solid rgba(245,239,228,0.15);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 500;
+      padding: 0.7rem 0.9rem;
+      width: 100%; outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus { border-color: var(--terracotta); }
+    input::placeholder, textarea::placeholder { opacity: 0.35; }
+
+    select option { background: var(--ink); color: var(--cream); }
+
+    textarea { resize: vertical; min-height: 120px; line-height: 1.7; }
+
+    .field-hint {
+      font-size: 0.8rem; color: var(--cream);
+      opacity: 0.4; font-style: italic;
+    }
+
+    /* ── IMAGE UPLOAD ──────────────────────────────────────── */
+    .image-upload-area {
+      border: 1px dashed rgba(245,239,228,0.2);
+      padding: 1.5rem; text-align: center;
+      cursor: pointer; transition: border-color 0.3s;
+      position: relative;
+    }
+
+    .image-upload-area:hover { border-color: var(--terracotta); }
+    .image-upload-area input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer;
+      width: 100%; height: 100%; padding: 0; border: none; background: none;
+    }
+
+    .image-upload-label {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); opacity: 0.5;
+    }
+
+    .image-previews {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem;
+    }
+
+    .image-preview-item {
+      position: relative; width: 70px; height: 70px;
+    }
+
+    .image-preview-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      border: 1px solid rgba(245,239,228,0.15);
+    }
+
+    .image-preview-name {
+      font-size: 0.65rem; color: var(--cream); opacity: 0.5;
+      margin-top: 0.2rem; word-break: break-all;
+      max-width: 70px; text-align: center;
+    }
+
+    .remove-img-btn {
+      position: absolute; top: -6px; right: -6px;
+      width: 18px; height: 18px;
+      background: var(--terracotta); color: white;
+      border: none; border-radius: 50%;
+      font-size: 10px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── DYNAMIC SECTIONS ──────────────────────────────────── */
+    .dynamic-section {
+      border: 1px solid rgba(245,239,228,0.08);
+      padding: 1.5rem; margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .dynamic-section-header {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 1.2rem;
+    }
+
+    .dynamic-section-label {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.2em; color: var(--terracotta);
+      text-transform: uppercase;
+    }
+
+    .btn-remove-section {
+      background: none; border: 1px solid rgba(181,83,60,0.3);
+      color: var(--terracotta); font-family: 'Cinzel', serif;
+      font-size: 0.55rem; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem;
+      cursor: pointer; transition: all 0.3s;
+    }
+
+    .btn-remove-section:hover { background: var(--terracotta); color: var(--cream); }
+
+    /* ── BUTTONS ───────────────────────────────────────────── */
+    .btn {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.8rem 1.8rem; cursor: pointer;
+      transition: all 0.3s; border: none;
+    }
+
+    .btn-primary {
+      background: var(--terracotta); color: var(--cream);
+    }
+
+    .btn-primary:hover { background: #9e4533; }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(245,239,228,0.2);
+      color: var(--cream); opacity: 0.7;
+    }
+
+    .btn-secondary:hover { opacity: 1; border-color: var(--cream); }
+
+    .btn-success {
+      background: var(--green); color: var(--cream);
+    }
+
+    .btn-success:hover { background: #3d6b4a; }
+
+    .btn-row {
+      display: flex; gap: 1rem; align-items: center;
+      flex-wrap: wrap; margin-top: 1.5rem;
+    }
+
+    /* ── PREVIEW & OUTPUT ──────────────────────────────────── */
+    .output-box {
+      background: rgba(245,239,228,0.04);
+      border: 1px solid rgba(245,239,228,0.1);
+      padding: 1.5rem; margin-top: 1.5rem;
+    }
+
+    .output-title {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.25em; color: var(--ochre);
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+
+    .output-filename {
+      font-family: monospace; font-size: 0.9rem;
+      color: var(--ochre); background: rgba(200,134,42,0.1);
+      padding: 0.4rem 0.8rem; display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .output-checklist {
+      list-style: none; font-size: 0.9rem;
+    }
+
+    .output-checklist li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(245,239,228,0.06);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .output-checklist li:last-child { border-bottom: none; }
+
+    .check-ok { color: var(--green); }
+    .check-warn { color: var(--ochre); }
+    .check-missing { color: var(--terracotta); }
+
+    .status-bar {
+      padding: 1rem 1.5rem;
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .status-bar.success { background: rgba(74,124,89,0.2); color: #7ec99a; border: 1px solid rgba(74,124,89,0.3); }
+    .status-bar.error { background: rgba(181,83,60,0.2); color: var(--terracotta); border: 1px solid rgba(181,83,60,0.3); }
+    .status-bar.info { background: rgba(200,134,42,0.1); color: var(--ochre); border: 1px solid rgba(200,134,42,0.2); }
+
+    /* ── INDEX UPDATE TAB ──────────────────────────────────── */
+    .snippet-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(245,239,228,0.1);
+      padding: 1.2rem; font-family: monospace;
+      font-size: 0.8rem; color: #a8d8a8;
+      white-space: pre-wrap; overflow-x: auto;
+      max-height: 300px; overflow-y: auto;
+      margin-top: 1rem;
+    }
+
+    .copy-btn {
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      background: rgba(245,239,228,0.07);
+      border: 1px solid rgba(245,239,228,0.15);
+      color: var(--cream); padding: 0.4rem 0.9rem;
+      cursor: pointer; transition: all 0.3s; margin-top: 0.5rem;
+    }
+
+    .copy-btn:hover { background: rgba(245,239,228,0.15); }
+    .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid.cols-3 { grid-template-columns: 1fr; }
+      .field.span-2, .field.span-3 { grid-column: span 1; }
+      .tab-btn { padding: 0.8rem 0.8rem; font-size: 0.55rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── LOGIN SCREEN ──────────────────────────────────────────── -->
+<div id="login-screen">
+  <div>
+    <p class="login-title">Panel de Administración</p>
+    <h1 class="login-name">Tere <span>Salas</span></h1>
+  </div>
+  <div class="login-box">
+    <input type="password" id="password-input" placeholder="Contraseña"
+      onkeydown="if(event.key==='Enter') checkLogin()" autocomplete="current-password" />
+    <button class="btn btn-primary" onclick="checkLogin()">Entrar</button>
+    <p class="login-error" id="login-error"></p>
+  </div>
+</div>
+
+<!-- ── MAIN APP ──────────────────────────────────────────────── -->
+<div id="app">
+  <header>
+    <span class="header-logo">Tere Salas — Admin</span>
+    <div class="header-actions">
+      <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('nueva-obra', this)">Nueva Obra</button>
+    <button class="tab-btn" onclick="switchTab('nueva-expo', this)">Expo / Premio</button>
+    <button class="tab-btn" onclick="switchTab('index-update', this)">Actualizar Galería</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 1 — NUEVA OBRA
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel active" id="tab-nueva-obra">
+
+    <!-- IDENTIFICACIÓN -->
+    <div class="form-section">
+      <div class="form-section-title">Identificación</div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Título de la Obra *</label>
+          <input type="text" id="ob-titulo" placeholder="Ej. Virgen Esperanza" />
+        </div>
+        <div class="field">
+          <label>Tipo *</label>
+          <input type="text" id="ob-tipo" placeholder="Ej. Escultura, Trilogía, Pintura, Serie..." />
+        </div>
+        <div class="field">
+          <label>Disciplina *</label>
+          <select id="ob-disciplina">
+            <option value="escultura">Escultura</option>
+            <option value="pintura">Pintura</option>
+            <option value="cine">Cine</option>
+            <option value="teatro">Teatro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Año *</label>
+          <input type="text" id="ob-anno" placeholder="Ej. 2024" />
+        </div>
+        <div class="field">
+          <label>Número de Obra *</label>
+          <input type="text" id="ob-numero" placeholder="Ej. 002" />
+          <span class="field-hint">El número único de esta obra (001, 002...)</span>
+        </div>
+        <div class="field">
+          <label>Slug (nombre en URL)</label>
+          <input type="text" id="ob-slug" placeholder="Se genera automáticamente" readonly
+            style="opacity:0.5;cursor:not-allowed" />
+        </div>
+      </div>
+    </div>
+
+    <!-- FOTO DE COMPOSICIÓN -->
+    <div class="form-section">
+      <div class="form-section-title">Foto de Composición</div>
+      <p class="field-hint" style="margin-bottom:1rem">Una foto que muestre la obra completa o el conjunto. Opcional.</p>
+      <div class="form-grid">
+        <div class="field">
+          <label>Pie de foto de la composición</label>
+          <input type="text" id="ob-comp-caption" placeholder="Ej. Vista general de la obra" />
+        </div>
+      </div>
+      <div style="margin-top:1rem">
+        <label>Imagen de composición</label>
+        <div class="image-upload-area" style="margin-top:0.5rem">
+          <input type="file" accept="image/*" onchange="handleSingleImage(this, 'comp-preview', 'comp')" />
+          <span class="image-upload-label">Haz clic o arrastra la imagen aquí</span>
+        </div>
+        <div id="comp-preview" class="image-previews"></div>
+      </div>
+    </div>
+
+    <!-- EXPOSICIÓN DE MOTIVOS -->
+    <div class="form-section">
+      <div class="form-section-title">Exposición de Motivos</div>
+      <div class="form-grid cols-1">
+        <div class="field">
+          <label>Título de la sección</label>
+          <input type="text" id="ob-motivos-title" value="Exposición de Motivos" />
+        </div>
+        <div class="field">
+          <label>Texto *</label>
+          <textarea id="ob-motivos" rows="8"
+            placeholder="Escribe aquí la exposición de motivos. Separa párrafos con una línea en blanco."></textarea>
+        </div>
+        <div class="field">
+          <label>Frase de cierre</label>
+          <input type="text" id="ob-motivos-cierre" placeholder="Ej. VOY A BUSCARTE, HASTA ENCONTRARTE" />
+        </div>
+      </div>
+    </div>
+
+    <!-- PIEZAS -->
+    <div class="form-section">
+      <div class="form-section-title">Piezas</div>
+      <p class="field-hint" style="margin-bottom:1.2rem">
+        Para obras individuales agrega una sola pieza. Para trilogías o series, agrega una por cada elemento.
+      </p>
+      <div id="piezas-container"></div>
+      <button class="btn btn-secondary" onclick="addPieza()" style="margin-top:0.5rem">+ Agregar Pieza</button>
+    </div>
+
+    <!-- HISTORIAL -->
+    <div class="form-section">
+      <div class="form-section-title">Exposiciones y Premios</div>
+      <div id="historial-container"></div>
+      <button class="btn btn-secondary" onclick="addHistorial()" style="margin-top:0.5rem">+ Agregar Expo / Premio</button>
+    </div>
+
+    <!-- GENERATE -->
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateObra()">⬇ Generar Paquete ZIP</button>
+      <button class="btn btn-secondary" onclick="previewObra()">Vista previa del config</button>
+    </div>
+
+    <div id="obra-output"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 2 — NUEVA EXPO / PREMIO (añadir a obra existente)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-nueva-expo">
+    <div class="form-section">
+      <div class="form-section-title">Datos de la Expo / Premio</div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Año *</label>
+          <input type="text" id="ex-anno" placeholder="2026" />
+        </div>
+        <div class="field">
+          <label>Tipo *</label>
+          <select id="ex-tipo">
+            <option value="Exposición">Exposición</option>
+            <option value="Premio">Premio</option>
+            <option value="Mención">Mención Honorífica</option>
+          </select>
+        </div>
+        <div class="field span-2">
+          <label>Nombre del evento *</label>
+          <input type="text" id="ex-evento" placeholder="Ej. VI Bienal de las Plásticas de Nuevo León" />
+        </div>
+        <div class="field span-2">
+          <label>Lugar *</label>
+          <input type="text" id="ex-lugar" placeholder="Ej. Biblioteca Universitaria Raúl Rangel Frías, Nuevo León, México" />
+        </div>
+        <div class="field">
+          <label>País (2 letras)</label>
+          <input type="text" id="ex-pais" placeholder="mx" maxlength="2" />
+        </div>
+        <div class="field">
+          <label>Ciudad</label>
+          <input type="text" id="ex-ciudad" placeholder="nuevoleon" />
+          <span class="field-hint">Sin acentos, en minúsculas</span>
+        </div>
+        <div class="field">
+          <label>Descripción del evento</label>
+          <input type="text" id="ex-desc" placeholder="Ej. exposicion-colectiva" />
+          <span class="field-hint">Palabras clave sin acentos</span>
+        </div>
+        <div class="field">
+          <label>Obra relacionada (número)</label>
+          <input type="text" id="ex-obra-num" placeholder="Ej. 001" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Imágenes del Evento</div>
+      <div class="image-upload-area">
+        <input type="file" accept="image/*" multiple onchange="handleMultipleImages(this, 'expo-img-preview', 'expo')" />
+        <span class="image-upload-label">Haz clic o arrastra las imágenes aquí (puedes seleccionar varias)</span>
+      </div>
+      <div id="expo-img-preview" class="image-previews"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateExpoPackage()">⬇ Generar Paquete ZIP</button>
+      <button class="btn btn-secondary" onclick="generateExpoSnippet()">Ver snippet para HTML</button>
+    </div>
+
+    <div id="expo-output"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 3 — ACTUALIZAR GALERÍA (index.html snippets)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-index-update">
+    <div class="form-section">
+      <div class="form-section-title">Nueva entrada para la Galería</div>
+      <p class="field-hint" style="margin-bottom:1.2rem">
+        Genera el bloque de código para agregar una obra al SITE_CONFIG en index.html.
+      </p>
+      <div class="form-grid">
+        <div class="field">
+          <label>Disciplina *</label>
+          <select id="idx-disciplina">
+            <option value="Escultura">Escultura</option>
+            <option value="Pintura">Pintura</option>
+            <option value="Cine">Cine</option>
+            <option value="Teatro">Teatro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tipo *</label>
+          <select id="idx-type">
+            <option value="pieza">Pieza</option>
+            <option value="expo">Exposición</option>
+            <option value="premio">Premio</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Fecha (YYYYMMDD) *</label>
+          <input type="text" id="idx-date" placeholder="20260302" />
+        </div>
+        <div class="field">
+          <label>Destacada (Featured)</label>
+          <select id="idx-featured">
+            <option value="false">No</option>
+            <option value="true">Sí — aparece siempre en galería</option>
+          </select>
+        </div>
+        <div class="field span-2">
+          <label>Título *</label>
+          <input type="text" id="idx-title" placeholder="Ej. Virgen Esperanza" />
+        </div>
+        <div class="field span-2">
+          <label>Descripción *</label>
+          <input type="text" id="idx-desc" placeholder="Breve descripción para la tarjeta" />
+        </div>
+        <div class="field span-2">
+          <label>Ruta de imagen de portada *</label>
+          <input type="text" id="idx-cover"
+            placeholder="images/escultura/002-virgen-esperanza/piezas/002-202602-virgen-esperanza.jpg" />
+        </div>
+        <div class="field span-2">
+          <label>Ruta de página de la obra</label>
+          <input type="text" id="idx-page"
+            placeholder="obras/escultura-virgen-esperanza.html (dejar vacío si aún no existe)" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Nueva entrada para Reconocimientos</div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Año *</label>
+          <input type="text" id="rec-year" placeholder="2026" />
+        </div>
+        <div class="field span-2">
+          <label>Título *</label>
+          <input type="text" id="rec-title"
+            placeholder="Ej. Centro de Arte Contemporáneo ART COMMUNE — Moscú, Rusia" />
+        </div>
+        <div class="field span-2">
+          <label>Descripción *</label>
+          <input type="text" id="rec-desc" placeholder="Breve descripción del reconocimiento" />
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateIndexSnippets()">Generar snippets</button>
+    </div>
+
+    <div id="index-output"></div>
+  </div>
+
+</div><!-- end #app -->
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────
+// Change this password!
+const ADMIN_PASSWORD = "Winter1221.";
+
+// ── AUTH ────────────────────────────────────────────────────────
+function checkLogin() {
+  const pw = document.getElementById('password-input').value;
+  if (pw === ADMIN_PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    sessionStorage.setItem('ts_admin', '1');
+    initForm();
+  } else {
+    document.getElementById('login-error').textContent = 'Contraseña incorrecta.';
+    document.getElementById('password-input').value = '';
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('ts_admin');
+  location.reload();
+}
+
+if (sessionStorage.getItem('ts_admin') === '1') {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+// ── TABS ────────────────────────────────────────────────────────
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── SLUG AUTO-GENERATE ──────────────────────────────────────────
+function initForm() {
+  addPieza();
+  addHistorial();
+
+  const tituloInput = document.getElementById('ob-titulo');
+  const discInput = document.getElementById('ob-disciplina');
+  const slugInput = document.getElementById('ob-slug');
+
+  function updateSlug() {
+    const disc = discInput.value;
+    const title = tituloInput.value
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim().replace(/\s+/g, '-');
+    slugInput.value = title ? `${disc}-${title}` : '';
+  }
+
+  tituloInput.addEventListener('input', updateSlug);
+  discInput.addEventListener('change', updateSlug);
+}
+
+// ── IMAGE HANDLING ──────────────────────────────────────────────
+const imageStore = {}; // key -> { file, renamedAs }
+
+function buildImageName(prefix, type, index, originalFile) {
+  const ext = originalFile.name.split('.').pop().toLowerCase();
+  return `${prefix}-${type}-${String(index).padStart(2,'0')}.${ext}`;
+}
+
+function handleSingleImage(input, previewId, storeKey) {
+  if (!input.files[0]) return;
+  const file = input.files[0];
+  imageStore[storeKey] = { file, originalName: file.name };
+  const preview = document.getElementById(previewId);
+  preview.innerHTML = '';
+  const reader = new FileReader();
+  reader.onload = e => {
+    preview.innerHTML = `
+      <div class="image-preview-item">
+        <img src="${e.target.result}" />
+        <div class="image-preview-name">${file.name}</div>
+      </div>`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleMultipleImages(input, previewId, storeKey) {
+  if (!input.files.length) return;
+  if (!imageStore[storeKey]) imageStore[storeKey] = [];
+  const preview = document.getElementById(previewId);
+
+  Array.from(input.files).forEach((file, i) => {
+    const idx = imageStore[storeKey].length;
+    imageStore[storeKey].push({ file, originalName: file.name });
+    const reader = new FileReader();
+    const div = document.createElement('div');
+    div.className = 'image-preview-item';
+    div.id = `${storeKey}-prev-${idx}`;
+    reader.onload = e => {
+      div.innerHTML = `
+        <img src="${e.target.result}" />
+        <button class="remove-img-btn" onclick="removeImage('${storeKey}', ${idx}, this.parentElement)">×</button>
+        <div class="image-preview-name">${file.name}</div>`;
+    };
+    reader.readAsDataURL(file);
+    preview.appendChild(div);
+  });
+}
+
+function handlePiezaImages(input, piezaIdx) {
+  const key = `pieza-${piezaIdx}`;
+  if (!imageStore[key]) imageStore[key] = [];
+  const preview = document.getElementById(`pieza-prev-${piezaIdx}`);
+
+  Array.from(input.files).forEach((file) => {
+    const idx = imageStore[key].length;
+    imageStore[key].push({ file, originalName: file.name });
+    const reader = new FileReader();
+    const div = document.createElement('div');
+    div.className = 'image-preview-item';
+    reader.onload = e => {
+      div.innerHTML = `
+        <img src="${e.target.result}" />
+        <button class="remove-img-btn" onclick="removeImage('${key}', ${idx}, this.parentElement)">×</button>
+        <div class="image-preview-name">${file.name}</div>`;
+    };
+    reader.readAsDataURL(file);
+    preview.appendChild(div);
+  });
+}
+
+function handleHistorialImages(input, histIdx) {
+  const key = `historial-${histIdx}`;
+  if (!imageStore[key]) imageStore[key] = [];
+  const preview = document.getElementById(`hist-prev-${histIdx}`);
+
+  Array.from(input.files).forEach((file) => {
+    const idx = imageStore[key].length;
+    imageStore[key].push({ file, originalName: file.name });
+    const reader = new FileReader();
+    const div = document.createElement('div');
+    div.className = 'image-preview-item';
+    reader.onload = e => {
+      div.innerHTML = `
+        <img src="${e.target.result}" />
+        <button class="remove-img-btn" onclick="removeImage('${key}', ${idx}, this.parentElement)">×</button>
+        <div class="image-preview-name">${file.name}</div>`;
+    };
+    reader.readAsDataURL(file);
+    preview.appendChild(div);
+  });
+}
+
+function removeImage(storeKey, idx, el) {
+  imageStore[storeKey][idx] = null;
+  el.remove();
+}
+
+// ── DYNAMIC PIEZAS ──────────────────────────────────────────────
+let piezaCount = 0;
+
+function addPieza() {
+  const idx = piezaCount++;
+  const container = document.getElementById('piezas-container');
+  const div = document.createElement('div');
+  div.className = 'dynamic-section';
+  div.id = `pieza-block-${idx}`;
+  div.innerHTML = `
+    <div class="dynamic-section-header">
+      <span class="dynamic-section-label">Pieza ${idx + 1}</span>
+      <button class="btn-remove-section" onclick="this.closest('.dynamic-section').remove()">Eliminar</button>
+    </div>
+    <div class="form-grid">
+      <div class="field span-2">
+        <label>Título de la pieza *</label>
+        <input type="text" id="pieza-titulo-${idx}" placeholder="Ej. La Piedad" />
+      </div>
+      <div class="field span-2">
+        <label>Descripción *</label>
+        <textarea id="pieza-desc-${idx}" rows="4" placeholder="Descripción de esta pieza..."></textarea>
+      </div>
+    </div>
+    <div style="margin-top:1.2rem">
+      <div class="form-section-title" style="font-size:0.55rem;margin-bottom:1rem">Ficha Técnica</div>
+      <div class="form-grid cols-3">
+        <div class="field">
+          <label>Autor</label>
+          <input type="text" id="pieza-autor-${idx}" value="Tere Salas" />
+        </div>
+        <div class="field">
+          <label>Asociación</label>
+          <input type="text" id="pieza-asoc-${idx}" placeholder="Plástica de Monterrey" />
+        </div>
+        <div class="field">
+          <label>Año</label>
+          <input type="text" id="pieza-anno-${idx}" placeholder="2024" />
+        </div>
+        <div class="field">
+          <label>Técnica</label>
+          <input type="text" id="pieza-tecnica-${idx}" placeholder="Modelado a mano en barro" />
+        </div>
+        <div class="field">
+          <label>Acabado</label>
+          <input type="text" id="pieza-acabado-${idx}" placeholder="Pintura acrílica y laca" />
+        </div>
+        <div class="field">
+          <label>Dimensiones</label>
+          <input type="text" id="pieza-dim-${idx}" placeholder="25 × 25 cm" />
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.2rem">
+      <label>Imágenes de la pieza</label>
+      <div class="image-upload-area" style="margin-top:0.5rem">
+        <input type="file" accept="image/*" multiple onchange="handlePiezaImages(this, ${idx})" />
+        <span class="image-upload-label">Haz clic o arrastra (completa, closeup, detalle...)</span>
+      </div>
+      <div id="pieza-prev-${idx}" class="image-previews"></div>
+    </div>
+  `;
+  container.appendChild(div);
+}
+
+// ── DYNAMIC HISTORIAL ───────────────────────────────────────────
+let historialCount = 0;
+
+function addHistorial() {
+  const idx = historialCount++;
+  const container = document.getElementById('historial-container');
+  const div = document.createElement('div');
+  div.className = 'dynamic-section';
+  div.id = `hist-block-${idx}`;
+  div.innerHTML = `
+    <div class="dynamic-section-header">
+      <span class="dynamic-section-label">Expo / Premio ${idx + 1}</span>
+      <button class="btn-remove-section" onclick="this.closest('.dynamic-section').remove()">Eliminar</button>
+    </div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Año *</label>
+        <input type="text" id="hist-anno-${idx}" placeholder="2024" />
+      </div>
+      <div class="field">
+        <label>Tipo *</label>
+        <select id="hist-tipo-${idx}">
+          <option value="Exposición">Exposición</option>
+          <option value="Premio">Premio</option>
+          <option value="Mención Honorífica">Mención Honorífica</option>
+        </select>
+      </div>
+      <div class="field span-2">
+        <label>Nombre del evento *</label>
+        <input type="text" id="hist-evento-${idx}" placeholder="Ej. VI Bienal de las Plásticas de Nuevo León" />
+      </div>
+      <div class="field span-2">
+        <label>Lugar *</label>
+        <input type="text" id="hist-lugar-${idx}" placeholder="Ej. Biblioteca Universitaria, Nuevo León, México" />
+      </div>
+    </div>
+    <div style="margin-top:1rem">
+      <label>Imágenes del evento</label>
+      <div class="image-upload-area" style="margin-top:0.5rem">
+        <input type="file" accept="image/*" multiple onchange="handleHistorialImages(this, ${idx})" />
+        <span class="image-upload-label">Haz clic o arrastra las imágenes del evento</span>
+      </div>
+      <div id="hist-prev-${idx}" class="image-previews"></div>
+    </div>
+  `;
+  container.appendChild(div);
+}
+
+// ── NAMING CONVENTION ───────────────────────────────────────────
+function slugify(str) {
+  return str.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim().replace(/\s+/g, '-');
+}
+
+function buildImageFolder(disciplina, numero, obraSlug) {
+  return `images/${disciplina}/${numero}-${obraSlug}`;
+}
+
+// ── COLLECT FORM DATA ───────────────────────────────────────────
+function collectObraData() {
+  const disciplina = document.getElementById('ob-disciplina').value;
+  const titulo = document.getElementById('ob-titulo').value.trim();
+  const numero = document.getElementById('ob-numero').value.trim().padStart(3,'0');
+  const anno = document.getElementById('ob-anno').value.trim();
+  const tipo = document.getElementById('ob-tipo').value.trim();
+  const obraSlug = slugify(titulo);
+  const folder = buildImageFolder(disciplina, numero, obraSlug);
+
+  // Composition
+  const compCaption = document.getElementById('ob-comp-caption').value.trim();
+  const compFile = imageStore['comp'];
+  let compImagePath = '';
+  let compRenamedAs = '';
+  if (compFile) {
+    const ext = compFile.file.name.split('.').pop().toLowerCase();
+    compRenamedAs = `${numero}-${anno}-${obraSlug}.${ext}`;
+    compImagePath = `../${folder}/piezas/${compRenamedAs}`;
+  }
+
+  // Motivos
+  const motivosTitle = document.getElementById('ob-motivos-title').value.trim();
+  const motivos = document.getElementById('ob-motivos').value.trim();
+  const motivosCierre = document.getElementById('ob-motivos-cierre').value.trim();
+
+  // Piezas
+  const piezas = [];
+  document.querySelectorAll('[id^="pieza-block-"]').forEach((block) => {
+    const idx = block.id.replace('pieza-block-', '');
+    const ptitulo = document.getElementById(`pieza-titulo-${idx}`)?.value.trim();
+    if (!ptitulo) return;
+    const pdesc = document.getElementById(`pieza-desc-${idx}`)?.value.trim();
+    const pSlug = slugify(ptitulo);
+    const pImages = (imageStore[`pieza-${idx}`] || []).filter(Boolean);
+    const imageViews = ['completa','closeup','detalle','lateral','frontal'];
+    const renamedImages = pImages.map((img, j) => {
+      const ext = img.file.name.split('.').pop().toLowerCase();
+      const view = imageViews[j] || `vista-${j+1}`;
+      const renamed = `${numero}-${anno}-${pSlug}-${view}.${ext}`;
+      return { file: img.file, renamed, path: `../${folder}/piezas/${renamed}` };
+    });
+
+    piezas.push({
+      titulo: ptitulo,
+      descripcion: pdesc,
+      ficha: {
+        autor: document.getElementById(`pieza-autor-${idx}`)?.value.trim() || 'Tere Salas',
+        asociacion: document.getElementById(`pieza-asoc-${idx}`)?.value.trim() || '',
+        anno: document.getElementById(`pieza-anno-${idx}`)?.value.trim() || anno,
+        tecnica: document.getElementById(`pieza-tecnica-${idx}`)?.value.trim() || '',
+        acabado: document.getElementById(`pieza-acabado-${idx}`)?.value.trim() || '',
+        dimensiones: document.getElementById(`pieza-dim-${idx}`)?.value.trim() || '',
+      },
+      images: renamedImages
+    });
+  });
+
+  // Historial
+  const historial = [];
+  document.querySelectorAll('[id^="hist-block-"]').forEach((block) => {
+    const idx = block.id.replace('hist-block-', '');
+    const hanno = document.getElementById(`hist-anno-${idx}`)?.value.trim();
+    const htipo = document.getElementById(`hist-tipo-${idx}`)?.value;
+    const hevento = document.getElementById(`hist-evento-${idx}`)?.value.trim();
+    const hlugar = document.getElementById(`hist-lugar-${idx}`)?.value.trim();
+    if (!hevento) return;
+    const hSlug = slugify(hevento).substring(0, 30);
+    const hImages = (imageStore[`historial-${idx}`] || []).filter(Boolean);
+    const subfolder = htipo === 'Premio' || htipo === 'Mención Honorífica' ? 'premios' : 'expos';
+    const renamedImages = hImages.map((img, j) => {
+      const ext = img.file.name.split('.').pop().toLowerCase();
+      const renamed = `${numero}-${hanno}-${hSlug}-${String(j+1).padStart(2,'0')}.${ext}`;
+      return { file: img.file, renamed, path: `../${folder}/${subfolder}/${renamed}` };
+    });
+    historial.push({ anno: hanno, tipo: htipo, evento: hevento, lugar: hlugar, images: renamedImages, subfolder });
+  });
+
+  return { disciplina, titulo, numero, anno, tipo, obraSlug, folder,
+           compCaption, compFile, compImagePath, compRenamedAs,
+           motivosTitle, motivos, motivosCierre, piezas, historial };
+}
+
+// ── GENERATE OBRA HTML ──────────────────────────────────────────
+function generateObraHTML(d) {
+  const piezasConfig = d.piezas.map(p => `
+      {
+        titulo: "${p.titulo}",
+        descripcion: "${p.descripcion.replace(/"/g, '\\"')}",
+        ficha: {
+          autor: "${p.ficha.autor}",
+          asociacion: "${p.ficha.asociacion}",
+          anno: "${p.ficha.anno}",
+          tecnica: "${p.ficha.tecnica}",
+          acabado: "${p.ficha.acabado}",
+          dimensiones: "${p.ficha.dimensiones}"
+        },
+        images: [${p.images.map(i => `\n          "${i.path}"`).join(',')}
+        ]
+      }`).join(',');
+
+  const historialConfig = d.historial.map(h => `
+      {
+        anno: "${h.anno}",
+        tipo: "${h.tipo}",
+        evento: "${h.evento}",
+        lugar: "${h.lugar}",
+        images: [${h.images.map(i => `\n          "${i.path}"`).join(',')}
+        ]
+      }`).join(',');
+
+  const motivos = d.motivos.replace(/`/g, '\\`');
+
+  return `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${d.titulo} — Tere Salas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+
+  <script>
+  const OBRA = {
+    titulo: "${d.titulo}",
+    disciplina: "${d.disciplina.charAt(0).toUpperCase() + d.disciplina.slice(1)}",
+    tipo: "${d.tipo}",
+    anno: "${d.anno}",
+    compositionImage: "${d.compImagePath}",
+    compositionCaption: "${d.compCaption || 'Composición: ' + d.titulo}",
+    motivosTitle: "${d.motivosTitle}",
+    motivos: \`${motivos}\`,
+    motivosCierre: "${d.motivosCierre}",
+    piezas: [${piezasConfig}
+    ],
+    historial: [${historialConfig}
+    ]
+  };
+  <\/script>
+
+  <!-- !! COPY THE <style> AND <script> SECTIONS FROM escultura-madres-buscadoras.html !! -->
+  <!-- This file uses the same renderer — paste the CSS and JS from the template below  -->
+
+</head>
+<body>
+  <!-- PASTE THE FULL BODY FROM escultura-madres-buscadoras.html HERE -->
+  <!-- Only the OBRA config above needs to change between obra pages  -->
+</body>
+</html>`;
+}
+
+// ── PREVIEW ─────────────────────────────────────────────────────
+function previewObra() {
+  const d = collectObraData();
+  const out = document.getElementById('obra-output');
+  out.innerHTML = `
+    <div class="output-box">
+      <div class="output-title">Config generado</div>
+      <div class="output-filename">obras/${d.disciplina}-${d.obraSlug}.html</div>
+      <ul class="output-checklist">
+        <li><span class="check-${d.titulo ? 'ok' : 'missing'}">${d.titulo ? '✓' : '✗'}</span> Título: ${d.titulo || 'FALTA'}</li>
+        <li><span class="check-${d.motivos ? 'ok' : 'warn'}">${d.motivos ? '✓' : '!'}</span> Exposición de motivos: ${d.motivos ? 'OK' : 'Vacía'}</li>
+        <li><span class="check-${d.piezas.length ? 'ok' : 'missing'}">${d.piezas.length ? '✓' : '✗'}</span> Piezas: ${d.piezas.length}</li>
+        <li><span class="check-${d.historial.length ? 'ok' : 'warn'}">${d.historial.length ? '✓' : '!'}</span> Expos/Premios: ${d.historial.length}</li>
+        <li><span class="check-${d.compImagePath ? 'ok' : 'warn'}">${d.compImagePath ? '✓' : '!'}</span> Foto de composición: ${d.compImagePath || 'No agregada'}</li>
+      </ul>
+      <div class="snippet-box">${generateObraHTML(d).replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+    </div>`;
+}
+
+// ── GENERATE ZIP ─────────────────────────────────────────────────
+async function generateObra() {
+  const d = collectObraData();
+  if (!d.titulo) { alert('Por favor agrega el título de la obra.'); return; }
+  if (!d.piezas.length) { alert('Agrega al menos una pieza.'); return; }
+
+  const zip = new JSZip();
+  const obraFilename = `${d.disciplina}-${d.obraSlug}.html`;
+
+  // HTML file
+  zip.file(`obras/${obraFilename}`, generateObraHTML(d));
+
+  // Readme
+  zip.file('LEEME.txt',
+`PAQUETE: ${d.titulo}
+Generado: ${new Date().toLocaleDateString('es-MX')}
+
+INSTRUCCIONES:
+1. Copia la carpeta "images/" en tu repositorio (manteniendo la estructura)
+2. Copia el archivo "obras/${obraFilename}" a la carpeta obras/ del repositorio
+3. En VS Code, abre el archivo y REEMPLAZA el <style> y el <body> con el contenido
+   equivalente de escultura-madres-buscadoras.html (solo el OBRA config es único)
+4. Agrega la entrada correspondiente en el SITE_CONFIG del index.html
+5. Haz commit y push con GitHub Desktop
+
+IMÁGENES INCLUIDAS:`);
+
+  // Images
+  let imageList = '';
+
+  if (d.compFile) {
+    const folder = `images/${d.disciplina}/${d.numero}-${d.obraSlug}/piezas/`;
+    zip.file(folder + d.compRenamedAs, d.compFile.file);
+    imageList += `\n  ${folder}${d.compRenamedAs}`;
+  }
+
+  d.piezas.forEach(p => {
+    const folder = `images/${d.disciplina}/${d.numero}-${d.obraSlug}/piezas/`;
+    p.images.forEach(img => {
+      zip.file(folder + img.renamed, img.file);
+      imageList += `\n  ${folder}${img.renamed}`;
+    });
+  });
+
+  d.historial.forEach(h => {
+    const folder = `images/${d.disciplina}/${d.numero}-${d.obraSlug}/${h.subfolder}/`;
+    h.images.forEach(img => {
+      zip.file(folder + img.renamed, img.file);
+      imageList += `\n  ${folder}${img.renamed}`;
+    });
+  });
+
+  // Update readme with image list
+  zip.file('LEEME.txt',
+`PAQUETE: ${d.titulo}
+Generado: ${new Date().toLocaleDateString('es-MX')}
+
+INSTRUCCIONES:
+1. Copia las carpetas de "images/" en tu repositorio manteniendo la estructura
+2. Copia "obras/${obraFilename}" a la carpeta obras/ del repositorio
+3. Abre el archivo en VS Code y reemplaza el <style> y <body> con los de
+   escultura-madres-buscadoras.html (solo el bloque OBRA config es único por obra)
+4. Agrega la entrada en el SITE_CONFIG del index.html (ver Tab "Actualizar Galería")
+5. Commit y push desde GitHub Desktop
+
+ARCHIVOS INCLUIDOS:${imageList}
+  obras/${obraFilename}`);
+
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `tere-salas-${d.disciplina}-${d.obraSlug}.zip`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  document.getElementById('obra-output').innerHTML = `
+    <div class="status-bar success">
+      ✓ Paquete generado: tere-salas-${d.disciplina}-${d.obraSlug}.zip —
+      ${d.piezas.reduce((s,p) => s + p.images.length, 0) + d.historial.reduce((s,h) => s + h.images.length, 0)} imágenes renombradas
+    </div>`;
+}
+
+// ── EXPO PACKAGE ─────────────────────────────────────────────────
+async function generateExpoPackage() {
+  const anno = document.getElementById('ex-anno').value.trim();
+  const tipo = document.getElementById('ex-tipo').value;
+  const evento = document.getElementById('ex-evento').value.trim();
+  const lugar = document.getElementById('ex-lugar').value.trim();
+  const pais = document.getElementById('ex-pais').value.trim().toLowerCase() || 'mx';
+  const ciudad = slugify(document.getElementById('ex-ciudad').value.trim()) || 'ciudad';
+  const desc = slugify(document.getElementById('ex-desc').value.trim()) || 'evento';
+  const obraNum = document.getElementById('ex-obra-num').value.trim().padStart(3,'0');
+
+  if (!evento) { alert('Por favor agrega el nombre del evento.'); return; }
+
+  const subfolder = tipo === 'Premio' || tipo === 'Mención' ? 'premios' : 'expos';
+  const images = (imageStore['expo'] || []).filter(Boolean);
+
+  const zip = new JSZip();
+  const renamedImages = images.map((img, j) => {
+    const ext = img.file.name.split('.').pop().toLowerCase();
+    const renamed = `${obraNum}-${anno}-${pais}-${ciudad}-${desc}-${String(j+1).padStart(2,'0')}.${ext}`;
+    return { file: img.file, renamed };
+  });
+
+  const snippetImages = renamedImages.map(i =>
+    `          "../images/[DISCIPLINA]/[NUMERO]-[OBRA]/${subfolder}/${i.renamed}"`
+  ).join(',\n');
+
+  const snippet = `      {
+        anno: "${anno}",
+        tipo: "${tipo}",
+        evento: "${evento}",
+        lugar: "${lugar}",
+        images: [
+${snippetImages}
+        ]
+      },`;
+
+  renamedImages.forEach(img => {
+    zip.file(`${subfolder}/${img.renamed}`, img.file);
+  });
+
+  zip.file('snippet-para-html.txt',
+`AÑADIR AL HISTORIAL EN EL ARCHIVO HTML DE LA OBRA:
+
+${snippet}
+
+REEMPLAZA [DISCIPLINA], [NUMERO] y [OBRA] con los valores correctos.
+Ejemplo: images/escultura/001-madres-buscadoras/${subfolder}/...`);
+
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `expo-${anno}-${ciudad}-${desc}.zip`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  document.getElementById('expo-output').innerHTML = `
+    <div class="status-bar success">✓ Paquete generado con ${images.length} imágenes renombradas</div>`;
+}
+
+function generateExpoSnippet() {
+  const anno = document.getElementById('ex-anno').value.trim();
+  const tipo = document.getElementById('ex-tipo').value;
+  const evento = document.getElementById('ex-evento').value.trim();
+  const lugar = document.getElementById('ex-lugar').value.trim();
+
+  const snippet = `      {
+        anno: "${anno}",
+        tipo: "${tipo}",
+        evento: "${evento}",
+        lugar: "${lugar}",
+        images: [
+          "../images/[DISCIPLINA]/[NUMERO]-[OBRA]/expos/[NOMBRE-IMAGEN].jpg"
+        ]
+      },`;
+
+  document.getElementById('expo-output').innerHTML = `
+    <div class="output-box">
+      <div class="output-title">Snippet para el historial del archivo HTML de la obra</div>
+      <div class="snippet-box">${snippet}</div>
+      <button class="copy-btn" onclick="copySnippet(this, \`${snippet.replace(/`/g,'\\`')}\`)">Copiar</button>
+    </div>`;
+}
+
+// ── INDEX SNIPPETS ───────────────────────────────────────────────
+function generateIndexSnippets() {
+  const disc = document.getElementById('idx-disciplina').value;
+  const type = document.getElementById('idx-type').value;
+  const date = document.getElementById('idx-date').value.trim();
+  const featured = document.getElementById('idx-featured').value;
+  const title = document.getElementById('idx-title').value.trim();
+  const desc = document.getElementById('idx-desc').value.trim();
+  const cover = document.getElementById('idx-cover').value.trim();
+  const page = document.getElementById('idx-page').value.trim();
+
+  const recYear = document.getElementById('rec-year').value.trim();
+  const recTitle = document.getElementById('rec-title').value.trim();
+  const recDesc = document.getElementById('rec-desc').value.trim();
+
+  const gallerySnippet = `      {
+        discipline: "${disc}",
+        type: "${type}",
+        date: "${date}",
+        featured: ${featured},
+        title: "${title}",
+        description: "${desc}",
+        coverImage: "${cover}",
+        page: "${page}"
+      },`;
+
+  const reconSnippet = recTitle ? `      {
+        year: "${recYear}",
+        title: "${recTitle}",
+        description: "${recDesc}"
+      },` : '';
+
+  const out = document.getElementById('index-output');
+  out.innerHTML = `
+    <div class="output-box">
+      <div class="output-title">1. Añadir al array gallery: en SITE_CONFIG</div>
+      <div class="snippet-box">${gallerySnippet}</div>
+      <button class="copy-btn" onclick="copySnippet(this, \`${gallerySnippet.replace(/`/g,'\\`')}\`)">Copiar</button>
+    </div>
+    ${reconSnippet ? `
+    <div class="output-box" style="margin-top:1rem">
+      <div class="output-title">2. Añadir al array reconocimientos: en SITE_CONFIG</div>
+      <div class="snippet-box">${reconSnippet}</div>
+      <button class="copy-btn" onclick="copySnippet(this, \`${reconSnippet.replace(/`/g,'\\`')}\`)">Copiar</button>
+    </div>` : ''}`;
+}
+
+// ── COPY ─────────────────────────────────────────────────────────
+function copySnippet(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
