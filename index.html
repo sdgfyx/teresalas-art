@@ -491,7 +491,7 @@
     /* HERO */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 8rem 3rem 4rem 6rem; position: relative; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center top; background-repeat: no-repeat; z-index: 0; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.85) 45%, rgba(245,239,228,0.35) 75%, rgba(245,239,228,0.1) 100%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.85) 30%, rgba(245,239,228,0.0) 50%, rgba(10,5,2,0.0) 75%, rgba(10,5,2,0.6) 100%); }
     .hero > *:not(.hero-bg) { position: relative; z-index: 1; }
     .hero::after { display: none; }
     .hero-ornament { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.95rem; letter-spacing: 0.18em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s ease forwards 0.2s; }
@@ -645,7 +645,7 @@
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .hero { padding: 7rem 1.5rem 4rem; }
-      .hero-scroll { left: 1.5rem; }
+      .hero-scroll { left: 1.5rem; display: none; }
       .vertical-text { display: none; }
       .bio-inner { grid-template-columns: 1fr; gap: 3rem; }
       .bio-left { position: static; }
