@@ -19,6 +19,9 @@
     heroText: "Una práctica que explora la memoria, el dolor y la resiliencia humana.",
     scrollLabel: "Desplazar para explorar",
     origin: "Villa de Santiago, Nuevo León · México",
+    // --- ARTIST PHOTO ---
+    // Drop tere-salas-cover.jpg into your images/ folder, then update this path
+    artistPhoto: "images/tere-salas-cover.jpg",
 
     // --- BIOGRAPHY ---
     bioQuote: "Una narrativa visual que da voz a la memoria y la resiliencia.",
@@ -487,9 +490,13 @@
 
     /* HERO */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 8rem 3rem 4rem 6rem; position: relative; overflow: hidden; }
-    .hero::after { content: ''; position: absolute; right: -5%; top: 10%; width: 55%; height: 80%; background: radial-gradient(ellipse at center, var(--parchment) 0%, transparent 70%); opacity: 0.7; pointer-events: none; }
+    .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center top; background-repeat: no-repeat; z-index: 0; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.85) 45%, rgba(245,239,228,0.35) 75%, rgba(245,239,228,0.1) 100%); }
+    .hero > *:not(.hero-bg) { position: relative; z-index: 1; }
+    .hero::after { display: none; }
     .hero-ornament { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.95rem; letter-spacing: 0.18em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s ease forwards 0.2s; }
     .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 400; line-height: 1.0; color: var(--umber); margin-bottom: 0.3rem; opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
+    .hero.has-photo h1 { color: var(--umber); text-shadow: 0 2px 20px rgba(245,239,228,0.8); }
     .hero h1 span { display: block; color: var(--terracotta); font-weight: 600; }
     .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--umber); opacity: 0; animation: fadeUp 1s ease forwards 0.8s; margin-top: 1.2rem; max-width: 480px; }
     .hero-divider { width: 80px; height: 1px; background: var(--terracotta); margin: 2rem 0; opacity: 0; animation: fadeUp 1s ease forwards 1s; }
@@ -680,6 +687,7 @@
   </nav>
 
   <section id="inicio" class="hero">
+    <div class="hero-bg" id="hero-bg"></div>
     <p class="hero-ornament" id="hero-ornament"></p>
     <h1 id="hero-name"></h1>
     <div class="hero-divider"></div>
@@ -753,6 +761,16 @@
 
   <script>
   // ── Render from config ───────────────────────────────────────
+
+  // Hero background photo
+  const heroBg = document.getElementById('hero-bg');
+  if (SITE_CONFIG.artistPhoto) {
+    heroBg.style.backgroundImage = 'url(' + SITE_CONFIG.artistPhoto + ')';
+    const heroSection = document.getElementById('inicio');
+    const img = new Image();
+    img.onload = () => heroSection.classList.add('has-photo');
+    img.src = SITE_CONFIG.artistPhoto;
+  }
 
   // Hero
   document.getElementById('hero-ornament').textContent = SITE_CONFIG.tagline;
