@@ -489,21 +489,21 @@
     .nav-drawer a:hover { color: var(--terracotta); }
 
     /* HERO */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 8rem 3rem 4rem 6rem; position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center top; background-repeat: no-repeat; z-index: 0; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.85) 30%, rgba(245,239,228,0.0) 50%, rgba(10,5,2,0.0) 75%, rgba(10,5,2,0.6) 100%); }
-    .hero > *:not(.hero-bg) { position: relative; z-index: 1; }
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 8rem 5rem 4rem 6rem; position: relative; overflow: hidden; gap: 4rem; }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; }
+    .hero-photo-frame { width: 340px; height: 420px; flex-shrink: 0; border: 1px solid rgba(74,47,26,0.15); overflow: hidden; position: relative; opacity: 0; animation: fadeUp 1s ease forwards 0.8s; }
+    .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .hero-photo-frame::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(181,83,60,0.2); z-index: 1; pointer-events: none; }
     .hero::after { display: none; }
     .hero-ornament { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.95rem; letter-spacing: 0.18em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s ease forwards 0.2s; }
+    .hero-scroll { display: none; }
+    .vertical-text { display: none; }
     .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 400; line-height: 1.0; color: var(--umber); margin-bottom: 0.3rem; opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
-    .hero.has-photo h1 { color: var(--umber); text-shadow: 0 2px 20px rgba(245,239,228,0.8); }
     .hero h1 span { display: block; color: var(--terracotta); font-weight: 600; }
     .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--umber); opacity: 0; animation: fadeUp 1s ease forwards 0.8s; margin-top: 1.2rem; max-width: 480px; }
     .hero-divider { width: 80px; height: 1px; background: var(--terracotta); margin: 2rem 0; opacity: 0; animation: fadeUp 1s ease forwards 1s; }
     .hero-tagline { font-size: 1rem; letter-spacing: 0.08em; color: var(--umber); opacity: 0; animation: fadeUp 1s ease forwards 1.2s; max-width: 400px; font-style: italic; }
-    .hero-scroll { position: absolute; bottom: 3rem; left: 6rem; display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--umber); opacity: 0; animation: fadeUp 1s ease forwards 1.6s; }
-    .hero-scroll::before { content: ''; width: 40px; height: 1px; background: var(--terracotta); }
-    .vertical-text { position: absolute; right: 3rem; top: 50%; transform: translateY(-50%) rotate(90deg); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--umber); opacity: 0.25; text-transform: uppercase; white-space: nowrap; }
+
 
     /* SECTIONS */
     section { padding: 6rem 3rem; position: relative; }
@@ -644,9 +644,9 @@
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
-      .hero { padding: 7rem 1.5rem 4rem; }
-      .hero-scroll { left: 1.5rem; display: none; }
-      .vertical-text { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; gap: 2rem; }
+      .hero-photo-frame { width: 100%; height: 280px; }
+      .hero-photo-frame img { object-position: center 20%; }
       .bio-inner { grid-template-columns: 1fr; gap: 3rem; }
       .bio-left { position: static; }
       .disciplines-grid { grid-template-columns: 1fr; }
@@ -687,14 +687,16 @@
   </nav>
 
   <section id="inicio" class="hero">
-    <div class="hero-bg" id="hero-bg"></div>
-    <p class="hero-ornament" id="hero-ornament"></p>
-    <h1 id="hero-name"></h1>
-    <div class="hero-divider"></div>
-    <p class="hero-subtitle" id="hero-subtitle"></p>
-    <p class="hero-tagline" id="hero-tagline"></p>
-    <p class="hero-scroll" id="hero-scroll"></p>
-    <span class="vertical-text" id="hero-origin"></span>
+    <div class="hero-text">
+      <p class="hero-ornament" id="hero-ornament"></p>
+      <h1 id="hero-name"></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-subtitle" id="hero-subtitle"></p>
+      <p class="hero-tagline" id="hero-tagline"></p>
+    </div>
+    <div class="hero-photo-frame" id="hero-photo-frame">
+      <img id="hero-photo" src="" alt="Tere Salas" />
+    </div>
   </section>
 
   <section id="biografia" class="bio-section">
@@ -762,14 +764,13 @@
   <script>
   // ── Render from config ───────────────────────────────────────
 
-  // Hero background photo
-  const heroBg = document.getElementById('hero-bg');
+  // Hero photo frame
+  const heroPhoto = document.getElementById('hero-photo');
+  const heroFrame = document.getElementById('hero-photo-frame');
   if (SITE_CONFIG.artistPhoto) {
-    heroBg.style.backgroundImage = 'url(' + SITE_CONFIG.artistPhoto + ')';
-    const heroSection = document.getElementById('inicio');
-    const img = new Image();
-    img.onload = () => heroSection.classList.add('has-photo');
-    img.src = SITE_CONFIG.artistPhoto;
+    heroPhoto.src = SITE_CONFIG.artistPhoto;
+  } else {
+    heroFrame.style.display = 'none';
   }
 
   // Hero
@@ -778,8 +779,7 @@
   document.getElementById('hero-name').innerHTML = `${nameParts[0]}<span>${nameParts.slice(1).join(' ')}</span>`;
   document.getElementById('hero-subtitle').textContent = SITE_CONFIG.subtitle;
   document.getElementById('hero-tagline').textContent = SITE_CONFIG.heroText;
-  document.getElementById('hero-scroll').textContent = SITE_CONFIG.scrollLabel;
-  document.getElementById('hero-origin').textContent = SITE_CONFIG.origin;
+
   document.getElementById('nav-logo-text').textContent = SITE_CONFIG.artistName;
 
   // Bio
