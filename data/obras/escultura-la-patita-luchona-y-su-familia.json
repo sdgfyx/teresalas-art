@@ -1,0 +1,82 @@
+{
+  "titulo": "La Patita luchona y su familia",
+  "disciplina": "Escultura",
+  "tipo": "Escultura",
+  "anno": "2025",
+  "compositionImage": "",
+  "compositionCaption": "Composición: La Patita luchona y su familia",
+  "motivosTitle": "Exposición de Motivos",
+  "motivos": "La Patita representa a una mujer maltratada, violentada, por un marido perezoso y sinvergüenza. Ella sale a buscar el alimento para su prole, pero no le alcanza y, en vez de reclamar a su pato desobligado, pelea en el mercado con la idea de hacer rendir su magro presupuesto.\nLa Patita, al sentirse abandonada y maltratada, no se resigna a cargar “con la cruz que le tocó” por lo que decide luchar, estudiar y prepararse para sacar adelante, ella sola, a su familia, compuesta por cuatro “patitos”.  El mayor, el pato luchador, consciente de la situación en la que se encuentra su madre, juega el papel de defensor de la familia, por lo que sueña en transformarse en un gran luchador, para así proteger a todos de su padre abusivo. No puede faltar la patita princesa, a quien no le interesa nada más que ella, siempre arreglada, bella, sin importarle lo que tengan que hacer para complacerla.  Sigue el patito delicado, débil, “diferente”, sintiéndose seguro solo bajo las faldas de su madre. Por último, la patita soñadora, la más pequeña, la que no se entera de nada, la que vive feliz en su mundo mágico.",
+  "motivosCierre": "Así, en mi propuesta, la Patita busca terminar con una relación fallida en donde es maltratada y abusada, armándose de valor para, junto con sus hijos y bien fortalecida, salir con la frente muy en alto.",
+  "piezas": [
+    {
+      "titulo": "La patita y su familia",
+      "descripcion": "Conjunto de cinco piezas: La Patita, el Patito luchador, la Patita princesa, el Patito delicado y la Patita soñadora.",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2025",
+        "tecnica": "Modelado a mano en barro",
+        "acabado": "Pintura acrílica",
+        "dimensiones": "30 x 20 x 45 cm"
+      },
+      "images": [
+        "images/escultura/004-la-patita/piezas/004-202503-la-patita-y-su-familia.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2025",
+      "tipo": "Exposición",
+      "evento": "El Imaginario de Cri Cri",
+      "lugar": "Museo Casa del Caballero Águila, San Pedro Cholula, Puebla",
+      "images": [
+        "images/escultura/004-la-patita/expos/004-2025-mx-pue-expo-de-arte-01.jpg"
+      ]
+    },
+    {
+      "anno": "2025",
+      "tipo": "Exposición",
+      "evento": "El Imaginario de Cri Cri",
+      "lugar": "Museo Metropolitano de Monterrey, Monterrey, NL",
+      "images": [
+        "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-01.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-02.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-03.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-04.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-05.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-06.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-07.jpg"
+      ]
+    },
+    {
+      "anno": "2025",
+      "tipo": "Exposición",
+      "evento": "El Imaginario de Cri Cri",
+      "lugar": "Museo Israel Cavazos, Guadalupe, NL",
+      "images": [
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-01.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-02.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-03.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-04.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-05.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-06.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-07.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-08.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-09.jpg"
+      ]
+    },
+    {
+      "anno": "2025",
+      "tipo": "Exposición",
+      "evento": "El Imaginario de Cri Cri",
+      "lugar": "Museo de Arte Contemporáneo, Santiago, NL",
+      "images": [
+        "images/escultura/004-la-patita/expos/004-2025-mx-santiago-expo-de-arte-01.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-santiago-expo-de-arte-02.jpg",
+        "images/escultura/004-la-patita/expos/004-2025-mx-santiago-expo-de-arte-03.jpg"
+      ]
+    }
+  ]
+}

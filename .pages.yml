@@ -1,0 +1,370 @@
+# Configuración de Pages CMS (https://pagescms.org)
+# Permite editar el contenido del sitio con formularios, sin tocar código.
+#   - Obras:  data/obras/<disciplina>-<titulo>.json  (una por obra, se ven en obra.html?id=...)
+#   - Sitio:  data/site.json  (biografía, disciplinas, reconocimientos, galería y contacto)
+# Las imágenes se suben a la carpeta images/ (misma estructura de siempre).
+
+media:
+  input: images
+  output: images
+  categories: [image]
+  rename: safe
+
+content:
+  # ─────────────────────────────────────────────────────────────
+  #  OBRAS
+  # ─────────────────────────────────────────────────────────────
+  - name: obras
+    label: Obras
+    description: >-
+      Cada obra tiene su propia página. Para que aparezca en la página principal,
+      agrégala también en "Sitio" → Disciplinas y/o Galería.
+    type: collection
+    path: data/obras
+    format: json
+    filename:
+      template: "{disciplina}-{titulo}.json"
+      field: create
+    view:
+      primary: titulo
+      fields: [titulo, disciplina, anno]
+      sort: [titulo, anno]
+      search: [titulo]
+      default:
+        sort: anno
+        order: desc
+    fields:
+      - name: titulo
+        label: Título de la obra
+        type: string
+        required: true
+        description: Si el título incluye la palabra "Trilogía", se muestra en dos líneas.
+      - name: disciplina
+        label: Disciplina
+        type: select
+        required: true
+        options:
+          values: [Escultura, Pintura, Cine & Teatro]
+      - name: tipo
+        label: Tipo de obra
+        type: string
+        required: true
+        description: "Por ejemplo: Escultura, Trilogía, Pintura acrílica."
+      - name: anno
+        label: Año
+        type: string
+        required: true
+        pattern:
+          regex: "^\\d{4}$"
+          message: "Escribe el año con 4 números, por ejemplo 2025."
+      - name: coverImage
+        label: Imagen de portada (opcional)
+        type: image
+        description: >-
+          Si pones una imagen aquí, aparece difuminada detrás del título.
+          Si la dejas vacía, el encabezado queda liso.
+          Sube las fotos dentro de la carpeta de la obra, por ejemplo images/escultura/005-nombre-de-la-obra/piezas.
+      - name: compositionImage
+        label: Foto de conjunto (opcional)
+        type: image
+        description: Una sola foto que muestre todas las piezas juntas. Aparece debajo de la exposición de motivos.
+      - name: compositionCaption
+        label: Texto debajo de la foto de conjunto
+        type: string
+      - name: motivosTitle
+        label: Título de la sección de motivos
+        type: string
+        default: Exposición de Motivos
+      - name: motivos
+        label: Exposición de motivos
+        type: text
+        description: Deja una línea en blanco entre párrafos.
+      - name: motivosCierre
+        label: Frase de cierre
+        type: text
+        description: Aparece en mayúsculas y en color terracota al final de los motivos.
+      - name: piezasTitulo
+        label: Título de la sección de piezas (opcional)
+        type: string
+        description: Déjalo vacío para que se escriba solo ("La pieza" o "Las 3 piezas").
+      - name: piezas
+        label: Piezas
+        type: object
+        description: Una obra puede tener una o varias piezas (por ejemplo, una trilogía tiene tres).
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{fields.titulo}"
+        fields:
+          - name: titulo
+            label: Título de la pieza
+            type: string
+            required: true
+          - name: descripcion
+            label: Descripción
+            type: text
+            description: Cada salto de línea (Enter) se respeta en la página.
+          - name: ficha
+            label: Ficha técnica
+            type: object
+            fields:
+              - name: autor
+                label: Autor
+                type: string
+                default: Tere Salas
+              - name: asociacion
+                label: Asociación
+                type: string
+                default: Plástica de Monterrey
+              - name: anno
+                label: Año
+                type: string
+              - name: tecnica
+                label: Técnica
+                type: string
+                description: "Por ejemplo: Modelado a mano en barro."
+              - name: acabado
+                label: Acabado
+                type: string
+                description: "Por ejemplo: Pintura acrílica y laca."
+              - name: dimensiones
+                label: Dimensiones
+                type: string
+                description: "Por ejemplo: 25 × 25 cm."
+          - name: images
+            label: Fotos de la pieza
+            type: image
+            description: >-
+              La primera foto es la principal; las demás aparecen como miniaturas.
+              Súbelas en la carpeta "piezas" de la obra, por ejemplo images/escultura/005-nombre-de-la-obra/piezas.
+            options:
+              multiple: true
+      - name: historial
+        label: Exposiciones y premios de esta obra
+        type: object
+        description: Se ordenan solas, de la más reciente a la más antigua.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.anno} · {fields.evento}"
+        fields:
+          - name: anno
+            label: Año
+            type: string
+            required: true
+            pattern:
+              regex: "^\\d{4}$"
+              message: "Escribe el año con 4 números, por ejemplo 2025."
+          - name: tipo
+            label: Tipo
+            type: select
+            required: true
+            options:
+              values: [Exposición, Premio, Mención Honorífica]
+          - name: evento
+            label: Nombre del evento
+            type: string
+            required: true
+          - name: lugar
+            label: Lugar
+            type: string
+            description: "Por ejemplo: Biblioteca Universitaria Raúl Rangel Frías, Monterrey, NL."
+          - name: images
+            label: Fotos del evento
+            type: image
+            description: >-
+              Se muestran hasta 4 fotos (todas se pueden ver al hacer clic).
+              Súbelas en la carpeta "expos" de la obra, por ejemplo images/escultura/005-nombre-de-la-obra/expos.
+            options:
+              multiple: true
+          - name: flyer
+            label: Cartel / flyer (opcional)
+            type: image
+            description: Se guarda, pero por ahora no se muestra en la página.
+          - name: link
+            label: Enlace a nota o publicación (opcional)
+            type: string
+            description: Se guarda, pero por ahora no se muestra en la página.
+
+  # ─────────────────────────────────────────────────────────────
+  #  SITIO (página principal)
+  # ─────────────────────────────────────────────────────────────
+  - name: sitio
+    label: Sitio (página principal)
+    description: Biografía, disciplinas, reconocimientos, galería y contacto de la página principal.
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - name: reconocimientos
+        label: Reconocimientos y exhibiciones
+        type: object
+        description: En la página principal se muestran los 10 más recientes (por año).
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.year} · {fields.title}"
+        fields:
+          - name: year
+            label: Año
+            type: string
+            required: true
+            pattern:
+              regex: "^\\d{4}$"
+              message: "Escribe el año con 4 números, por ejemplo 2025."
+          - name: title
+            label: Título
+            type: string
+            required: true
+            description: "Por ejemplo: Mención Honorífica — VI Bienal de las Plásticas de Nuevo León."
+          - name: description
+            label: Descripción
+            type: text
+
+      - name: gallery
+        label: Galería
+        type: object
+        description: >-
+          En la página principal se muestran 10: primero las marcadas como "Destacada",
+          y luego las más recientes según la fecha.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.date} · {fields.title}"
+        fields:
+          - name: title
+            label: Título
+            type: string
+            required: true
+          - name: discipline
+            label: Disciplina
+            type: select
+            required: true
+            options:
+              values: [Escultura, Pintura, Cine & Teatro]
+          - name: type
+            label: Tipo
+            type: select
+            required: true
+            options:
+              values:
+                - { value: pieza, label: Pieza }
+                - { value: expo, label: Exposición }
+                - { value: premio, label: Premio }
+          - name: date
+            label: Fecha
+            type: string
+            required: true
+            description: "Año y mes (202407) o año, mes y día (20240716). Sirve para ordenar por más reciente."
+            pattern:
+              regex: "^\\d{6}(\\d{2})?$"
+              message: "Usa solo números: 202407 o 20240716."
+          - name: featured
+            label: Destacada (siempre visible)
+            type: boolean
+            default: false
+          - name: description
+            label: Descripción
+            type: text
+          - name: coverImage
+            label: Imagen
+            type: image
+            required: true
+          - name: obra
+            label: Página de la obra (opcional)
+            type: reference
+            description: Si eliges una obra, al hacer clic en la imagen se abre su página.
+            options:
+              collection: obras
+              search: titulo
+              label: "{fields.titulo}"
+
+      - name: disciplines
+        label: Disciplinas
+        type: object
+        description: Las tres columnas de "Su obra" (Escultura, Pintura, Cine & Teatro).
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.number} · {fields.title}"
+        fields:
+          - name: number
+            label: Número
+            type: string
+            description: "Se muestra grande y tenue, por ejemplo 01."
+          - name: title
+            label: Disciplina
+            type: string
+            required: true
+          - name: description
+            label: Descripción
+            type: text
+          - name: works
+            label: Obras destacadas
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{fields.title}"
+            fields:
+              - name: title
+                label: Título como aparece en la lista
+                type: string
+                required: true
+              - name: obra
+                label: Página de la obra (opcional)
+                type: reference
+                description: Si eliges una obra, el título se vuelve un enlace a su página.
+                options:
+                  collection: obras
+                  search: titulo
+                  label: "{fields.titulo}"
+
+      - name: artistName
+        label: Nombre de la artista
+        type: string
+        required: true
+        description: La primera palabra se muestra arriba y el resto abajo, en color terracota.
+      - name: tagline
+        label: Título pequeño sobre el nombre
+        type: string
+      - name: subtitle
+        label: Subtítulo (disciplinas)
+        type: string
+      - name: heroText
+        label: Frase de presentación
+        type: text
+      - name: artistPhoto
+        label: Foto de la artista
+        type: image
+      - name: bioQuote
+        label: Cita de la biografía
+        type: text
+      - name: bioOriginText
+        label: Texto de "Raíces"
+        type: text
+      - name: bioParagraphs
+        label: Párrafos de la biografía
+        type: text
+        description: Un párrafo por cuadro. Para poner un título en cursiva, escríbelo entre <em> y </em>.
+        list: true
+      - name: origin
+        label: Lugar de origen (pie de página)
+        type: string
+      - name: contactTagline
+        label: Frase de contacto
+        type: text
+      - name: instagram
+        label: Enlace de Instagram
+        type: string
+      - name: facebook
+        label: Enlace de Facebook
+        type: string
+      - name: email
+        label: Correo electrónico
+        type: string
+      - name: scrollLabel
+        label: Texto "Desplazar para explorar"
+        type: string
+        hidden: true
