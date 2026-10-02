@@ -1,0 +1,61 @@
+{
+  "titulo": "Virgen Esperanza",
+  "disciplina": "Escultura",
+  "tipo": "Escultura",
+  "anno": "2025",
+  "compositionImage": "",
+  "compositionCaption": "Composición: Virgen Esperanza",
+  "motivosTitle": "Exposición de Motivos",
+  "motivos": "cuando el cansancio aparece, \ncuando las noches sin dormir se acumulan, \ncuando los apoyos dejan de manifestarse, \ncuando la fortaleza empieza a fallar, \ncuando se hace evidente la necesidad de consuelo, de empatía, viene a la mente la idea de la existencia de un ser más poderoso que nosotros, alguien con quien dirigirnos, alguien piadoso que conocerá de nuestra búsqueda, alguien que escuchará y que nos proveerá de nuevo de esa fuerza que hemos perdido.",
+  "motivosCierre": "Con lo anterior en mente, nace la idea de personificar ese ente superior, Esperanza, Virgen de las Madres Buscadoras, como alguien que se encargará de brindarnos esa esperanza de que, al final, todos nos reencontraremos.",
+  "piezas": [
+    {
+      "titulo": "Virgen Esperanza",
+      "descripcion": "Esperanza, Virgen de Madres Buscadoras.\nSE BUSCAN 131,000 MEXICANOS\nSEXO: INDISTINTO\nEDAD: INDISTINTA\nTEZ: INDISTINTA\nDESAPARECIÓ EN: CUALQUIER LUGAR DE MÉXICO",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2025",
+        "tecnica": "Modelado a mano en barro",
+        "acabado": "Pintura acrílica y Laca",
+        "dimensiones": "31 x 25 x 56 cm"
+      },
+      "images": [
+        "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-completa.jpg",
+        "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-closeup.jpg",
+        "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-detalle.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "10 Edición Unidas por el Arte. Ser mujer: arte y reflexión",
+      "lugar": "Biblioteca Universitaria Raúl Rangel Frías",
+      "flyer": "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-flyer.jpg",
+      "link": "https://artesvisuales.uanl.mx/noticias/se-inaugura-la-decima-edicion-de-unidas-por-el-arte/",
+      "images": [
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-01.jpg",
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-02.jpg",
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-03.jpg",
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-04.jpg",
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-05.jpg",
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-06.jpg"
+      ]
+    },
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "Paisaje sin límites",
+      "lugar": "Unidad Cultural de Arquitectura UANL, Monterrey, NL",
+      "flyer": "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-paisajes-flyer.jpg",
+      "link": "https://www.instagram.com/reels/DUpAgtrjMmd/",
+      "images": [
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-paisajes-01.jpg",
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-paisajes-02.jpg",
+        "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-paisajes-03.jpg"
+      ]
+    }
+  ]
+}

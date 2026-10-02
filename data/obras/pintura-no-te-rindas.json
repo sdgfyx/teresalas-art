@@ -1,0 +1,36 @@
+{
+  "titulo": "No te Rindas",
+  "disciplina": "Pintura",
+  "tipo": "Pintura Acrílica",
+  "anno": "2024",
+  "motivosTitle": "Exposición de Motivos",
+  "motivos": "Siempre me han parecido muy interesantes las suculentas y las cactáceas por su gran belleza y su resistencia; por sobrevivir en campos baldíos, en desiertos, sin lluvias, sin cuidados. Siempre están ahí, como testigos de la vida. Es aún más impresionante ver cuando florecen: colores brillantes, fosforescentes a veces. Ese rosa mexicano, amarillos, blancos y un sinfín de colores. \nEn esta ocasión quise representar el nopal morado con flores amarillas.  Al leer sobre por qué toman ese colorido tan extraño, me di cuenta que es en respuesta a su adaptación y supervivencia ante el estrés ambiental; en temporadas invernales o de grandes sequías, la planta responde tomando esa tonalidad morada, como si estuviera gritando ¡NO ME RINDO! Quiero seguir aquí.  En cuanto regresan las lluvias con las temperaturas cálidas, ese color extraordinario vira también al tradicional verde, diciéndonos ¡el peligro ha pasado!\nDesde mi punto de vista, deberíamos copiar el comportamiento de esta cactácea, responder con una versión más bella de nosotros ante las condiciones adversas, regresando siempre a nuestra esencia en condiciones normales. Esa capacidad de adaptación es admirable y digna de ser emulada por nosotros.",
+  "motivosCierre": "¡¡No te rindas!! Aprendamos del comportamiento del nopal morado.",
+  "piezas": [
+    {
+      "titulo": "¡No te rindas!",
+      "descripcion": "Es una representación del nopal morado con flores amarillas.  Esta tonalidad atípica es en respuesta a su adaptación y supervivencia ante el estrés ambiental. En temporadas invernales o de grandes sequías, la planta responde tomando esa tonalidad morada, como si estuviera gritando ¡NO ME RINDO! Quiero seguir aquí.  En cuanto regresan las lluvias con las temperaturas cálidas, ese color extraordinario vira también al tradicional verde, diciéndonos ¡el peligro ha pasado! Desde mi punto de vista, deberíamos copiar el comportamiento de esta cactácea, responder con una versión más bella de nosotros ante las condiciones adversas, regresando siempre a nuestra esencia en condiciones normales. Esa capacidad de adaptación es admirable y digna de ser emulada por nosotros.",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2024",
+        "tecnica": "Pintura en acrílico",
+        "acabado": "",
+        "dimensiones": "70x120 cm"
+      },
+      "images": [
+        "images/pintura/008-no-te-rindas/piezas/008-2024-no-te-rindas.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "Flora, Identidad y Diplomacia",
+      "lugar": "Biblioteca de Ciencias Agropecuarias y Biológicas, Nuevo León, México",
+      "link": "https://www.facebook.com/share/p/1BzG62Z67u/",
+      "images": []
+    }
+  ]
+}
