@@ -1,18 +1,312 @@
 {
-  "artistName": "Tere Salas",
-  "tagline": "Artista",
-  "subtitle": "Escultura · Pintura · Cine · Teatro",
-  "heroText": "Una práctica que explora la memoria, el dolor y la resiliencia humana.",
-  "scrollLabel": "Desplazar para explorar",
-  "origin": "Villa de Santiago, Nuevo León · México",
-  "artistPhoto": "images/tere-salas-cover.jpg",
-  "bioQuote": "Una narrativa visual que da voz a la memoria y la resiliencia.",
-  "bioOriginText": "Nacida en Villa de Santiago, Nuevo León — un pueblo que vive en cada una de sus obras.",
-  "bioParagraphs": [
-    "Tere Salas es una artista cuya práctica integra el cine, la televisión, la pintura y la escultura, destacándose por una profunda sensibilidad social y una narrativa visual que explora la memoria, el dolor y la resiliencia humana.",
-    "Su obra se caracteriza por dar voz a temáticas urgentes, logrando un reconocimiento que trasciende las fronteras nacionales. Con más de cinco décadas de trayectoria en las artes escénicas y visuales, Tere ha construido un universo estético propio: enraizado en la tierra roja de Nuevo León, expansivo en su alcance internacional.",
-    "En el ámbito de las Artes Plásticas, ha consolidado una trayectoria notable en la escultura en barro y materiales epóxicos. Su compromiso con las causas sociales es evidente en piezas como la trilogía <em>Madres Buscadoras</em>, obra que le otorgó una Mención Honorífica en la VI Bienal de las Plásticas de Nuevo León (2024).",
-    "Como pintora, domina técnicas como el óleo y la acuarela, con obras que han sido presentadas en espacios académicos y culturales clave a lo largo de México y el mundo."
+  "reconocimientos": [
+    {
+      "year": "2026",
+      "title": "Centro de Arte Contemporáneo ART COMMUNE — Moscú, Rusia",
+      "description": "Participación internacional que extiende su obra más allá de las fronteras latinoamericanas. Exhibición: Imagen de la Mujer."
+    },
+    {
+      "year": "2026",
+      "title": "Paisajes sin Límites — Nuevo León, México",
+      "description": "Exposición colectiva en Nuevo León."
+    },
+    {
+      "year": "2026",
+      "title": "Unidas por el Arte — Nuevo León, México",
+      "description": "Exposición colectiva, múltiples presentaciones."
+    },
+    {
+      "year": "2025",
+      "title": "EduCart — Nuevo León, México",
+      "description": "Exposición de pintura en Nuevo León."
+    },
+    {
+      "year": "2025",
+      "title": "Mujer es — Nuevo León, México",
+      "description": "Exposición colectiva en Nuevo León."
+    },
+    {
+      "year": "2025",
+      "title": "1era Reseña de Arte Contemporáneo — Nuevo León, México",
+      "description": "Participación en la primera edición de esta reseña de arte contemporáneo."
+    },
+    {
+      "year": "2025",
+      "title": "Expo Santiago — Nuevo León, México",
+      "description": "Exhibición de escultura."
+    },
+    {
+      "year": "2025",
+      "title": "Expo Monterrey — Nuevo León, México",
+      "description": "Exhibición de escultura en Monterrey."
+    },
+    {
+      "year": "2025",
+      "title": "Día Mundial del Arte — Exhibición Virtual Internacional",
+      "description": "Integración a la era digital con participación en exhibiciones virtuales de alcance global."
+    },
+    {
+      "year": "2025",
+      "title": "8 de Marzo — Querétaro, México",
+      "description": "Exposición colectiva en la Fundación Carol Rolland, Querétaro."
+    },
+    {
+      "year": "2024",
+      "title": "Mención Honorífica — VI Bienal de las Plásticas de Nuevo León",
+      "description": "Por la trilogía Madres Buscadoras. Exhibida en la Biblioteca Universitaria Raúl Rangel Frías y el Museo de Ciudad Guadalupe."
+    },
+    {
+      "year": "2024",
+      "title": "Abriendo al Pasado — Nuevo León, México",
+      "description": "Exposición de pintura."
+    },
+    {
+      "year": "2024",
+      "title": "Expo Guadalupe — Nuevo León, México",
+      "description": "Exhibición de escultura."
+    },
+    {
+      "year": "2024",
+      "title": "Imagen de la Mujer — Moscú, Rusia",
+      "description": "Premio y exhibición internacional."
+    },
+    {
+      "year": "2024",
+      "title": "De Barro, Somos — Nuevo León",
+      "description": "Exposición colectiva de escultura."
+    },
+    {
+      "year": "2023",
+      "title": "Largometraje: El más triste adiós",
+      "description": "Participación en el largometraje dirigido por Juan Pablo Cantú."
+    },
+    {
+      "year": "2023",
+      "title": "Exposición Colectiva — Nuevo León, México",
+      "description": "Múltiples presentaciones de pintura en Nuevo León."
+    }
+  ],
+  "gallery": [
+    {
+      "title": "Madres Buscadoras",
+      "discipline": "Escultura",
+      "type": "pieza",
+      "date": "202407",
+      "featured": true,
+      "description": "Trilogía escultórica. Mención Honorífica, VI Bienal de las Plásticas de Nuevo León, 2024.",
+      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2024-mx-monterrey-expo-bienal-05.jpg",
+      "obra": "data/obras/escultura-madres-buscadoras.json"
+    },
+    {
+      "title": "Nada es lo que Parece",
+      "discipline": "Escultura",
+      "type": "pieza",
+      "date": "202510",
+      "featured": false,
+      "description": "Escultura en barro y materiales epóxicos.",
+      "coverImage": "images/escultura/003-nada-es-lo-que-parece/piezas/003-202510-nada-es-lo-que-parece.jpeg",
+      "obra": "data/obras/escultura-nada-es-lo-que-parece.json"
+    },
+    {
+      "title": "Virgen Esperanza",
+      "discipline": "Escultura",
+      "type": "pieza",
+      "date": "202602",
+      "featured": false,
+      "description": "Esperanza, la Virgen de las Madres Buscadoras",
+      "coverImage": "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-completa.jpg",
+      "obra": "data/obras/escultura-virgen-esperanza.json"
+    },
+    {
+      "title": "La Patita y su Familia",
+      "discipline": "Escultura",
+      "type": "pieza",
+      "date": "202503",
+      "featured": false,
+      "description": "Escultura.",
+      "coverImage": "images/escultura/004-la-patita/piezas/004-202503-la-patita-y-su-familia.jpg",
+      "obra": "data/obras/escultura-la-patita-luchona-y-su-familia.json"
+    },
+    {
+      "title": "De Barro, Somos — Nuevo León",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20240716",
+      "featured": false,
+      "description": "Exposición colectiva, Nuevo León, julio 2024.",
+      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2024-mx-guadalupe-debarro-somos-expo-colectiva-03.jpg"
+    },
+    {
+      "title": "VI Bienal de las Plásticas — Nuevo León",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20241127",
+      "featured": true,
+      "description": "Noviembre 2024. Mención Honorífica por Madres Buscadoras.",
+      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2024-mx-monterrey-expo-bienal-04.jpg"
+    },
+    {
+      "title": "8M — Querétaro",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20260305",
+      "featured": false,
+      "description": "Fundación Carol Rolland, marzo 2026.",
+      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2026-mx-queretaro-exposicion-8m-01.jpg"
+    },
+    {
+      "title": "Paisajes sin Límites — Nuevo León",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20260211",
+      "featured": false,
+      "description": "Febrero 2026.",
+      "coverImage": "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-paisajes-02.jpg"
+    },
+    {
+      "title": "Unidas por el Arte — Nuevo León",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20260312",
+      "featured": false,
+      "description": "Marzo 2026.",
+      "coverImage": "images/escultura/002-virgen-esperanza/expos/002-20260312-mx-nuevoleon-unidas-por-el-arte.jpg"
+    },
+    {
+      "title": "El imaginario de Cri Cri — Santiago, NL",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20250530",
+      "featured": false,
+      "description": "Mayo 2025.",
+      "coverImage": "images/escultura/004-la-patita/expos/004-2025-mx-santiago-expo-de-arte-03.jpg"
+    },
+    {
+      "title": "El imaginario de Cri Cri — Monterrey, NL",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20250719",
+      "featured": false,
+      "description": "Julio 2025.",
+      "coverImage": "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-04.jpg"
+    },
+    {
+      "title": "El imaginario de Cri Cri — Guadalupe, NL",
+      "discipline": "Escultura",
+      "type": "expo",
+      "date": "20250719",
+      "featured": false,
+      "description": "Julio 2025.",
+      "coverImage": "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-06.jpg"
+    },
+    {
+      "title": "Nostalgia",
+      "discipline": "Pintura",
+      "type": "pieza",
+      "date": "202511",
+      "featured": false,
+      "description": "Óleo.",
+      "coverImage": "images/pintura/001-nostalgia/piezas/001-202511-nostalgia.jpg"
+    },
+    {
+      "title": "Ni con el Pétalo de una Rosa",
+      "discipline": "Pintura",
+      "type": "pieza",
+      "date": "202503",
+      "featured": false,
+      "description": "Pintura.",
+      "coverImage": "images/pintura/002-ni-con-el-petalo-de-una-rosa/piezas/002-202503-ni-con-el-petalo-de-una-rosa.jpg"
+    },
+    {
+      "title": "Ancestros Remendando mi Corazón",
+      "discipline": "Pintura",
+      "type": "pieza",
+      "date": "202501",
+      "featured": false,
+      "description": "Pintura.",
+      "coverImage": "images/pintura/003-ancestros-remendando-mi-corazon/piezas/003-202501-ancestros-remendando-mi-corazon.jpeg"
+    },
+    {
+      "title": "Puerta con Vitral",
+      "discipline": "Pintura",
+      "type": "pieza",
+      "date": "202407",
+      "featured": false,
+      "description": "Pintura.",
+      "coverImage": "images/pintura/004-abriendo-al-pasado/piezas/004-202407-puerta-con-vitral.jpg"
+    },
+    {
+      "title": "Y Seguimos Jugando",
+      "discipline": "Pintura",
+      "type": "pieza",
+      "date": "202305",
+      "featured": false,
+      "description": "Pintura.",
+      "coverImage": "images/pintura/005-y-seguimos-jugando/piezas/005-202305-y-seguimos-jugando.jpg"
+    },
+    {
+      "title": "Hasta los Ángeles Lloran",
+      "discipline": "Pintura",
+      "type": "pieza",
+      "date": "201812",
+      "featured": false,
+      "description": "Pintura, 2018.",
+      "coverImage": "images/pintura/006-hasta-los-angeles-lloran/piezas/006-201812-hasta-los-angeles-lloran.jpg"
+    },
+    {
+      "title": "Llanto, Gritos y Silencio",
+      "discipline": "Pintura",
+      "type": "pieza",
+      "date": "201812",
+      "featured": false,
+      "description": "Pintura, 2018.",
+      "coverImage": "images/pintura/007-llanto-gritos-y-silencio/piezas/007-201812-llanto-gritos-y-silencio.jpg"
+    },
+    {
+      "title": "EduCart — Nuevo León",
+      "discipline": "Pintura",
+      "type": "expo",
+      "date": "20251110",
+      "featured": false,
+      "description": "Noviembre 2025.",
+      "coverImage": "images/pintura/001-nostalgia/expos/001-20251110-mx-nuevoleon-educart-1.jpg"
+    },
+    {
+      "title": "Mujer es — Nuevo León",
+      "discipline": "Pintura",
+      "type": "expo",
+      "date": "20250308",
+      "featured": false,
+      "description": "Marzo 2025.",
+      "coverImage": "images/pintura/002-ni-con-el-petalo-de-una-rosa/expos/002-20250308-mx-nuevoleon-mujer-es-1.jpg"
+    },
+    {
+      "title": "1era Reseña de Arte Contemporáneo — Nuevo León",
+      "discipline": "Pintura",
+      "type": "expo",
+      "date": "20250130",
+      "featured": false,
+      "description": "Enero 2025.",
+      "coverImage": "images/pintura/003-ancestros-remendando-mi-corazon/expos/003-20250130-mx-nuevoleon-1era-resena-arte-contemporaneo.jpg"
+    },
+    {
+      "title": "Abriendo al Pasado — Nuevo León",
+      "discipline": "Pintura",
+      "type": "expo",
+      "date": "20240702",
+      "featured": false,
+      "description": "Julio 2024.",
+      "coverImage": "images/pintura/004-abriendo-al-pasado/expos/004-20240702-abriendo-al-pasado-1.jpg"
+    },
+    {
+      "title": "Exposición Colectiva — Nuevo León",
+      "discipline": "Pintura",
+      "type": "expo",
+      "date": "20230530",
+      "featured": false,
+      "description": "Mayo 2023.",
+      "coverImage": "images/pintura/005-y-seguimos-jugando/expos/005-20230530-mx-nuevoleon-exposicion-colectiva-1.jpg"
+    }
   ],
   "disciplines": [
     {
@@ -87,317 +381,23 @@
       ]
     }
   ],
-  "reconocimientos": [
-    {
-      "year": "2026",
-      "title": "Centro de Arte Contemporáneo ART COMMUNE — Moscú, Rusia",
-      "description": "Participación internacional que extiende su obra más allá de las fronteras latinoamericanas. Exhibición: Imagen de la Mujer."
-    },
-    {
-      "year": "2026",
-      "title": "Paisajes sin Límites — Nuevo León, México",
-      "description": "Exposición colectiva en Nuevo León."
-    },
-    {
-      "year": "2026",
-      "title": "Unidas por el Arte — Nuevo León, México",
-      "description": "Exposición colectiva, múltiples presentaciones."
-    },
-    {
-      "year": "2025",
-      "title": "EduCart — Nuevo León, México",
-      "description": "Exposición de pintura en Nuevo León."
-    },
-    {
-      "year": "2025",
-      "title": "Mujer es — Nuevo León, México",
-      "description": "Exposición colectiva en Nuevo León."
-    },
-    {
-      "year": "2025",
-      "title": "1era Reseña de Arte Contemporáneo — Nuevo León, México",
-      "description": "Participación en la primera edición de esta reseña de arte contemporáneo."
-    },
-    {
-      "year": "2025",
-      "title": "Expo Santiago — Nuevo León, México",
-      "description": "Exhibición de escultura."
-    },
-    {
-      "year": "2025",
-      "title": "Expo Monterrey — Nuevo León, México",
-      "description": "Exhibición de escultura en Monterrey."
-    },
-    {
-      "year": "2025",
-      "title": "Día Mundial del Arte — Exhibición Virtual Internacional",
-      "description": "Integración a la era digital con participación en exhibiciones virtuales de alcance global."
-    },
-    {
-      "year": "2024",
-      "title": "Mención Honorífica — VI Bienal de las Plásticas de Nuevo León",
-      "description": "Por la trilogía Madres Buscadoras. Exhibida en la Biblioteca Universitaria Raúl Rangel Frías y el Museo de Ciudad Guadalupe."
-    },
-    {
-      "year": "2024",
-      "title": "Abriendo al Pasado — Nuevo León, México",
-      "description": "Exposición de pintura."
-    },
-    {
-      "year": "2024",
-      "title": "Expo Guadalupe — Nuevo León, México",
-      "description": "Exhibición de escultura."
-    },
-    {
-      "year": "2024",
-      "title": "Imagen de la Mujer — Moscú, Rusia",
-      "description": "Premio y exhibición internacional."
-    },
-    {
-      "year": "2025",
-      "title": "8 de Marzo — Querétaro, México",
-      "description": "Exposición colectiva en la Fundación Carol Rolland, Querétaro."
-    },
-    {
-      "year": "2023",
-      "title": "Largometraje: El más triste adiós",
-      "description": "Participación en el largometraje dirigido por Juan Pablo Cantú."
-    },
-    {
-      "year": "2023",
-      "title": "Exposición Colectiva — Nuevo León, México",
-      "description": "Múltiples presentaciones de pintura en Nuevo León."
-    },
-    {
-      "year": "2024",
-      "title": "De Barro, Somos — Nuevo León",
-      "description": "Exposición colectiva de escultura."
-    }
+  "artistName": "Tere Salas",
+  "tagline": "Artista",
+  "subtitle": "Escultura · Pintura · Cine · Teatro",
+  "heroText": "Una práctica que explora la memoria, el dolor y la resiliencia humana.",
+  "artistPhoto": "images/tere-salas-cover.jpg",
+  "bioQuote": "Una narrativa visual que da voz a la memoria y la resiliencia.",
+  "bioOriginText": "Nacida en Villa de Santiago, Nuevo León — un pueblo que vive en cada una de sus obras.",
+  "bioParagraphs": [
+    "Tere Salas es una artista cuya práctica integra el cine, la televisión, la pintura y la escultura, destacándose por una profunda sensibilidad social y una narrativa visual que explora la memoria, el dolor y la resiliencia humana.",
+    "Su obra se caracteriza por dar voz a temáticas urgentes, logrando un reconocimiento que trasciende las fronteras nacionales. Con más de cinco décadas de trayectoria en las artes escénicas y visuales, Tere ha construido un universo estético propio: enraizado en la tierra roja de Nuevo León, expansivo en su alcance internacional.",
+    "En el ámbito de las Artes Plásticas, ha consolidado una trayectoria notable en la escultura en barro y materiales epóxicos. Su compromiso con las causas sociales es evidente en piezas como la trilogía <em>Madres Buscadoras</em>, obra que le otorgó una Mención Honorífica en la VI Bienal de las Plásticas de Nuevo León (2024).",
+    "Como pintora, domina técnicas como el óleo y la acuarela, con obras que han sido presentadas en espacios académicos y culturales clave a lo largo de México y el mundo."
   ],
-  "gallery": [
-    {
-      "discipline": "Escultura",
-      "type": "pieza",
-      "date": "202407",
-      "featured": true,
-      "title": "Madres Buscadoras",
-      "description": "Trilogía escultórica. Mención Honorífica, VI Bienal de las Plásticas de Nuevo León, 2024.",
-      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2024-mx-monterrey-expo-bienal-05.jpg",
-      "obra": "data/obras/escultura-madres-buscadoras.json"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "pieza",
-      "date": "202510",
-      "featured": false,
-      "title": "Nada es lo que Parece",
-      "description": "Escultura en barro y materiales epóxicos.",
-      "coverImage": "images/escultura/003-nada-es-lo-que-parece/piezas/003-202510-nada-es-lo-que-parece.jpeg",
-      "obra": "data/obras/escultura-nada-es-lo-que-parece.json"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "pieza",
-      "date": "202602",
-      "featured": false,
-      "title": "Virgen Esperanza",
-      "description": "Esperanza, la Virgen de las Madres Buscadoras",
-      "coverImage": "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-completa.jpg",
-      "obra": "data/obras/escultura-virgen-esperanza.json"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "pieza",
-      "date": "202503",
-      "featured": false,
-      "title": "La Patita y su Familia",
-      "description": "Escultura.",
-      "coverImage": "images/escultura/004-la-patita/piezas/004-202503-la-patita-y-su-familia.jpg",
-      "obra": "data/obras/escultura-la-patita-luchona-y-su-familia.json"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20240716",
-      "featured": false,
-      "title": "De Barro, Somos — Nuevo León",
-      "description": "Exposición colectiva, Nuevo León, julio 2024.",
-      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2024-mx-guadalupe-debarro-somos-expo-colectiva-03.jpg"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20241127",
-      "featured": true,
-      "title": "VI Bienal de las Plásticas — Nuevo León",
-      "description": "Noviembre 2024. Mención Honorífica por Madres Buscadoras.",
-      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2024-mx-monterrey-expo-bienal-04.jpg"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20260305",
-      "featured": false,
-      "title": "8M — Querétaro",
-      "description": "Fundación Carol Rolland, marzo 2026.",
-      "coverImage": "images/escultura/001-madres-buscadoras/expos/001-2026-mx-queretaro-exposicion-8m-01.jpg"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20260211",
-      "featured": false,
-      "title": "Paisajes sin Límites — Nuevo León",
-      "description": "Febrero 2026.",
-      "coverImage": "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-paisajes-02.jpg"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20260312",
-      "featured": false,
-      "title": "Unidas por el Arte — Nuevo León",
-      "description": "Marzo 2026.",
-      "coverImage": "images/escultura/002-virgen-esperanza/expos/002-20260312-mx-nuevoleon-unidas-por-el-arte.jpg"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20250530",
-      "featured": false,
-      "title": "El imaginario de Cri Cri — Santiago, NL",
-      "description": "Mayo 2025.",
-      "coverImage": "images/escultura/004-la-patita/expos/004-2025-mx-santiago-expo-de-arte-03.jpg"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20250719",
-      "featured": false,
-      "title": "El imaginario de Cri Cri — Monterrey, NL",
-      "description": "Julio 2025.",
-      "coverImage": "images/escultura/004-la-patita/expos/004-2025-mx-monterrey-exposicion-colectiva-de-arte-04.jpg"
-    },
-    {
-      "discipline": "Escultura",
-      "type": "expo",
-      "date": "20250719",
-      "featured": false,
-      "title": "El imaginario de Cri Cri — Guadalupe, NL",
-      "description": "Julio 2025.",
-      "coverImage": "images/escultura/004-la-patita/expos/004-2025-mx-guadalupe-exposicion-de-arte-06.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "pieza",
-      "date": "202511",
-      "featured": false,
-      "title": "Nostalgia",
-      "description": "Óleo.",
-      "coverImage": "images/pintura/001-nostalgia/piezas/001-202511-nostalgia.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "pieza",
-      "date": "202503",
-      "featured": false,
-      "title": "Ni con el Pétalo de una Rosa",
-      "description": "Pintura.",
-      "coverImage": "images/pintura/002-ni-con-el-petalo-de-una-rosa/piezas/002-202503-ni-con-el-petalo-de-una-rosa.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "pieza",
-      "date": "202501",
-      "featured": false,
-      "title": "Ancestros Remendando mi Corazón",
-      "description": "Pintura.",
-      "coverImage": "images/pintura/003-ancestros-remendando-mi-corazon/piezas/003-202501-ancestros-remendando-mi-corazon.jpeg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "pieza",
-      "date": "202407",
-      "featured": false,
-      "title": "Puerta con Vitral",
-      "description": "Pintura.",
-      "coverImage": "images/pintura/004-abriendo-al-pasado/piezas/004-202407-puerta-con-vitral.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "pieza",
-      "date": "202305",
-      "featured": false,
-      "title": "Y Seguimos Jugando",
-      "description": "Pintura.",
-      "coverImage": "images/pintura/005-y-seguimos-jugando/piezas/005-202305-y-seguimos-jugando.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "pieza",
-      "date": "201812",
-      "featured": false,
-      "title": "Hasta los Ángeles Lloran",
-      "description": "Pintura, 2018.",
-      "coverImage": "images/pintura/006-hasta-los-angeles-lloran/piezas/006-201812-hasta-los-angeles-lloran.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "pieza",
-      "date": "201812",
-      "featured": false,
-      "title": "Llanto, Gritos y Silencio",
-      "description": "Pintura, 2018.",
-      "coverImage": "images/pintura/007-llanto-gritos-y-silencio/piezas/007-201812-llanto-gritos-y-silencio.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "expo",
-      "date": "20251110",
-      "featured": false,
-      "title": "EduCart — Nuevo León",
-      "description": "Noviembre 2025.",
-      "coverImage": "images/pintura/001-nostalgia/expos/001-20251110-mx-nuevoleon-educart-1.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "expo",
-      "date": "20250308",
-      "featured": false,
-      "title": "Mujer es — Nuevo León",
-      "description": "Marzo 2025.",
-      "coverImage": "images/pintura/002-ni-con-el-petalo-de-una-rosa/expos/002-20250308-mx-nuevoleon-mujer-es-1.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "expo",
-      "date": "20250130",
-      "featured": false,
-      "title": "1era Reseña de Arte Contemporáneo — Nuevo León",
-      "description": "Enero 2025.",
-      "coverImage": "images/pintura/003-ancestros-remendando-mi-corazon/expos/003-20250130-mx-nuevoleon-1era-resena-arte-contemporaneo.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "expo",
-      "date": "20240702",
-      "featured": false,
-      "title": "Abriendo al Pasado — Nuevo León",
-      "description": "Julio 2024.",
-      "coverImage": "images/pintura/004-abriendo-al-pasado/expos/004-20240702-abriendo-al-pasado-1.jpg"
-    },
-    {
-      "discipline": "Pintura",
-      "type": "expo",
-      "date": "20230530",
-      "featured": false,
-      "title": "Exposición Colectiva — Nuevo León",
-      "description": "Mayo 2023.",
-      "coverImage": "images/pintura/005-y-seguimos-jugando/expos/005-20230530-mx-nuevoleon-exposicion-colectiva-1.jpg"
-    }
-  ],
+  "origin": "Villa de Santiago, Nuevo León · México",
+  "contactTagline": "Para consultas sobre obra, exhibiciones o colaboraciones.",
   "instagram": "https://www.instagram.com/teresasalasalanis",
   "facebook": "https://www.facebook.com/share/18dutyq4M4/",
   "email": "salas.tere@hotmail.com",
-  "contactTagline": "Para consultas sobre obra, exhibiciones o colaboraciones."
+  "scrollLabel": "Desplazar para explorar"
 }
