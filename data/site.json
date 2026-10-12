@@ -329,6 +329,10 @@
         {
           "title": "La Patita y su Familia",
           "obra": "data/obras/escultura-la-patita-luchona-y-su-familia.json"
+        },
+        {
+          "title": "Virgen de Talpa",
+          "obra": "data/obras/virgen-de-talpa.json"
         }
       ]
     },
