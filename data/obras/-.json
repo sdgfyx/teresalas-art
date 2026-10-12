@@ -1,0 +1,36 @@
+{
+  "titulo": "Virgen de Talpa",
+  "disciplina": "Escultura",
+  "tipo": "Escultura en Barro",
+  "anno": "2026",
+  "motivosTitle": "Exposición de Motivos",
+  "piezas": [
+    {
+      "titulo": "Virgen de Talpa",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026",
+        "tecnica": "Modeado a mano en barro",
+        "acabado": "Pintura acrílica y laca"
+      },
+      "images": [
+        "images/202609-virgen-talpa-pieza.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "Homenaje a Juan Rulfo",
+      "lugar": "Biblioteca Universitaria Raúl Rangel Frías, Monterrey, NL",
+      "images": [
+        "images/202609-virgen-talpa-expo.jpg",
+        "images/202609-juan-rulfo-expo-02.jpg",
+        "images/202609-juan-rulfo-expo-01.jpg"
+      ],
+      "flyer": "images/202609-juan-rulfo-expo.jpg"
+    }
+  ]
+}
