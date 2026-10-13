@@ -1,0 +1,43 @@
+{
+  "titulo": "Niña Porta-Viandas",
+  "disciplina": "Escultura",
+  "tipo": "Instalación con técnicas mixtas",
+  "anno": "2026",
+  "motivosTitle": "Exposición de Motivos",
+  "piezas": [
+    {
+      "titulo": "Niña porta-viandas",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026"
+      },
+      "images": [
+        "images/202607-entre-costuras-pieza.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "Entre Costuras",
+      "lugar": "El Blanqueo, Santa Catarina, NL",
+      "images": [
+        "images/202607-entre-costuras-pieza-02.jpg",
+        "images/202607-entre-costuras-pieza-03.jpg"
+      ]
+    },
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "Entre Costuras - Santiago",
+      "lugar": "Antigua Fábrica El Porvenir, Santiago, NL",
+      "images": [
+        "images/202607-entre-costuras-expo-3.jpg",
+        "images/202607-entre-costuras-expo-02-1.jpg"
+      ],
+      "flyer": "images/e-costuras-flyer-1.jpg"
+    }
+  ]
+}
