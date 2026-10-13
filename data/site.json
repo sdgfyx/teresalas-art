@@ -333,6 +333,10 @@
         {
           "title": "Virgen de Talpa",
           "obra": "data/obras/virgen-de-talpa.json"
+        },
+        {
+          "title": "Niña Porta-Viandas",
+          "obra": "data/obras/Nina-porta-vianda.json"
         }
       ]
     },
