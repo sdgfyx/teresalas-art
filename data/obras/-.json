@@ -1,0 +1,21 @@
+{
+  "titulo": "El Muxe",
+  "disciplina": "Pintura",
+  "tipo": "Pintura al oleo",
+  "anno": "2026",
+  "motivosTitle": "Exposición de Motivos",
+  "motivos": "Hablar de México es hablar de magia, misticismo, de colores y tradiciones. Una de estas últimas, arraigada en el Istmo de Tehuantepec desde épocas prehispánicas, es la de LOS MUXES, personas de sexo masculino al nacer que aceptan roles de sexo femenino y son aceptados en la cultura zapoteca como un tercer género.  No se consideran mujeres ni hombres tradicionales, sino un género propio.  La identidad de los Muxes es respetada y valorada dentro de su comunidad desde tiempos prehispánicos, habiendo persistido a los conquistadores, a la iglesia y a un sinfín de situaciones adversas, gracias a la labor que desempeñan dentro de la comunidad, entre ellas su gran capacidad para la artesanía y el comercio, pero sobre todo, en el cuidado y protección a los adultos mayores, apoyado por su lado femenino que cuida a la familia y al entorno.",
+  "motivosCierre": "LOS MUXES son personas de sexo masculino al nacer que aceptan roles de sexo femenino y son aceptados en la cultura zapoteca como un tercer género.  No se consideran mujeres ni hombres tradicionales, sino un género propio. ",
+  "piezas": [
+    {
+      "titulo": "El Muxe",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026",
+        "tecnica": "Oleo sobre tela",
+        "dimensiones": "50 x 70 cm"
+      }
+    }
+  ]
+}
