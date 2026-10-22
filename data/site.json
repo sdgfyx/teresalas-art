@@ -369,6 +369,10 @@
         },
         {
           "title": "Llanto, Gritos y Silencio"
+        },
+        {
+          "title": "El Muxe",
+          "obra": "data/obras/-.json"
         }
       ]
     },
