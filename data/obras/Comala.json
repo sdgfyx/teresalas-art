@@ -1,0 +1,37 @@
+{
+  "titulo": "Comala",
+  "disciplina": "Pintura",
+  "tipo": "Acrílico y barniz sobre tela",
+  "anno": "2026",
+  "motivosTitle": "Exposición de Motivos",
+  "piezas": [
+    {
+      "titulo": "Comala",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026",
+        "tecnica": "Pintura",
+        "acabado": "Acrílico y barniz sobre tela",
+        "dimensiones": "60 x 80 cm"
+      },
+      "images": [
+        "images/20260929homenaje-juan-rukfo-013.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "Homenaje a Juan Rulfo",
+      "lugar": "Biblioteca Universitaria Raúl Rangel Frías, Monterrey, NL",
+      "images": [
+        "images/20260929homenaje-juan-rulfo-17.jpg",
+        "images/comala-homenaje-a-juan-rulfo-29-09-2026-1.jpg",
+        "images/20260929homenaje-juan-rukfo-007.jpg",
+        "images/20260929homenaje-juan-rukfo-005.jpg"
+      ]
+    }
+  ]
+}
