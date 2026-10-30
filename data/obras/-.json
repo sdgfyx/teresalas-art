@@ -15,20 +15,31 @@
         "anno": "2026",
         "tecnica": "Oleo sobre tela",
         "dimensiones": "50 x 70 cm"
-      }
-    },
-    {
-      "titulo": "El Muxe",
-      "ficha": {
-        "autor": "Tere Salas",
-        "asociacion": "Plástica de Monterrey",
-        "anno": "2026",
-        "tecnica": "Pintura al oleo sobre tela",
-        "dimensiones": "50 x 70 cm"
       },
       "images": [
-        "images/20260903019-copia.jpg",
-        "images/20260903001.jpg"
+        "images/20260903019-copia.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "México, Magia y Reencuentro",
+      "lugar": "Museo de la Revolución Mexicana, Saltillo, Coahuila",
+      "images": [
+        "images/20260903001-1.jpg"
+      ]
+    },
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "El Color de la Memoria",
+      "lugar": "Galería de la UNAM, San Antonio, Texas",
+      "images": [
+        "images/el-color-de-la-memoria-21-10-2026-9.jpg",
+        "images/el-color-de-la-memoria-21-10-2026-001-2.jpg",
+        "images/el-color-de-la-memoria-21-10-2026-005-1.jpg"
       ]
     }
   ]
