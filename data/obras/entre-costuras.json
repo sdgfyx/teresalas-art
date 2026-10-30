@@ -1,19 +1,21 @@
 {
   "titulo": "La Niña del Portaviandas",
   "disciplina": "Escultura",
-  "tipo": "Instalación",
+  "tipo": "Instalación Instalación compuesta por dos maniquíes y una mesa de época; los maniquíes, una niña y un trabajador, se encintaron y se cubrieron con papel maché.  La última capa en el cuerpo de los maniquíes está formada de estambre de colores recortado y pegado con engrudo.  La vestimenta de la niña está compuesta de papel maché y retazos de tela; sus zapatos son de plastilina epóxica.  El portaviandas es metálico.  En cuanto al trabajador, presenta ropa ámbar de trabajo; sus zapatos son de plastilina epóxica.",
   "anno": "2026",
   "motivosTitle": "Exposición de Motivos",
   "piezas": [
     {
-      "titulo": "Niña portaviandas",
+      "titulo": "La Niña del Portaviandas",
       "ficha": {
         "autor": "Tere Salas",
         "asociacion": "Plástica de Monterrey",
-        "anno": "2026"
+        "anno": "2026",
+        "tecnica": "Instalación Instalación compuesta por dos maniquíes y una mesa de época; los maniquíes, una niña y un trabajador, se encintaron y se cubrieron con papel maché.  La última capa en el cuerpo de los maniquíes está formada de estambre de colores recortado y pegado con engrudo.  La vestimenta de la niña está compuesta de papel maché y retazos de tela; sus zapatos son de plastilina epóxica.  El portaviandas es metálico.  En cuanto al trabajador, presenta ropa ámbar de trabajo; sus zapatos son de plastilina epóxica.",
+        "dimensiones": "70 x 190 x 190 cm"
       },
       "images": [
-        "images/202607-entre-costuras-pieza.jpg"
+        "images/la-nina-del-portaviandas-001-1.jpg"
       ]
     }
   ],
@@ -21,23 +23,25 @@
     {
       "anno": "2026",
       "tipo": "Exposición",
-      "evento": "Entre Costuras",
-      "lugar": "El Blanqueo, Santa Catarina, NL",
+      "evento": "Exposición Colectiva Entre Costuras",
+      "lugar": "La Capilla, Antigua Fábrica El Porvenir, el Cercado, Santiago NL",
       "images": [
-        "images/202607-entre-costuras-pieza-02.jpg",
-        "images/202607-entre-costuras-pieza-03.jpg"
+        "images/entre-costuras-24-07-2026.jpg",
+        "images/20260724-000.jpg",
+        "images/exposicion-colectiva-entre-costuras-24-07-2026.jpg"
       ]
     },
     {
       "anno": "2026",
       "tipo": "Exposición",
-      "evento": "Entre Costuras - El Cercado, Santiago,NL",
-      "lugar": "Antigua Fábrica El Porvenir, El Cercado, Santiago, NL",
+      "evento": "Exposición Colectiva Entre Costuras",
+      "lugar": "Museo Industrial El Blanqueo, Sta. Catarina NL",
       "images": [
-        "images/202607-entre-costuras-expo-3.jpg",
-        "images/202607-entre-costuras-expo-02-1.jpg"
-      ],
-      "flyer": "images/e-costuras-flyer-1.jpg"
+        "images/entre-costuras-el-blanqueo-santa-catarina-08-10-2026.jpg",
+        "images/202607-entre-costuras-pieza.jpg",
+        "images/202607-entre-costuras-pieza-03.jpg",
+        "images/202607-entre-costuras-expo.jpg"
+      ]
     }
   ]
 }
