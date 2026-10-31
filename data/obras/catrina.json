@@ -1,0 +1,25 @@
+{
+  "titulo": "Catrina",
+  "disciplina": "Escultura",
+  "tipo": "Modelado en barro",
+  "anno": "2026",
+  "motivosTitle": "Exposición de Motivos",
+  "motivos": "Si la muerte llega a mi vida, espero que no sea pronto. Pero el día que llegue, ¡¡que sea a la mexicana!! Con un gran sombrero lleno de flores y con un hermoso vestido ampón, llena de encajes y listones. Que sea alegre y dicharachera !!",
+  "motivosCierre": "Así cualquiera se va... Cantando, vacilando y bailando hasta el panteón.",
+  "piezas": [
+    {
+      "titulo": "La Catrina",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026",
+        "tecnica": "Modelado a mano en barro",
+        "acabado": "Pintura acrílica",
+        "dimensiones": "50 x 30 x 30"
+      },
+      "images": [
+        "images/messengercreation6d4c88fa-f1cc-4eb2-b5db-e7fbade8ebbc.jpeg"
+      ]
+    }
+  ]
+}
