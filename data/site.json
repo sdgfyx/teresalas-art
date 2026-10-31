@@ -337,6 +337,10 @@
         {
           "title": "Niña Porta-Viandas",
           "obra": "data/obras/entre-costuras.json"
+        },
+        {
+          "title": "La Catrina",
+          "obra": "data/obras/catrina.json"
         }
       ]
     },
