@@ -319,8 +319,8 @@
           "obra": "data/obras/escultura-madres-buscadoras.json"
         },
         {
-          "title": "Nada es lo que parece",
-          "obra": "data/obras/escultura-nada-es-lo-que-parece.json"
+          "title": "Virgen de Talpa",
+          "obra": "data/obras/virgen-de-talpa.json"
         },
         {
           "title": "Virgen Esperanza",
@@ -331,8 +331,8 @@
           "obra": "data/obras/escultura-la-patita-luchona-y-su-familia.json"
         },
         {
-          "title": "Virgen de Talpa",
-          "obra": "data/obras/virgen-de-talpa.json"
+          "title": "Nada es lo que parece",
+          "obra": "data/obras/escultura-nada-es-lo-que-parece.json"
         },
         {
           "title": "Niña Porta-Viandas",
@@ -349,6 +349,14 @@
       "title": "Pintura",
       "description": "Domina el óleo y la acuarela con una sensibilidad que navega entre lo íntimo y lo universal. Sus pinturas hablan de ancestros, heridas y la delicadeza de lo que persiste.",
       "works": [
+        {
+          "title": "Comala",
+          "obra": "data/obras/comala-pintura.json"
+        },
+        {
+          "title": "El Muxe",
+          "obra": "data/obras/-.json"
+        },
         {
           "title": "No te rindas",
           "obra": "data/obras/pintura-no-te-rindas.json"
@@ -367,20 +375,6 @@
         },
         {
           "title": "Y Seguimos Jugando"
-        },
-        {
-          "title": "Hasta los Ángeles Lloran"
-        },
-        {
-          "title": "Llanto, Gritos y Silencio"
-        },
-        {
-          "title": "El Muxe",
-          "obra": "data/obras/-.json"
-        },
-        {
-          "title": "Comala",
-          "obra": "data/obras/comala-pintura.json"
         }
       ]
     },
