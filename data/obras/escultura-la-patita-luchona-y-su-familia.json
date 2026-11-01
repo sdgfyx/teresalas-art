@@ -77,6 +77,15 @@
         "images/escultura/004-la-patita/expos/004-2025-mx-santiago-expo-de-arte-02.jpg",
         "images/escultura/004-la-patita/expos/004-2025-mx-santiago-expo-de-arte-03.jpg"
       ]
+    },
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "El Imaginario de Cri Cri",
+      "lugar": "Casa de la Cultura, Hidalgo, NL",
+      "images": [
+        "images/20260625002.jpg"
+      ]
     }
   ]
 }
