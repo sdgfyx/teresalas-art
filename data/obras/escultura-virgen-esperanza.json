@@ -9,20 +9,17 @@
   "motivosCierre": "Con lo anterior en mente, nace la idea de personificar ese ente superior, Esperanza, Virgen de las Madres Buscadoras, como alguien que se encargará de brindarnos esa esperanza de que, al final, todos nos reencontraremos.",
   "piezas": [
     {
-      "titulo": "Virgen Esperanza",
-      "descripcion": "Esperanza, Virgen de Madres Buscadoras.\nSE BUSCAN 131,000 MEXICANOS\nSEXO: INDISTINTO\nEDAD: INDISTINTA\nTEZ: INDISTINTA\nDESAPARECIÓ EN: CUALQUIER LUGAR DE MÉXICO",
+      "titulo": "Esperanza, Virgen de las madres buscadoras",
       "ficha": {
         "autor": "Tere Salas",
         "asociacion": "Plástica de Monterrey",
         "anno": "2025",
-        "tecnica": "Modelado a mano en barro",
-        "acabado": "Pintura acrílica y Laca",
-        "dimensiones": "31 x 25 x 56 cm"
+        "tecnica": "Modelado a mano en barro. Base de marmol",
+        "acabado": "Acrílico",
+        "dimensiones": "31 x 25 x 56cm"
       },
       "images": [
-        "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-completa.jpg",
-        "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-closeup.jpg",
-        "images/escultura/002-virgen-esperanza/piezas/002-2025-virgen-esperanza-detalle.jpg"
+        "images/esperanza-virgen-frente.jpg"
       ]
     }
   ],
