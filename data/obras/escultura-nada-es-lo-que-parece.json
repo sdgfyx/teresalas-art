@@ -36,6 +36,18 @@
       ],
       "flyer": "images/escultura/002-virgen-esperanza/expos/002-2026-mx-monterrey-exposicion-colectiva-flyer.jpg",
       "link": "https://www.facebook.com/watch/?v=972822488408513"
+    },
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "Alicia y el Conejo blanco en el Pais del Arte",
+      "lugar": "Galería del Pabellón Cultural Monterrey",
+      "images": [
+        "images/nada-es-lo-que-parece-001.jpg",
+        "images/nada-es-lo-que-parece-005.jpg",
+        "images/nada-es-lo-que-parece-004.jpg",
+        "images/nada-es-lo-que-parece-014.jpg"
+      ]
     }
   ]
 }
