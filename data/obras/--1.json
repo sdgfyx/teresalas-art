@@ -22,6 +22,19 @@
         "images/las-coronelas-instituto-cultural-de-mexico-en-san-antonio-tx-18-11-2026-004.jpg",
         "images/las-coronelas-instituto-cultural-de-mexico-en-san-antonio-tx-18-11-2026-005.jpg"
       ]
+    },
+    {
+      "titulo": "Las Coronelas",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026",
+        "tecnica": "Pintura al óleo sobre tela",
+        "dimensiones": "80x60cm"
+      },
+      "images": [
+        "images/las-coronelas-tere-salas-2026.jpg"
+      ]
     }
   ],
   "historial": [
