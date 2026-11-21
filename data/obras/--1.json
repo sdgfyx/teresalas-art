@@ -1,0 +1,36 @@
+{
+  "titulo": "Las Coronelas",
+  "disciplina": "Pintura",
+  "tipo": "Pintura al oleo",
+  "anno": "2026",
+  "motivosTitle": "Exposición de Motivos",
+  "motivos": "Durante la Revolución Mexicana (1910-1920) hubo mujeres que tomaron parte activa en la lucha, no solo como acompañantes de sus hombres, sino como combatientes; a estas mujeres se les conoce como LAS CORONELAS, ya que algunas de ellas alcanzaron ese grado militar.  Las Coronelas se distinguen porque fueron líderes y ejercieron verdaderamente mandos militares durante la lucha armada. Algunas figuras notables fueron: Amelia Robles (Amelio Robles) vistió de hombre y alcanzó el grado de coronela siendo reconocida por sus méritos en batalla; Juana Belén Gutiérrez, militante, además de periodista y activista, que alcanzó el grado de coronela; Petra Herrera, formó y comandó un batallón exclusivo de mujeres; Rosa Bobadilla, líder que comandó a cientos de combatientes en el sur del País.\nAl final de la lucha armada, por perjuicios de la época, todas ellas fueron relevadas de sus posiciones, negándoseles los grados militares, pensiones y cualquier otro privilegio obtenido durante la lucha, relegándolas al olvido.\nSirva mi contribución pictórica como un homenaje a todas aquellas mujeres que lucharon por legarnos una mejor Patria.\n",
+  "motivosCierre": "Al final de la lucha armada, por perjuicios de la época, todas ellas fueron relevadas de sus posiciones, negándoseles los grados militares, pensiones y cualquier otro privilegio obtenido durante la lucha, relegándolas al olvido.",
+  "piezas": [
+    {
+      "titulo": "Las Coronelas",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026",
+        "tecnica": "Pintura al óleo sobre tela",
+        "dimensiones": "80X60cm"
+      },
+      "images": [
+        "images/las-coronelas-instituto-cultural-de-mexico-en-san-antonio-tx-18-11-2026-001.jpg",
+        "images/las-coronelas-instituto-cultural-de-mexico-en-san-antonio-tx-18-11-2026-003.jpg",
+        "images/las-coronelas-instituto-cultural-de-mexico-en-san-antonio-tx-18-11-2026-004.jpg",
+        "images/las-coronelas-instituto-cultural-de-mexico-en-san-antonio-tx-18-11-2026-005.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2026",
+      "tipo": "Exposición",
+      "evento": "La Revolución Mexicana",
+      "lugar": "Instituto Cultural de México en San Antonio, Texas, USA",
+      "flyer": "images/las-coronelas-instituto-cultural-de-mexico-en-san-antonio-tx-18-11-2026-000-1.jpg"
+    }
+  ]
+}
