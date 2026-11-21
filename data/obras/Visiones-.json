@@ -1,0 +1,25 @@
+{
+  "titulo": "Visiones",
+  "disciplina": "Escultura",
+  "tipo": "Escultura modelada a mano en barro. ",
+  "anno": "2026",
+  "motivosTitle": "Exposición de Motivos",
+  "motivos": "Al mirarme al espejo, a veces veo aquella joven de 20 - 30 años, con un cuerpo agraciado, grácil que deseaba comerse al mundo de una sola mordida; otras veces me veo ya no tan grácil, embarazada; corriendo atrás de mis hijos; cumpliendo sueños pasados. Últimamente, al mirarme al espejo, veo a una mujer sexagenaria, con arrugas, canas y un cuerpo ya lento. \n\nSin embargo, me alegra el saber que todas esas visiones corresponden a una misma persona, mi persona, todas con la misma esencia y amor a la vida.\n\n",
+  "motivosCierre": "Todas esas visiones corresponden a una misma persona, mi persona, todas con la misma esencia y amor a la vida.",
+  "piezas": [
+    {
+      "titulo": "Visiones",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2026",
+        "tecnica": "Modelado a mano en barro",
+        "acabado": "Acrílico",
+        "dimensiones": "base: 35x40cm; altura: 50cm"
+      },
+      "images": [
+        "images/visiones-000.jpg"
+      ]
+    }
+  ]
+}
