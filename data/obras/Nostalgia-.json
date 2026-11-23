@@ -1,0 +1,37 @@
+{
+  "titulo": "Nostalgia",
+  "disciplina": "Pintura",
+  "tipo": "Óleo sobre tela",
+  "anno": "2025",
+  "motivosTitle": "Exposición de Motivos",
+  "piezas": [
+    {
+      "titulo": "Nostalgia",
+      "ficha": {
+        "autor": "Tere Salas",
+        "asociacion": "Plástica de Monterrey",
+        "anno": "2025",
+        "tecnica": "Óleo sobre tela",
+        "dimensiones": "70 x 90 cm"
+      },
+      "images": [
+        "images/2025-11-25-005.jpg"
+      ]
+    }
+  ],
+  "historial": [
+    {
+      "anno": "2025",
+      "tipo": "Exposición",
+      "evento": "Educ Art",
+      "lugar": "Unidad Cultural de Arquitectura, UCA, Universidad Autónoma de Nuevo León, Monterrey NL",
+      "images": [
+        "images/2025-11-25-002.jpg",
+        "images/2025-11-25-003.jpg",
+        "images/2025-11-25-007.jpg",
+        "images/2025-11-25-004.jpg"
+      ],
+      "flyer": "images/2025-11-25-001.jpeg"
+    }
+  ]
+}
